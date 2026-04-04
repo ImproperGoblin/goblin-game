@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var player_node: CharacterBody2D = $"../../../Player"
 const SPEED: float = 35.0
 const GRAVITY = 15
+const BOUNCE_TIMER: float = 4
 const ANIMATION = {
 	"PATROLLING": "patrolling",
 	"BOUNCE_PAD": "bounce-pad"
@@ -34,18 +35,18 @@ func _physics_process(delta: float) -> void:
 
 ## ToDo: Remove and replace with flash trigger
 func _input(event: InputEvent) -> void:
-	if Input.is_key_pressed(KEY_F):
+	if Input.is_key_pressed(KEY_F) and is_aggressive:
 		_wait_bounce_pad_mode()
 
 func _wait_bounce_pad_mode() -> void:
 	_swap_aggressive_state()
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(BOUNCE_TIMER).timeout
 	_swap_aggressive_state()
 
 func _swap_aggressive_state():
 	is_aggressive = !is_aggressive
-	$BounceCollisionShape2d.disabled = is_aggressive
-	$Area2D/CollisionShape2D.disabled = !is_aggressive
+	$BounceArea2D/CollisionShape2D.disabled = is_aggressive
+	$HurtboxArea2D/CollisionShape2D.disabled = !is_aggressive
 	$AnimatedSprite2D.animation = ANIMATION.PATROLLING if is_aggressive else ANIMATION.BOUNCE_PAD
 
 func _wait_dir_changed(new_dir: int) -> void:
@@ -56,3 +57,8 @@ func _wait_dir_changed(new_dir: int) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body == player_node && is_aggressive:
 		get_tree().call_deferred("reload_current_scene")
+
+
+func _on_bounce_area_2d_body_entered(body: Node2D) -> void:
+	if body.get("JUMP_PAD_HEIGHT"):
+		body.velocity.y = body.JUMP_PAD_HEIGHT

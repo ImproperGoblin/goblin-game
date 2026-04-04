@@ -8,6 +8,7 @@ const FRICTION = 1400.0
 const JUMP_VELOCITY = -800.0
 const COYOTE_TIME_LENGTH = 0.1
 const JUMP_BUFFER_MIN = 0.2
+const JUMP_PAD_HEIGHT = -1200
 
 var last_safe_coords = global_position
 var can_move = true
