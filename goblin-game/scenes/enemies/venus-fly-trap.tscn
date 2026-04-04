@@ -13,8 +13,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q0l02"]
-size = Vector2(160, 25)
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_0jbiy"]
+a = Vector2(-85, 0)
+b = Vector2(85, 0)
 
 [node name="VenusFlyTrap" type="Node2D" unique_id=1696436320]
 
@@ -26,5 +27,5 @@ sprite_frames = SubResource("SpriteFrames_u7c8i")
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1896373211]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1128778806]
-position = Vector2(0, 10)
-shape = SubResource("RectangleShape2D_q0l02")
+shape = SubResource("SegmentShape2D_0jbiy")
+one_way_collision = true
