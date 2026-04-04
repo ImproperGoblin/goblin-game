@@ -110,6 +110,6 @@ theme_override_fonts/font = ExtResource("1_br3ni")
 theme_override_font_sizes/font_size = 150
 text = "GOBLIN TOUR"
 
-[connection signal="pressed" from="VBoxContainer/Button_Start" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button_Start" to="." method="_on_button_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button_Option" to="." method="_on_button_option_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button_Quit" to="." method="_on_button_quit_pressed"]
