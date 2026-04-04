@@ -14,9 +14,6 @@ tile_map_data = PackedByteArray("AAD//wkAAAABAAAAAAD//woAAAADAAAAAAAIAAoAAAADAAA
 [node name="LushHazardTileMap" parent="." unique_id=584079314 instance=ExtResource("2_tpcq7")]
 tile_map_data = PackedByteArray("AAAAAAoAAAAHAAAAAAABAAoAAAAHAAAAAAACAAoAAAAHAAAAAAADAAoAAAAHAAAAAAAEAAoAAAAHAAAAAAAFAAoAAAAHAAAAAAAGAAoAAAAHAAAAAAAHAAoAAAAHAAAAAAAJAAoAAAAHAAAAAAAKAAoAAAAHAAAAAAALAAoAAAAHAAAAAAAMAAoAAAAHAAAAAAANAAoAAAAHAAAAAAAOAAoAAAAHAAAAAAAPAAoAAAAHAAAAAAAXAAoAAAAHAAAAAAAYAAoAAAAHAAAAAAAZAAoAAAAHAAAAAAAaAAoAAAAHAAAAAAAbAAoAAAAHAAAAAAAJAAQAAAAHAAAAADAKAAQAAAAHAAAAADALAAQAAAAHAAAAADAMAAQAAAAHAAAAADA=")
 
-[node name="Player" parent="." unique_id=1577636989 instance=ExtResource("4_gsbkw")]
-position = Vector2(35, 604)
-
 [node name="Enemies" type="Node" parent="." unique_id=1623021041]
 
 [node name="VenusFlyTraps" type="Node" parent="Enemies" unique_id=654950305]
@@ -49,3 +46,6 @@ position = Vector2(1759, 759)
 
 [node name="Mushroom4" parent="Enemies/Mushrooms" unique_id=678242100 instance=ExtResource("3_bd5bt")]
 position = Vector2(2083, 200)
+
+[node name="Player" parent="." unique_id=1577636989 instance=ExtResource("4_gsbkw")]
+position = Vector2(35, 604)
