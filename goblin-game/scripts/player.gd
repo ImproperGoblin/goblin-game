@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@onready var hazard_tilemap: TileMapLayer = $"../LushHazardTileMap"
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -800.0
@@ -27,11 +28,6 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_released("ui_accept") and velocity.y < 0:
 			velocity.y *= 0.5
 			
-		if Input.is_action_just_pressed('ui_cancel'):
-			global_position = last_safe_coords
-		
-		
-
 		# Get the input direction and handle the movement/deceleration.
 		# As good practice, you should replace UI actions with custom gameplay actions.
 		var direction := Input.get_axis("ui_left", "ui_right")
@@ -41,3 +37,11 @@ func _physics_process(delta: float) -> void:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 
 		move_and_slide()
+		
+		for i in range(get_slide_collision_count()):
+			var collision := get_slide_collision(i)
+			var collider := collision.get_collider()
+			
+			if collider == hazard_tilemap:
+				global_position = last_safe_coords
+				break
