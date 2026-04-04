@@ -1,15 +1,19 @@
 extends CharacterBody2D
 
-@onready var player_node: CharacterBody2D = get_parent().get_node("Player")
-const speed: float = 35.0
-var gravity = 15
+@onready var player_node: CharacterBody2D =  get_tree().get_current_scene().get_node("Player")
+const SPEED: float = 35.0
+const GRAVITY = 15
+const ANIMATION = {
+	"PATROLLING": "patrolling",
+	"BOUNCE_PAD": "bounce-pad"
+}
 
 var is_aggressive: bool = true
 
 @export_range(-1, 1) var dir: int = 1
 
 func _on_ready() -> void:
-	$AnimatedSprite2D.animation = "patrolling"
+	$AnimatedSprite2D.animation = ANIMATION.PATROLLING
 	if dir == 0:
 		dir = 1
 	$AnimatedSprite2D.flip_h = false if dir == 1 else true
@@ -24,30 +28,31 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.flip_h = false
 		_wait_dir_changed(1)
 		
-	velocity.x = lerp(velocity.x, dir * speed, 10.0 * delta)
-	velocity.y += gravity
+	velocity.x = lerp(velocity.x, dir * SPEED, 10.0 * delta)
+	velocity.y += GRAVITY
 	move_and_slide()
 
+## ToDo: Remove and replace with flash trigger
 func _input(event: InputEvent) -> void:
 	if Input.is_key_pressed(KEY_F):
-		_wait_mushroom_is_bounce()
+		_wait_bounce_pad_mode()
 
-func _wait_mushroom_is_bounce() -> void:
-	_swap_animation(false)
+func _wait_bounce_pad_mode() -> void:
+	_swap_aggressive_state()
 	await get_tree().create_timer(1).timeout
-	_swap_animation(true)
+	_swap_aggressive_state()
 
-func _swap_animation(set_agressive: bool):
-	is_aggressive = set_agressive
-	$BounceCollisionShape2d.disabled = set_agressive
-	$EnemyArea2D/EnemyCollisionShape2D.disabled = !set_agressive
-	$AnimatedSprite2D.animation = "patrolling" if set_agressive else "bounce-pad"
+func _swap_aggressive_state():
+	is_aggressive = !is_aggressive
+	$BounceCollisionShape2d.disabled = is_aggressive
+	$Area2D/CollisionShape2D.disabled = !is_aggressive
+	$AnimatedSprite2D.animation = ANIMATION.PATROLLING if is_aggressive else ANIMATION.BOUNCE_PAD
 
 func _wait_dir_changed(new_dir: int) -> void:
 	await get_tree().create_timer(0.5).timeout
 	dir = new_dir
 
+# ToDo: change to a different reset?
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body == player_node && is_aggressive:
-		print("you died :(") # put reset here, use get_tree().call_deferred("reload_current_scene)
-	
+		get_tree().call_deferred("reload_current_scene")
