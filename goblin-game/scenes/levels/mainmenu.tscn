@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://cp4x7ax88dxrf"]
+
+[ext_resource type="FontFile" uid="uid://0yv2m2koturd" path="res://assets/font/alagard.ttf" id="1_br3ni"]
+[ext_resource type="Texture2D" uid="uid://bsyhyaifu741y" path="res://assets/images/menu-bg.png" id="1_i5bdk"]
+[ext_resource type="Script" uid="uid://bvspshexl2llu" path="res://scripts/mainmenu.gd" id="1_kx24e"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_br3ni"]
+texture = ExtResource("1_i5bdk")
+modulate_color = Color(0.19076231, 0.19076234, 0.19076231, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i5bdk"]
+bg_color = Color(0.15190333, 0.34850395, 0.25523812, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kx24e"]
+bg_color = Color(0.06862219, 0.19949794, 0.12827337, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+
+[node name="Menu" type="Control" unique_id=991506177]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kx24e")
+
+[node name="Panel" type="Panel" parent="." unique_id=162894855]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_br3ni")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1927574439]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -145.5
+offset_top = -78.0
+offset_right = 145.5
+offset_bottom = 151.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 18
+
+[node name="Button_Start" type="Button" parent="VBoxContainer" unique_id=1731948524]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_br3ni")
+theme_override_font_sizes/font_size = 33
+theme_override_styles/normal = SubResource("StyleBoxFlat_i5bdk")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_i5bdk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kx24e")
+text = "START GAME"
+
+[node name="Button_Option" type="Button" parent="VBoxContainer" unique_id=723778635]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_br3ni")
+theme_override_font_sizes/font_size = 33
+theme_override_styles/normal = SubResource("StyleBoxFlat_i5bdk")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_i5bdk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kx24e")
+text = "OPTIONS"
+
+[node name="Button_Quit" type="Button" parent="VBoxContainer" unique_id=1896594646]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_br3ni")
+theme_override_font_sizes/font_size = 33
+theme_override_styles/normal = SubResource("StyleBoxFlat_i5bdk")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_i5bdk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kx24e")
+text = "QUIT"
+
+[node name="Label" type="Label" parent="." unique_id=604669331]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -446.0
+offset_top = -264.0
+offset_right = 454.0
+offset_bottom = -122.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0.17205724, 0.37941843, 0.18542624, 1)
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/font = ExtResource("1_br3ni")
+theme_override_font_sizes/font_size = 150
+text = "GOBLIN TOUR"
+
+[connection signal="pressed" from="VBoxContainer/Button_Start" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button_Option" to="." method="_on_button_option_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button_Quit" to="." method="_on_button_quit_pressed"]
