@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var player_node: CharacterBody2D =  get_tree().get_current_scene().get_node("Player")
 const SPEED: float = 35.0
 const GRAVITY = 15
+const BOUNCE_TIMER: float = 4
 const ANIMATION = {
 	"PATROLLING": "patrolling",
 	"BOUNCE_PAD": "bounce-pad"
@@ -34,12 +35,12 @@ func _physics_process(delta: float) -> void:
 
 ## ToDo: Remove and replace with flash trigger
 func _input(event: InputEvent) -> void:
-	if Input.is_key_pressed(KEY_F):
+	if Input.is_key_pressed(KEY_F) and is_aggressive:
 		_wait_bounce_pad_mode()
 
 func _wait_bounce_pad_mode() -> void:
 	_swap_aggressive_state()
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(BOUNCE_TIMER).timeout
 	_swap_aggressive_state()
 
 func _swap_aggressive_state():
