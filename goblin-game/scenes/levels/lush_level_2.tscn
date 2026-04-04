@@ -4,9 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://cesmyhqw2iryp" path="res://scenes/tilemaps/LushHazardTileMap.tscn" id="2_8kiam"]
 [ext_resource type="PackedScene" uid="uid://bhbcgcsgdsf0y" path="res://scenes/players/player.tscn" id="2_vms3p"]
 [ext_resource type="PackedScene" uid="uid://bcg8eynd2b5jp" path="res://scenes/enemies/venus-fly-trap.tscn" id="3_82alk"]
+[ext_resource type="FontFile" uid="uid://0yv2m2koturd" path="res://assets/font/alagard.ttf" id="5_8kiam"]
+[ext_resource type="Script" uid="uid://cokok15vf8wgq" path="res://scripts/dialogue_trigger.gd" id="6_ph3lr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sra0u"]
 size = Vector2(69, 159)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q883a"]
+size = Vector2(160, 32)
 
 [node name="LevelRoot" type="Node2D" unique_id=1581097223]
 
@@ -41,3 +46,31 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit" unique_id=308829517]
 position = Vector2(11.5, 7.5)
 shape = SubResource("RectangleShape2D_sra0u")
+
+[node name="DialogueBox" type="Node" parent="." unique_id=527197026]
+
+[node name="Label" type="Label" parent="DialogueBox" unique_id=1496920242]
+offset_left = 610.0
+offset_top = 94.0
+offset_right = 838.0
+offset_bottom = 137.0
+theme_override_fonts/font = ExtResource("5_8kiam")
+theme_override_font_sizes/font_size = 22
+text = "Oh ... this is new ...
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+clip_text = true
+max_lines_visible = 3
+
+[node name="DialogueTrigger" type="Area2D" parent="DialogueBox" unique_id=829569905]
+position = Vector2(697, 282)
+script = ExtResource("6_ph3lr")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueBox/DialogueTrigger" unique_id=1467238127]
+position = Vector2(25, -56)
+shape = SubResource("RectangleShape2D_q883a")
+
+[connection signal="body_entered" from="DialogueBox/DialogueTrigger" to="DialogueBox/DialogueTrigger" method="_on_body_entered"]
