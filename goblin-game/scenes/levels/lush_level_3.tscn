@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://dcdmrg3m0jdng" path="res://assets/images/lush-cave-platforms/tileset.png" id="1_5in7g"]
 [ext_resource type="PackedScene" uid="uid://bcg8eynd2b5jp" path="res://scenes/enemies/venus-fly-trap.tscn" id="2_bakwm"]
+[ext_resource type="PackedScene" uid="uid://dwove1modiagf" path="res://scenes/enemies/mushroom.tscn" id="3_bd5bt"]
+[ext_resource type="PackedScene" uid="uid://bhbcgcsgdsf0y" path="res://scenes/players/player.tscn" id="4_gsbkw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bakwm"]
 texture = ExtResource("1_5in7g")
@@ -53,3 +55,18 @@ position = Vector2(1715, 418)
 
 [node name="VenusFlyTrap5" parent="." unique_id=531509148 instance=ExtResource("2_bakwm")]
 position = Vector2(1968, 546)
+
+[node name="Mushroom" parent="." unique_id=1222687371 instance=ExtResource("3_bd5bt")]
+position = Vector2(337, 601)
+
+[node name="Mushroom2" parent="." unique_id=1085815330 instance=ExtResource("3_bd5bt")]
+position = Vector2(269, 279)
+
+[node name="Mushroom3" parent="." unique_id=316524344 instance=ExtResource("3_bd5bt")]
+position = Vector2(1759, 759)
+
+[node name="Mushroom4" parent="." unique_id=678242100 instance=ExtResource("3_bd5bt")]
+position = Vector2(2083, 200)
+
+[node name="Player" parent="." unique_id=1577636989 instance=ExtResource("4_gsbkw")]
+position = Vector2(35, 604)
