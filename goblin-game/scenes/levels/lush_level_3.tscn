@@ -32,7 +32,7 @@ texture = ExtResource("1_5in7g")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_bakwm")
 
-[node name="LushLevel3" type="Node2D" unique_id=1581097223]
+[node name="LevelRoot" type="Node2D" unique_id=1581097223]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=875812697]
 scale = Vector2(5, 5)
