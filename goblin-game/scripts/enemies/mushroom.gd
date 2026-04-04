@@ -9,6 +9,9 @@ const ANIMATION = {
 	"BOUNCE_PAD": "bounce-pad"
 }
 
+const JUMP_PAD_HEIGHT = -1200
+const JUMP_BOOST_MULTIPLIER = 3
+
 var is_aggressive: bool = true
 
 @export_range(-1, 1) var dir: int = 1
@@ -58,7 +61,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body == player_node && is_aggressive:
 		get_tree().call_deferred("reload_current_scene")
 
-
 func _on_bounce_area_2d_body_entered(body: Node2D) -> void:
-	if body.get("JUMP_PAD_HEIGHT"):
-		body.velocity.y = body.JUMP_PAD_HEIGHT
+	if body == player_node && !is_aggressive:
+		player_node.velocity.y = JUMP_PAD_HEIGHT
+		player_node._set_jump_boost(JUMP_BOOST_MULTIPLIER)

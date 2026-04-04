@@ -35,6 +35,7 @@ size = Vector2(25, 7)
 
 [node name="Mushroom" type="CharacterBody2D" unique_id=1580177328]
 script = ExtResource("1_uk2no")
+dir = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2118624724]
 texture_filter = 1

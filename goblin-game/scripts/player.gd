@@ -8,19 +8,21 @@ const FRICTION = 1400.0
 const JUMP_VELOCITY = -800.0
 const COYOTE_TIME_LENGTH = 0.1
 const JUMP_BUFFER_MIN = 0.2
-const JUMP_PAD_HEIGHT = -1200
 
 var last_safe_coords = global_position
 var can_move = true
 var coyote_timer = 0
 var jump_buffer_timer = 0
 var buffered_jump = false
+var jump_boost = 1
 
 func _physics_process(delta: float) -> void:
 	var gravity = get_gravity()
 	var current_gravity = gravity if velocity.y < 0 else gravity * 1.5
 	
 	if is_on_floor():
+		if $JumpRay.is_colliding():
+			_set_jump_boost(1)
 		coyote_timer = 0
 		jump_buffer_timer = 0
 		last_safe_coords = global_position
@@ -46,7 +48,7 @@ func _physics_process(delta: float) -> void:
 
 		var direction := Input.get_axis("move_left", "move_right")
 		if direction:
-			velocity.x = move_toward(velocity.x, direction * MAX_SPEED, ACCELERATION * delta)
+			velocity.x = move_toward(velocity.x, direction * MAX_SPEED * jump_boost, ACCELERATION * delta * jump_boost)
 		else:
 			velocity.x = move_toward(velocity.x, 0, FRICTION * delta)
 
@@ -64,3 +66,6 @@ func _process_spike_reset() -> void:
 		if collider == hazard_tilemap:
 			global_position = last_safe_coords
 			break
+			
+func _set_jump_boost(multiplier: float):
+	jump_boost = multiplier;
