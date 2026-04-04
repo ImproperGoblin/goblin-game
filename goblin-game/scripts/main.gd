@@ -45,7 +45,6 @@ func _setup_level(level_root: Node) -> void:
 func _on_exit_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		level += 1
-		print (level)
 		body.can_move = false
 		call_deferred("_load_level",(level))
 		
