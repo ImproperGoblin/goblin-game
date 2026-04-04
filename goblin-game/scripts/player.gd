@@ -23,7 +23,9 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		coyote_timer = 0
 		jump_buffer_timer = 0
-		last_safe_coords = global_position
+		
+		if $JumpRay.is_colliding():
+			last_safe_coords = global_position
 		
 		if buffered_jump:
 			_jump()
@@ -57,6 +59,7 @@ func _jump() -> void:
 	velocity.y = JUMP_VELOCITY
 	
 func _process_spike_reset() -> void:
+	
 	for i in range(get_slide_collision_count()):
 		var collision := get_slide_collision(i)
 		var collider := collision.get_collider()
