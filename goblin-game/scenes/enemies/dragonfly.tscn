@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dacl0o8gq7204"]
+
+[ext_resource type="Texture2D" uid="uid://dylpdvexjp5m" path="res://assets/images/lush-cave-enemies/dragonfly-enemy.png" id="1_wxmcl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u7c8i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wxmcl")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q0l02"]
+size = Vector2(81, 57)
+
+[node name="Dragonfly" type="Node2D" unique_id=1696436320]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=951016447]
+texture_filter = 1
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_u7c8i")
+animation = &"idle"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1896373211]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1128778806]
+position = Vector2(-0.5, -2.5)
+shape = SubResource("RectangleShape2D_q0l02")
