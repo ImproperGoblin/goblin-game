@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://b4r2dk6to375o"]
 
 [ext_resource type="Texture2D" uid="uid://dcdmrg3m0jdng" path="res://assets/images/lush-cave-platforms/tileset.png" id="1_xk5ng"]
-[ext_resource type="PackedScene" uid="uid://bhbcgcsgdsf0y" path="res://scenes/player.tscn" id="2_ghhbn"]
+[ext_resource type="PackedScene" uid="uid://bhbcgcsgdsf0y" path="res://scenes/players/player.tscn" id="2_ghhbn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ghhbn"]
 texture = ExtResource("1_xk5ng")
