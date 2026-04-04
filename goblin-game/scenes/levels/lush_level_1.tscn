@@ -10,7 +10,7 @@
 size = Vector2(339, 87)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ppse0"]
-size = Vector2(72, 164)
+size = Vector2(72, 246)
 
 [node name="LevelRoot" type="Node2D" unique_id=1680235478]
 
@@ -34,22 +34,29 @@ shape = SubResource("RectangleShape2D_xk5ng")
 [node name="DialogueBox" type="Node" parent="." unique_id=1740896584]
 
 [node name="Label" type="Label" parent="DialogueBox" unique_id=1681473606]
-offset_left = 261.0
-offset_top = 414.0
-offset_right = 557.0
-offset_bottom = 479.0
+offset_left = 650.0
+offset_top = 312.0
+offset_right = 1098.0
+offset_bottom = 484.0
 theme_override_fonts/font = ExtResource("4_ppse0")
-text = "Hello world this is me typing a whole lot of text! woooo "
+theme_override_font_sizes/font_size = 22
+text = "Hello there!
+I seem to have got myself into a 
+bit of a predicament ... 
+"
+horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 clip_text = true
-max_lines_visible = 2
+max_lines_visible = 3
 
 [node name="DialogueTrigger" type="Area2D" parent="DialogueBox" unique_id=1136903274]
-position = Vector2(584, 511)
+position = Vector2(582, 509)
 script = ExtResource("5_v4hek")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueBox/DialogueTrigger" unique_id=943822838]
-position = Vector2(26, -29)
+position = Vector2(26, -70)
 shape = SubResource("RectangleShape2D_ppse0")
+
+[connection signal="body_entered" from="DialogueBox/DialogueTrigger" to="DialogueBox/DialogueTrigger" method="_on_body_entered"]
