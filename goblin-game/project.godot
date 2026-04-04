@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GoblinGame"
-run/main_scene="uid://cp4x7ax88dxrf"
+run/main_scene="uid://dvbsv2l1p5ucg"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
