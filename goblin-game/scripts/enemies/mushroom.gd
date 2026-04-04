@@ -10,7 +10,7 @@ const ANIMATION = {
 }
 
 const JUMP_PAD_HEIGHT = -1200
-const JUMP_BOOST_MULTIPLIER = 3
+const JUMP_BOOST_MULTIPLIER = 2
 
 var is_aggressive: bool = true
 
