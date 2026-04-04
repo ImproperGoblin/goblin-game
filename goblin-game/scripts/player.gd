@@ -2,7 +2,9 @@ extends CharacterBody2D
 
 @onready var hazard_tilemap: TileMapLayer = $"../LushHazardTileMap"
 
-const SPEED = 300.0
+const MAX_SPEED = 300.0
+const ACCELERATION = 1200.0
+const FRICTION = 1400.0
 const JUMP_VELOCITY = -800.0
 
 var can_move = true
@@ -21,20 +23,17 @@ func _physics_process(delta: float) -> void:
 		last_safe_coords = global_position
 
 	if can_move:
-		# Handle jump.
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
 
 		if Input.is_action_just_released("jump") and velocity.y < 0:
 			velocity.y *= 0.5
 			
-		# Get the input direction and handle the movement/deceleration.
-		# As good practice, you should replace UI actions with custom gameplay actions.
 		var direction := Input.get_axis("move_left", "move_right")
 		if direction:
-			velocity.x = direction * SPEED
+			velocity.x = move_toward(velocity.x, direction * MAX_SPEED, ACCELERATION * delta)
 		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.x = move_toward(velocity.x, 0, FRICTION * delta)
 
 		move_and_slide()
 		
