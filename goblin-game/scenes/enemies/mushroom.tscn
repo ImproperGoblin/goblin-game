@@ -2,15 +2,24 @@
 
 [ext_resource type="Texture2D" uid="uid://ckhbvccro6xc3" path="res://assets/images/lush-cave-enemies/bounce-mushroom-enemy.png" id="1_2wybx"]
 [ext_resource type="Script" uid="uid://dx1kdae6glo7e" path="res://scripts/enemies/mushroom.gd" id="1_uk2no"]
+[ext_resource type="Texture2D" uid="uid://dhwth0jn3516d" path="res://assets/images/lush-cave-enemies/bounce-mushroom-pad.png" id="3_1calh"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uk2no"]
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("3_1calh")
+}],
+"loop": true,
+"name": &"bounce-pad",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("1_2wybx")
 }],
 "loop": true,
-"name": &"default",
+"name": &"patrolling",
 "speed": 5.0
 }]
 
@@ -21,6 +30,9 @@ size = Vector2(20, 7)
 radius = 40.0
 height = 80.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ubc2v"]
+size = Vector2(70, 30)
+
 [node name="Mushroom" type="CharacterBody2D" unique_id=1580177328]
 script = ExtResource("1_uk2no")
 
@@ -28,17 +40,15 @@ script = ExtResource("1_uk2no")
 texture_filter = 1
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_uk2no")
-
-[node name="DirectionTimer" type="Timer" parent="." unique_id=782955435]
-autostart = true
+animation = &"patrolling"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=779801037]
 position = Vector2(0, 36.5)
 shape = SubResource("RectangleShape2D_uk2no")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1392678580]
+[node name="EnemyArea2D" type="Area2D" parent="." unique_id=1392678580]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1803797598]
+[node name="EnemyCollisionShape2D" type="CollisionShape2D" parent="EnemyArea2D" unique_id=1803797598]
 shape = SubResource("CapsuleShape2D_1calh")
 
 [node name="LeftRay" type="RayCast2D" parent="." unique_id=182463811]
@@ -63,6 +73,14 @@ rotation = -1.5707964
 target_position = Vector2(0, 30)
 hit_from_inside = true
 
+[node name="BounceCollisionShape2d" type="CollisionShape2D" parent="." unique_id=314150114]
+position = Vector2(-5.7618456e-07, 25)
+rotation = -3.1415925
+shape = SubResource("RectangleShape2D_ubc2v")
+disabled = true
+one_way_collision = true
+one_way_collision_margin = 2.0
+debug_color = Color(0.9439768, 0.12191079, 0.5129037, 0.41960785)
+
 [connection signal="ready" from="." to="." method="_on_ready"]
-[connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="EnemyArea2D" to="." method="_on_area_2d_body_entered"]
