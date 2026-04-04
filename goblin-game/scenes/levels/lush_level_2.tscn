@@ -45,7 +45,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAAAAAEAAAABAAAAAAAAAAIAAAABAAA
 tile_set = SubResource("TileSet_ph3lr")
 
 [node name="Player" parent="." unique_id=1577636989 instance=ExtResource("2_vms3p")]
-position = Vector2(1447, 643)
+position = Vector2(712, -31)
 
 [node name="VenusFlyTrap" parent="." unique_id=1696436320 instance=ExtResource("3_82alk")]
 position = Vector2(723, 247)
