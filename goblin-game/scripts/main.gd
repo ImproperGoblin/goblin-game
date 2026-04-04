@@ -18,11 +18,10 @@ func _ready() -> void:
 # -----------------
 
 func _load_level(level_number:int) -> void:
-	_fade(1.0)
 	
 	if current_level_root:
 		current_level_root.queue_free()
-	
+
 	# Change level
 	var level_path = "res://scenes/levels/lush_level_%s.tscn" %level_number
 	current_level_root = load(level_path).instantiate()
@@ -31,7 +30,7 @@ func _load_level(level_number:int) -> void:
 	_setup_level(current_level_root)
 	
 	await _fade(0.0)
-
+	
 func _setup_level(level_root: Node) -> void:
 	
 	# Connect EXIT
@@ -46,6 +45,7 @@ func _on_exit_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		level += 1
 		body.can_move = false
+		await _fade(1.0)
 		call_deferred("_load_level",(level))
 		
 # -----------------
@@ -53,5 +53,5 @@ func _on_exit_body_entered(body: Node2D) -> void:
 # -----------------
 func _fade(to_alpha: float) -> void:
 	var fade_tween := create_tween()
-	fade_tween.tween_property(fade, "modulate:a", to_alpha, 1.5)
+	fade_tween.tween_property(fade, "modulate:a", to_alpha, 1.2)
 	await fade_tween.finished
