@@ -33,6 +33,9 @@ texture = ExtResource("1_sra0u")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_8kiam")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sra0u"]
+size = Vector2(69, 159)
+
 [node name="LevelRoot" type="Node2D" unique_id=1581097223]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1243326393]
@@ -55,3 +58,11 @@ position = Vector2(1633, 548)
 
 [node name="VenusFlyTrap4" parent="." unique_id=1569497523 instance=ExtResource("3_82alk")]
 position = Vector2(1198, 239)
+
+[node name="Exit" type="Area2D" parent="." unique_id=1609261141]
+position = Vector2(2353, 790)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit" unique_id=308829517]
+position = Vector2(11.5, 7.5)
+shape = SubResource("RectangleShape2D_sra0u")
