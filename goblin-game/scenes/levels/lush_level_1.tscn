@@ -34,15 +34,15 @@ shape = SubResource("RectangleShape2D_xk5ng")
 [node name="DialogueBox" type="Node" parent="." unique_id=1740896584]
 
 [node name="Label" type="Label" parent="DialogueBox" unique_id=1681473606]
+texture_filter = 1
 offset_left = 650.0
-offset_top = 312.0
+offset_top = 383.0
 offset_right = 1098.0
-offset_bottom = 484.0
+offset_bottom = 449.0
 theme_override_fonts/font = ExtResource("4_ppse0")
 theme_override_font_sizes/font_size = 22
 text = "Hello there!
-I seem to have got myself into a 
-bit of a predicament ... 
+Do you feel up to fetching me a key?
 "
 horizontal_alignment = 1
 vertical_alignment = 1
