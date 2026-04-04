@@ -9,12 +9,17 @@ const JUMP_VELOCITY = -800.0
 const COYOTE_TIME_LENGTH = 0.1
 const JUMP_BUFFER_MIN = 0.2
 
-var last_safe_coords = global_position
+var last_safe_coords = 0
+var room_start_coordinates = 0
 var can_move = true
 var coyote_timer = 0
 var jump_buffer_timer = 0
 var buffered_jump = false
 var jump_boost = 1
+
+func _ready() -> void:
+	last_safe_coords = global_position
+	room_start_coordinates = global_position
 
 func _physics_process(delta: float) -> void:
 	var gravity = get_gravity()
@@ -26,8 +31,8 @@ func _physics_process(delta: float) -> void:
 		coyote_timer = 0
 		jump_buffer_timer = 0
 		
-		if $JumpRay.is_colliding():
-			last_safe_coords = global_position
+		if $JumpRay.is_colliding() and 'VenusFlyTrap' not in $JumpRay.get_collider().get_parent().name:
+			_set_safe_pos()
 		
 		if buffered_jump:
 			_jump()
@@ -61,14 +66,22 @@ func _jump() -> void:
 	velocity.y = JUMP_VELOCITY
 	
 func _process_spike_reset() -> void:
-	
 	for i in range(get_slide_collision_count()):
 		var collision := get_slide_collision(i)
 		var collider := collision.get_collider()
 		
 		if collider == hazard_tilemap:
-			global_position = last_safe_coords
+			_reset_to_safe_pos()
 			break
-			
+
 func _set_jump_boost(multiplier: float):
 	jump_boost = multiplier;
+
+func _reset_to_room_start() -> void:
+	global_position = room_start_coordinates
+
+func _reset_to_safe_pos() -> void:
+	global_position = last_safe_coords
+
+func _set_safe_pos() -> void:
+	last_safe_coords = global_position

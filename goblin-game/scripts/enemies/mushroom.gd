@@ -59,7 +59,7 @@ func _wait_dir_changed(new_dir: int) -> void:
 # ToDo: change to a different reset?
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body == player_node && is_aggressive:
-		get_tree().call_deferred("reload_current_scene")
+		player_node._reset_to_room_start()
 
 func _on_bounce_area_2d_body_entered(body: Node2D) -> void:
 	if body == player_node && !is_aggressive:
