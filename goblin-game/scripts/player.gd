@@ -3,7 +3,9 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -800.0
+
 var can_move = true
+var last_safe_coords = global_position
 
 func _physics_process(delta: float) -> void:
 	
@@ -13,6 +15,9 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += current_gravity * delta
+	
+	if is_on_floor():
+		last_safe_coords = global_position
 
 	if can_move:
 		# Handle jump.
@@ -21,6 +26,11 @@ func _physics_process(delta: float) -> void:
 
 		if Input.is_action_just_released("ui_accept") and velocity.y < 0:
 			velocity.y *= 0.5
+			
+		if Input.is_action_just_pressed('ui_cancel'):
+			global_position = last_safe_coords
+		
+		
 
 		# Get the input direction and handle the movement/deceleration.
 		# As good practice, you should replace UI actions with custom gameplay actions.
