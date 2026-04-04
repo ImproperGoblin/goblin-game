@@ -31,21 +31,20 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
-size = Vector2(29.666668, 32)
+size = Vector2(75, 81)
 
 [node name="Player" type="CharacterBody2D" unique_id=1577636989]
 texture_filter = 1
-scale = Vector2(3, 3)
 script = ExtResource("1_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=357779514]
-scale = Vector2(2, 2)
+scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_dmaw2")
 animation = &"jump"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1080745021]
-position = Vector2(-0.833333, 0)
+position = Vector2(-2.5, -0.5)
 shape = SubResource("RectangleShape2D_dqkch")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=800009472]
