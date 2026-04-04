@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dwove1modiagf"]
+
+[ext_resource type="Texture2D" uid="uid://ckhbvccro6xc3" path="res://assets/images/lush-cave-enemies/bounce-mushroom-enemy.png" id="1_2wybx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uk2no"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2wybx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2wybx"]
+size = Vector2(80, 80)
+
+[node name="Mushroom" type="Node2D" unique_id=1222687371]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2118624724]
+texture_filter = 1
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_uk2no")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1728908797]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1458383012]
+shape = SubResource("RectangleShape2D_2wybx")
