@@ -30,8 +30,9 @@ animations = [{
 "speed": 20.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
-size = Vector2(61, 65)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ldeu4"]
+radius = 24.0
+height = 62.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1577636989]
 texture_filter = 1
@@ -46,7 +47,7 @@ animation = &"jump"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1080745021]
-position = Vector2(-1.5, -0.5)
-shape = SubResource("RectangleShape2D_dqkch")
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_ldeu4")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=800009472]
