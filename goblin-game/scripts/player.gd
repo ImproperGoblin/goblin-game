@@ -7,28 +7,39 @@ const ACCELERATION = 1200.0
 const FRICTION = 1400.0
 const JUMP_VELOCITY = -800.0
 const COYOTE_TIME_LENGTH = 0.1
+const JUMP_BUFFER_MIN = 0.2
 
 var last_safe_coords = global_position
 var can_move = true
 var coyote_timer = 0
+var jump_buffer_timer = 0
+var buffered_jump = false
 
 func _physics_process(delta: float) -> void:
 	var gravity = get_gravity()
 	var current_gravity = gravity if velocity.y < 0 else gravity * 1.5
 	
-	# Add the gravity.
-	if not is_on_floor():
-		coyote_timer += delta
-		velocity += current_gravity * delta
-		
 	if is_on_floor():
 		coyote_timer = 0
+		jump_buffer_timer = 0
 		last_safe_coords = global_position
+		
+		if buffered_jump:
+			_jump()
+			buffered_jump = false
+	else:
+		coyote_timer += delta
+		jump_buffer_timer += delta
+		velocity += current_gravity * delta
 
 	if can_move:
-		if Input.is_action_just_pressed("jump") and (is_on_floor() or coyote_timer <= COYOTE_TIME_LENGTH):
-			_jump()
-
+		if Input.is_action_just_pressed("jump"):
+			if (is_on_floor() or coyote_timer <= COYOTE_TIME_LENGTH):
+				_jump()
+				
+			if $JumpRay.is_colliding() and !is_on_floor() and jump_buffer_timer > JUMP_BUFFER_MIN:
+				buffered_jump = true
+				
 		if Input.is_action_just_released("jump") and velocity.y < 0:
 			velocity.y *= 0.5
 
@@ -41,8 +52,6 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		_process_spike_reset()
 		
-		print(coyote_timer)
-
 func _jump() -> void:
 	velocity.y = JUMP_VELOCITY
 	

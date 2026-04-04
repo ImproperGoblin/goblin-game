@@ -1,9 +1,9 @@
-[gd_scene format=4 uid="uid://cx16837irwqq8"]
+[gd_scene format=4 uid="uid://cs7kakym5b6xp"]
 
 [ext_resource type="PackedScene" uid="uid://bcg8eynd2b5jp" path="res://scenes/enemies/venus-fly-trap.tscn" id="2_bakwm"]
 [ext_resource type="PackedScene" uid="uid://dqdjoyxolirg7" path="res://scenes/tilemaps/LushTerrainTileMap.tscn" id="2_h0e6c"]
 [ext_resource type="PackedScene" uid="uid://cesmyhqw2iryp" path="res://scenes/tilemaps/LushHazardTileMap.tscn" id="2_tpcq7"]
-[ext_resource type="PackedScene" uid="uid://dwove1modiagf" path="res://scenes/enemies/mushroom.tscn" id="3_bd5bt"]
+[ext_resource type="PackedScene" uid="uid://dej8u3upuscm5" path="res://scenes/enemies/mushroom.tscn" id="3_bd5bt"]
 [ext_resource type="PackedScene" uid="uid://bhbcgcsgdsf0y" path="res://scenes/players/player.tscn" id="4_gsbkw"]
 
 [node name="LevelRoot" type="Node2D" unique_id=1581097223]

@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var player_node: CharacterBody2D =  get_tree().get_current_scene().get_node("Player")
+@onready var player_node: CharacterBody2D = $"../../../Player"
 const SPEED: float = 35.0
 const GRAVITY = 15
 const BOUNCE_TIMER: float = 4
