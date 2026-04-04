@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://cs7kakym5b6xp"]
+[gd_scene format=4 uid="uid://cx16837irwqq8"]
 
 [ext_resource type="PackedScene" uid="uid://bcg8eynd2b5jp" path="res://scenes/enemies/venus-fly-trap.tscn" id="2_bakwm"]
 [ext_resource type="PackedScene" uid="uid://dqdjoyxolirg7" path="res://scenes/tilemaps/LushTerrainTileMap.tscn" id="2_h0e6c"]
@@ -19,7 +19,7 @@ tile_map_data = PackedByteArray("AAAAAAoAAAAHAAAAAAABAAoAAAAHAAAAAAACAAoAAAAHAAA
 [node name="VenusFlyTraps" type="Node" parent="Enemies" unique_id=654950305]
 
 [node name="VenusFlyTrap1" parent="Enemies/VenusFlyTraps" unique_id=1696436320 instance=ExtResource("2_bakwm")]
-position = Vector2(528, 494)
+position = Vector2(510, 444)
 
 [node name="VenusFlyTrap2" parent="Enemies/VenusFlyTraps" unique_id=1294808770 instance=ExtResource("2_bakwm")]
 position = Vector2(1280, 406)

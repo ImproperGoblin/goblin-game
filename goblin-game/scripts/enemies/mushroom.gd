@@ -45,8 +45,8 @@ func _wait_bounce_pad_mode() -> void:
 
 func _swap_aggressive_state():
 	is_aggressive = !is_aggressive
-	$BounceCollisionShape2d.disabled = is_aggressive
-	$Area2D/CollisionShape2D.disabled = !is_aggressive
+	$BounceArea2D/CollisionShape2D.disabled = is_aggressive
+	$HurtboxArea2D/CollisionShape2D.disabled = !is_aggressive
 	$AnimatedSprite2D.animation = ANIMATION.PATROLLING if is_aggressive else ANIMATION.BOUNCE_PAD
 
 func _wait_dir_changed(new_dir: int) -> void:
@@ -57,3 +57,8 @@ func _wait_dir_changed(new_dir: int) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body == player_node && is_aggressive:
 		get_tree().call_deferred("reload_current_scene")
+
+
+func _on_bounce_area_2d_body_entered(body: Node2D) -> void:
+	if body.get("JUMP_PAD_HEIGHT"):
+		body.velocity.y = body.JUMP_PAD_HEIGHT
