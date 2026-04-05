@@ -50,6 +50,7 @@ shape = SubResource("RectangleShape2D_sra0u")
 [node name="DialogueBox" type="Node" parent="." unique_id=527197026]
 
 [node name="Label" type="Label" parent="DialogueBox" unique_id=1496920242]
+texture_filter = 1
 offset_left = 610.0
 offset_top = 94.0
 offset_right = 838.0
