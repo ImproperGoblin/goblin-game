@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bqwcwfcclnbau" path="res://scenes/enemies/cage.tscn" id="7_px0sh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xk5ng"]
-size = Vector2(264, 61)
+size = Vector2(278, 87)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ppse0"]
 size = Vector2(72, 246)
@@ -26,11 +26,11 @@ tile_map_data = PackedByteArray("AAAIAAIAAAAHAAAAADAJAAIAAAAHAAAAADAKAAIAAAAHAAA
 position = Vector2(162, 503)
 
 [node name="Exit" type="Area2D" parent="." unique_id=2131906182]
-position = Vector2(748, 582)
+position = Vector2(758, 595)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit" unique_id=1976208651]
-position = Vector2(170, 56.5)
+position = Vector2(163, 43.5)
 shape = SubResource("RectangleShape2D_xk5ng")
 
 [node name="DialogueBox" type="Node" parent="." unique_id=1740896584]
@@ -62,11 +62,11 @@ position = Vector2(26, -70)
 shape = SubResource("RectangleShape2D_ppse0")
 
 [node name="MushroomDude" parent="." unique_id=2085604584 instance=ExtResource("6_w53lf")]
-position = Vector2(1209, 506.00003)
+position = Vector2(1206, 502.99997)
 metadata/_edit_group_ = true
 
 [node name="Cage" parent="." unique_id=686755222 instance=ExtResource("7_px0sh")]
-position = Vector2(1201, 496)
+position = Vector2(1202, 496)
 metadata/_edit_group_ = true
 
 [connection signal="body_entered" from="DialogueBox/DialogueTrigger" to="DialogueBox/DialogueTrigger" method="_on_body_entered"]
