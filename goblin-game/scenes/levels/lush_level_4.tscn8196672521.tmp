@@ -8,6 +8,20 @@
 [ext_resource type="PackedScene" uid="uid://cwba0i7kfioph" path="res://scenes/enemies/dragonfly.tscn" id="5_8la3l"]
 [ext_resource type="PackedScene" uid="uid://dej8u3upuscm5" path="res://scenes/enemies/mushroom.tscn" id="6_35i4i"]
 
+[sub_resource type="GDScript" id="GDScript_spdsg"]
+script/source = "extends AnimatedSprite2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass
+
+
+func _on_collision_shape_2d_tree_entered() -> void:
+	GameState._set_key_status()
+	
+"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sra0u"]
 size = Vector2(106, 300)
 
@@ -28,8 +42,9 @@ tile_map_data = PackedByteArray("AAAAAP//AAACAAAAAAAAAAAAAAABAAAAAAAAAAEAAAABAAA
 [node name="LushHazardTileMap" parent="." unique_id=584079314 instance=ExtResource("2_8la3l")]
 tile_map_data = PackedByteArray("AAAPAAsAAAAHAAAAAAAOAAsAAAAHAAAAAAANAAsAAAAHAAAAAAAMAAsAAAAHAAAAAAALAAsAAAAHAAAAAAABAAsAAAAHAAAAAAACAAsAAAAHAAAAAAADAAsAAAAHAAAAAAA=")
 
-[node name="Key" parent="." unique_id=1414805340 instance=ExtResource("3_spdsg")]
-position = Vector2(411, 226)
+[node name="Key" parent="." unique_id=1725951325 instance=ExtResource("3_spdsg")]
+position = Vector2(422, 221)
+script = SubResource("GDScript_spdsg")
 
 [node name="Enemies" type="Node" parent="." unique_id=1904450290]
 

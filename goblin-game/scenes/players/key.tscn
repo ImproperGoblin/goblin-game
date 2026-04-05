@@ -1,40 +1,46 @@
 [gd_scene format=3 uid="uid://cxmflu65e4fmr"]
 
 [ext_resource type="Texture2D" uid="uid://dyssgvoejhib5" path="res://assets/images/player/key.png" id="1_ovicr"]
+[ext_resource type="Script" uid="uid://bh5haibmjehxf" path="res://scripts/key.gd" id="2_rv6jj"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rv6jj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovicr"]
 atlas = ExtResource("1_ovicr")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ieq3s"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_rv6jj"]
 atlas = ExtResource("1_ovicr")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_3vf5g"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_ieq3s"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rv6jj")
+"texture": SubResource("AtlasTexture_ovicr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ieq3s")
+"texture": SubResource("AtlasTexture_rv6jj")
 }],
 "loop": true,
 "name": &"default",
-"speed": 1.0
+"speed": 2.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dvgw3"]
-radius = 6.3999996
-height = 19.999998
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ovicr"]
+radius = 29.0
+height = 100.0
 
-[node name="Key" type="AnimatedSprite2D" unique_id=1725951325]
+[node name="Key" type="Area2D" unique_id=1414805340]
+script = ExtResource("2_rv6jj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1486130082]
 texture_filter = 1
 scale = Vector2(5, 5)
-sprite_frames = SubResource("SpriteFrames_3vf5g")
+sprite_frames = SubResource("SpriteFrames_ieq3s")
 autoplay = "default"
-frame_progress = 0.80240965
+frame_progress = 0.5573843
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1437042761]
-position = Vector2(-0.2000001, -0.39999998)
-shape = SubResource("CapsuleShape2D_dvgw3")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=231168546]
+position = Vector2(-3, -1)
+shape = SubResource("CapsuleShape2D_ovicr")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
