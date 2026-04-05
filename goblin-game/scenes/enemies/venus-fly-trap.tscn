@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bcg8eynd2b5jp"]
 
 [ext_resource type="Texture2D" uid="uid://dkgea2fsmaod" path="res://assets/images/lush-cave-enemies/venus-fly-trap-platform.png" id="1_q0l02"]
-[ext_resource type="Script" path="res://scripts/enemies/venus_fly_trap.gd" id="1_q8i6q"]
+[ext_resource type="Script" uid="uid://bestt7xdo6xnl" path="res://scripts/enemies/venus_fly_trap.gd" id="1_q8i6q"]
 [ext_resource type="Texture2D" uid="uid://bsa6bobyrgem1" path="res://assets/images/lush-cave-enemies/venus-fly-trap-animation.png" id="2_30bbq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6pc0l"]
@@ -31,25 +31,30 @@ region = Rect2(96, 0, 32, 16)
 [sub_resource type="SpriteFrames" id="SpriteFrames_u7c8i"]
 animations = [{
 "frames": [{
-"duration": 1.5,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_6pc0l")
 }, {
-"duration": 1.5,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_prcts")
-}, {
-"duration": 1.5,
-"texture": SubResource("AtlasTexture_oa4tp")
-}, {
-"duration": 1.5,
-"texture": SubResource("AtlasTexture_nmg8x")
-}, {
-"duration": 2.0,
-"texture": SubResource("AtlasTexture_yekv4")
-}, {
-"duration": 1.5,
-"texture": SubResource("AtlasTexture_30bbq")
 }],
 "loop": true,
+"name": &"agitated",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_prcts")
+}, {
+"duration": 0.7,
+"texture": SubResource("AtlasTexture_oa4tp")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_nmg8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yekv4")
+}],
+"loop": false,
 "name": &"snap_shut",
 "speed": 5.0
 }, {
@@ -57,8 +62,22 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("1_q0l02")
 }],
-"loop": true,
+"loop": false,
 "name": &"static",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yekv4")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_30bbq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6pc0l")
+}],
+"loop": false,
+"name": &"unfurl",
 "speed": 5.0
 }]
 
@@ -76,7 +95,7 @@ script = ExtResource("1_q8i6q")
 texture_filter = 1
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_u7c8i")
-animation = &"static"
+animation = &"unfurl"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=785347660]
 collision_layer = 3
@@ -92,6 +111,8 @@ shape = SubResource("RectangleShape2D_q8i6q")
 shape = SubResource("SegmentShape2D_q8i6q")
 one_way_collision = true
 
+[connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

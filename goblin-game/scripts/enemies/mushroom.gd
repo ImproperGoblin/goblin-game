@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
-@onready var player_node: CharacterBody2D = $"../../../Player"
-const SPEED: float = 35.0
+const SPEED: float = 100
 const GRAVITY = 15
 const BOUNCE_TIMER: float = 4
 const ANIMATION = {
@@ -58,10 +57,10 @@ func _wait_dir_changed(new_dir: int) -> void:
 
 # ToDo: change to a different reset?
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body == player_node && is_aggressive:
-		player_node._reset_to_room_start()
+	if body.name == "Player" and is_aggressive:
+		body._reset_to_room_start()
 
 func _on_bounce_area_2d_body_entered(body: Node2D) -> void:
-	if body == player_node && !is_aggressive:
-		player_node.velocity.y = JUMP_PAD_HEIGHT
-		player_node._set_jump_boost(JUMP_BOOST_MULTIPLIER)
+	if body.name == "Player" && !is_aggressive:
+		body.velocity.y = JUMP_PAD_HEIGHT
+		body._set_jump_boost(JUMP_BOOST_MULTIPLIER)

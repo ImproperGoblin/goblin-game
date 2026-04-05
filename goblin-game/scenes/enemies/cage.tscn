@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bqwcwfcclnbau"]
+
+[ext_resource type="Texture2D" uid="uid://bl0tyjitk6f21" path="res://assets/images/lush-cave-enemies/cage.png" id="1_jjmbv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jjmbv"]
+size = Vector2(131.5, 133.5)
+
+[node name="Cage" type="Area2D" unique_id=686755222]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1315710555]
+texture_filter = 1
+scale = Vector2(8, 8)
+texture = ExtResource("1_jjmbv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2031709279]
+position = Vector2(0.25, 0.25)
+shape = SubResource("RectangleShape2D_jjmbv")

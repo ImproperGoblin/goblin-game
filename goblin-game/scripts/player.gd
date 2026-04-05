@@ -1,30 +1,30 @@
 extends CharacterBody2D
 
+const MAX_SPEED: float = 400.0
+const ACCELERATION: float = 1200.0
+const FRICTION: float = 1400.0
+const JUMP_VELOCITY: float = -800.0
+const COYOTE_TIME_LENGTH: float = 0.1
+const JUMP_BUFFER_MIN: float = 0.2
+
 @onready var hazard_tilemap: TileMapLayer = $"../LushHazardTileMap"
 
-const MAX_SPEED = 400.0
-const ACCELERATION = 1200.0
-const FRICTION = 1400.0
-const JUMP_VELOCITY = -800.0
-const COYOTE_TIME_LENGTH = 0.1
-const JUMP_BUFFER_MIN = 0.2
+@onready var last_safe_coords: Vector2 = global_position
+@onready var room_start_coordinates: Vector2 = global_position
 
-var last_safe_coords = 0
-var room_start_coordinates = 0
-var can_move = true
-var coyote_timer = 0
-var jump_buffer_timer = 0
-var buffered_jump = false
-var jump_boost = 1
+var can_move: bool = true
+var coyote_timer: float = 0.0
+var jump_buffer_timer: float = 0.0
+var buffered_jump: bool = false
+var jump_boost: float = 1.0
 
-func _ready() -> void:
-	last_safe_coords = global_position
-	room_start_coordinates = global_position
+func _ready() -> void:	
+	pass
 
 func _physics_process(delta: float) -> void:
 	var gravity = get_gravity()
 	var current_gravity = gravity if velocity.y < 0 else gravity * 1.5
-	
+
 	if is_on_floor():
 		if $JumpRay.is_colliding():
 			_set_jump_boost(1)
