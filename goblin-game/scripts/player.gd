@@ -116,7 +116,7 @@ func _process_spike_reset() -> void:
 		if collider == hazard_tilemap:
 			_reduce_hp(1)
 			
-			if GameState.player_hp != 0:
+			if GameState._get_player_hp() != 0:
 				_reset_to_safe_pos()
 			
 			break
@@ -143,9 +143,11 @@ func _set_animation(animation: String) -> void:
 		player_sprite.play()
 
 func _update_hearts() -> void:
-	heart_1_state = _set_heart($"../../HUD/HeartContainer1", heart_1_state, clampi(GameState.player_hp, 0, 2))
-	heart_2_state = _set_heart($"../../HUD/HeartContainer2", heart_2_state, clampi(GameState.player_hp - 2, 0, 2))
-	heart_3_state = _set_heart($"../../HUD/HeartContainer3", heart_3_state, clampi(GameState.player_hp - 4, 0, 2))
+	var hp = GameState._get_player_hp()
+	
+	heart_1_state = _set_heart($"../../HUD/HeartContainer1", heart_1_state, clampi(hp, 0, 2))
+	heart_2_state = _set_heart($"../../HUD/HeartContainer2", heart_2_state, clampi(hp - 2, 0, 2))
+	heart_3_state = _set_heart($"../../HUD/HeartContainer3", heart_3_state, clampi(hp - 4, 0, 2))
 
 func _set_heart(heart: AnimatedSprite2D, old_state: int, new_state: int) -> int:
 	if(!heart):
@@ -179,15 +181,15 @@ func _bounce_away_from_enemy(enemy: Node2D) -> void:
 	velocity.y = ENEMY_BOUNCE_FORCE_Y
 	
 func _reduce_hp(reduce_amount: int) -> void:
-	if is_iframes or GameState.player_hp <= 0:
+	if is_iframes or GameState._get_player_hp() <= 0:
 		return
 	
 	hit_sound.play()
 	_hitstop()
-	GameState.player_hp = max(GameState.player_hp - reduce_amount, 0)
+	GameState._reduce_player_hp(reduce_amount)
 	_update_hearts()
 	
-	if GameState.player_hp == 0:
+	if GameState._get_player_hp() == 0:
 		camera.apply_shake(12.0)
 		_die()
 		return
