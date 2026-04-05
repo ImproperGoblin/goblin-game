@@ -19,8 +19,8 @@ corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 shadow_size = 5
 
-[node name="Menu" type="Control" unique_id=415201494]
-process_mode = 2
+[node name="PauseMenu" type="Control" unique_id=415201494]
+process_mode = 3
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -30,12 +30,19 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gjocd")
 
-[node name="Panel" type="Panel" parent="." unique_id=2047593740]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=560573175]
+custom_minimum_size = Vector2(1280, 720)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)
+
+[node name="Panel" type="Panel" parent="ColorRect" unique_id=2047593740]
 layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 720.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=458076948]
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/Panel" unique_id=458076948]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -50,7 +57,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 18
 
-[node name="Button_Continue" type="Button" parent="Panel/VBoxContainer" unique_id=1683785439]
+[node name="Button_Continue" type="Button" parent="ColorRect/Panel/VBoxContainer" unique_id=1683785439]
 texture_filter = 1
 layout_mode = 2
 size_flags_vertical = 3
@@ -61,7 +68,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_gjocd")
 theme_override_styles/hover = SubResource("StyleBoxFlat_lx1ke")
 text = "CONTINUE"
 
-[node name="Button_Option" type="Button" parent="Panel/VBoxContainer" unique_id=356803816]
+[node name="Button_Option" type="Button" parent="ColorRect/Panel/VBoxContainer" unique_id=356803816]
 texture_filter = 1
 layout_mode = 2
 size_flags_vertical = 3
@@ -72,7 +79,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_gjocd")
 theme_override_styles/hover = SubResource("StyleBoxFlat_lx1ke")
 text = "OPTIONS"
 
-[node name="Button_Quit" type="Button" parent="Panel/VBoxContainer" unique_id=1142422518]
+[node name="Button_Quit" type="Button" parent="ColorRect/Panel/VBoxContainer" unique_id=1142422518]
 texture_filter = 1
 layout_mode = 2
 size_flags_vertical = 3
@@ -83,7 +90,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_gjocd")
 theme_override_styles/hover = SubResource("StyleBoxFlat_lx1ke")
 text = "QUIT"
 
-[node name="Label" type="Label" parent="Panel" unique_id=1130559273]
+[node name="Label" type="Label" parent="ColorRect/Panel" unique_id=1130559273]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
@@ -103,5 +110,5 @@ theme_override_fonts/font = ExtResource("1_unjiy")
 theme_override_font_sizes/font_size = 150
 text = "PAUSED"
 
-[connection signal="pressed" from="Panel/VBoxContainer/Button_Continue" to="." method="_on_button_continue_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/Button_Quit" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="ColorRect/Panel/VBoxContainer/Button_Continue" to="." method="_on_button_continue_pressed"]
+[connection signal="pressed" from="ColorRect/Panel/VBoxContainer/Button_Quit" to="." method="_on_button_quit_pressed"]

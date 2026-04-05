@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://gip3ryf0f6jd"]
+
+[ext_resource type="Script" uid="uid://i25alab4m54m" path="res://scripts/death_menu.gd" id="1_12w82"]
+[ext_resource type="FontFile" uid="uid://0yv2m2koturd" path="res://assets/font/alagard.ttf" id="1_mecbo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mecbo"]
+bg_color = Color(0.15190333, 0.34850395, 0.25523812, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_12w82"]
+bg_color = Color(0.06862219, 0.19949794, 0.12827337, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+
+[node name="DeathMenu" type="Control" unique_id=43637439]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_12w82")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1074193285]
+custom_minimum_size = Vector2(1280, 720)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)
+
+[node name="Panel" type="Panel" parent="ColorRect" unique_id=744828603]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/Panel" unique_id=505268617]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -145.5
+offset_top = -78.0
+offset_right = 145.5
+offset_bottom = 151.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 18
+
+[node name="Button_Continue" type="Button" parent="ColorRect/Panel/VBoxContainer" unique_id=1318930568]
+process_mode = 3
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_mecbo")
+theme_override_font_sizes/font_size = 33
+theme_override_styles/normal = SubResource("StyleBoxFlat_mecbo")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mecbo")
+theme_override_styles/hover = SubResource("StyleBoxFlat_12w82")
+text = "RETRY?"
+
+[node name="Button_Quit" type="Button" parent="ColorRect/Panel/VBoxContainer" unique_id=67061254]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_mecbo")
+theme_override_font_sizes/font_size = 33
+theme_override_styles/normal = SubResource("StyleBoxFlat_mecbo")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mecbo")
+theme_override_styles/hover = SubResource("StyleBoxFlat_12w82")
+text = "QUIT"
+
+[node name="Label" type="Label" parent="ColorRect/Panel" unique_id=390193555]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -275.0
+offset_top = -280.0
+offset_right = 269.0
+offset_bottom = -138.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0.17205724, 0.37941843, 0.18542624, 1)
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/font = ExtResource("1_mecbo")
+theme_override_font_sizes/font_size = 150
+text = "YOU DIED"
+
+[connection signal="pressed" from="ColorRect/Panel/VBoxContainer/Button_Continue" to="." method="_on_button_continue_pressed"]
+[connection signal="pressed" from="ColorRect/Panel/VBoxContainer/Button_Quit" to="." method="_on_button_quit_pressed"]

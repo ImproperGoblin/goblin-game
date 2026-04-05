@@ -21,6 +21,8 @@ const ENEMY_BOUNCE_FORCE_Y: float = -400.0
 @onready var hazard_tilemap: TileMapLayer = $"../LushHazardTileMap"
 @onready var camera: Camera2D = $Camera2D
 @onready var player_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var death_menu: Control = $"../../HUD/DeathMenu"
+
 
 @onready var last_safe_coords: Vector2 = global_position
 @onready var room_start_coordinates: Vector2 = global_position
@@ -211,5 +213,4 @@ func _hitstop(duration: float = HITSTOP_DURATION, scale: float = HITSTOP_SCALE) 
 		hitstop_active = false
 
 func _die() -> void:
-	#TODO you died screen
-	pass
+	death_menu._activate()

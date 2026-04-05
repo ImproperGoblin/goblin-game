@@ -24,7 +24,6 @@ func _resume_game():
 	hide()
 	get_tree().paused = false
 
-
 func _on_button_continue_pressed() -> void:
 	_resume_game()
 
