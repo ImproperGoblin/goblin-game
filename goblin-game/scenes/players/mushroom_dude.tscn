@@ -1,51 +1,81 @@
 [gd_scene format=3 uid="uid://blc1uccg40sae"]
 
+[ext_resource type="Script" uid="uid://bj62nqu4u7m3t" path="res://scripts/mushroom_dude.gd" id="1_cagbh"]
 [ext_resource type="Texture2D" uid="uid://cf2u0k70fxvdl" path="res://assets/images/player/mushroom-dude.png" id="1_uqhk2"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uqhk2"]
-size = Vector2(17.000004, 16.2)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cagbh"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xq37o"]
 atlas = ExtResource("1_uqhk2")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_85yi0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_wi2uy"]
 atlas = ExtResource("1_uqhk2")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lps84"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejv8m"]
 atlas = ExtResource("1_uqhk2")
 region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78hbj"]
+atlas = ExtResource("1_uqhk2")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cagbh"]
+atlas = ExtResource("1_uqhk2")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqhk2"]
+atlas = ExtResource("1_uqhk2")
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_77lxk"]
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_xq37o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wi2uy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejv8m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78hbj")
+}],
+"loop": true,
+"name": &"celebrate",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_cagbh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_85yi0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lps84")
+"texture": SubResource("AtlasTexture_uqhk2")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 7.0
 }]
 
-[node name="MushroomDude" type="CharacterBody2D" unique_id=2085604584]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uqhk2"]
+size = Vector2(17.000004, 16.2)
+
+[node name="MushroomDude" type="Node2D" unique_id=1922128237]
 texture_filter = 1
 scale = Vector2(5, 5)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=797851509]
-position = Vector2(0.10000023, -0.09999971)
-scale = Vector2(0.99999976, 0.99999976)
-shape = SubResource("RectangleShape2D_uqhk2")
+script = ExtResource("1_cagbh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=413411771]
 sprite_frames = SubResource("SpriteFrames_77lxk")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.40443644
+frame_progress = 0.9981261
 flip_h = true
+
+[node name="Area2D" type="Area2D" parent="." unique_id=311222962]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=797851509]
+position = Vector2(0.10000023, -0.09999971)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_uqhk2")

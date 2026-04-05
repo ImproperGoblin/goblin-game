@@ -4,6 +4,7 @@ const __MAX_PLAYER_HP: int = 6
 
 var __key_acquired: bool = false
 var __player_hp: int = __MAX_PLAYER_HP
+var __mushroom_freed: bool = false
 
 func _ready() -> void:
 	pass # Replace with function body.
@@ -23,6 +24,12 @@ func _get_key_status() -> bool:
 
 func _set_key_status() -> void:
 	__key_acquired = !__key_acquired
+	
+func _get_mushroom_status() -> bool:
+	return __mushroom_freed
+
+func _set_mushroom_status() -> void:
+	__mushroom_freed = !__mushroom_freed
 
 func _reset_game_state():
 	__player_hp = __MAX_PLAYER_HP

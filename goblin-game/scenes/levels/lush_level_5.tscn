@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://blc1uccg40sae" path="res://scenes/players/mushroom_dude.tscn" id="6_g0y6d"]
 [ext_resource type="PackedScene" uid="uid://bqwcwfcclnbau" path="res://scenes/enemies/cage.tscn" id="7_7f7ho"]
 [ext_resource type="PackedScene" uid="uid://cwba0i7kfioph" path="res://scenes/enemies/dragonfly.tscn" id="8_kji3d"]
+[ext_resource type="PackedScene" uid="uid://cxmflu65e4fmr" path="res://scenes/players/key.tscn" id="9_uugk3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ppse0"]
 size = Vector2(144, 143)
@@ -33,10 +34,10 @@ tile_map_data = PackedByteArray("AAANAAcAAAAHAAAAAAAIAAEAAAAHAAAAADAJAAEAAAAHAAA
 
 [node name="Label" type="Label" parent="DialogueBox" unique_id=1681473606]
 texture_filter = 1
-offset_left = 536.0
-offset_top = 377.0
-offset_right = 823.0
-offset_bottom = 655.0
+offset_left = 444.0
+offset_top = 333.0
+offset_right = 798.0
+offset_bottom = 626.0
 theme_override_colors/font_color = Color(0.9437328, 0.91340107, 1, 1)
 theme_override_colors/font_shadow_color = Color(0.7888507, 0.0011599511, 0.8853582, 0.81960785)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -44,17 +45,17 @@ theme_override_fonts/font = ExtResource("4_uloo7")
 theme_override_font_sizes/font_size = 22
 text = "My Hero!
 Thank you for the help.
- now...
-.. let me help you! 
+As a thank you, I'll bestow the mushroom jump knowledge on to you ...
 
-There's a path into the cavern above and 
-to the left!
+There's a path into the cavern above!
+
+WHy don't you put your new jump to the test...
 "
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 clip_text = true
-max_lines_visible = 8
+max_lines_visible = 11
 
 [node name="DialogueTrigger" type="Area2D" parent="DialogueBox" unique_id=1136903274]
 position = Vector2(1203, 592)
@@ -134,6 +135,9 @@ disabled = true
 
 [node name="Dragonfly" parent="Enemy" unique_id=1996650805 instance=ExtResource("8_kji3d")]
 position = Vector2(970, 385)
+
+[node name="Key" parent="." unique_id=1414805340 instance=ExtResource("9_uugk3")]
+position = Vector2(1076, 290)
 
 [connection signal="body_entered" from="DialogueBox/DialogueTrigger" to="DialogueBox/DialogueTrigger" method="_on_body_entered"]
 [connection signal="body_entered" from="DialogueBox2/DialogueTrigger" to="DialogueBox2/DialogueTrigger" method="_on_body_entered"]
