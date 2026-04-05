@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dqdjoyxolirg7"]
 
 [ext_resource type="Texture2D" uid="uid://dcdmrg3m0jdng" path="res://assets/images/lush-cave-platforms/tileset.png" id="1_a6wao"]
+[ext_resource type="Texture2D" uid="uid://utxg8qf3eloo" path="res://assets/images/lush-cave-platforms/tileset-v2-walls.png" id="2_4mjab"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4mjab"]
 texture = ExtResource("1_a6wao")
@@ -24,9 +25,33 @@ texture = ExtResource("1_a6wao")
 10:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 11:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b0dmf"]
+texture = ExtResource("2_4mjab")
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:0/0 = 0
+8:0/0 = 0
+8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+9:0/0 = 0
+9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+10:0/0 = 0
+10:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+11:0/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_b0dmf"]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_4mjab")
+sources/1 = SubResource("TileSetAtlasSource_b0dmf")
 
 [node name="LushTerrainTileMap" type="TileMapLayer" unique_id=459895185]
 texture_filter = 1
