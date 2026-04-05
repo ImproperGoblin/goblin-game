@@ -18,8 +18,6 @@ const HITSTOP_SCALE: float = 0.02
 const ENEMY_BOUNCE_FORCE_X: float = 600.0
 const ENEMY_BOUNCE_FORCE_Y: float = -400.0
 
-const MAX_HP: int = 6
-
 @onready var hazard_tilemap: TileMapLayer = $"../LushHazardTileMap"
 @onready var camera: Camera2D = $Camera2D
 @onready var player_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -33,9 +31,12 @@ var jump_buffer_timer: float = 0.0
 var buffered_jump: bool = false
 var jump_boost: float = 1.0
 
-var current_hp: int = 6
 var is_iframes: bool = false
 var hitstop_active: bool = false
+
+var heart_1_state: int = -1
+var heart_2_state: int = -1
+var heart_3_state: int = -1
 
 const ANIMATION = {
 	"IDLE": "idle",
@@ -132,29 +133,31 @@ func _set_animation(animation: String) -> void:
 		$AnimatedSprite2D.play()
 
 func _update_hearts() -> void:
-	_update_heart($HUD/HeartContainer1, current_hp, 0)
-	_update_heart($HUD/HeartContainer2, current_hp, 2)
-	_update_heart($HUD/HeartContainer3, current_hp, 4)
+	heart_1_state = _set_heart($HUD/HeartContainer1, heart_1_state, clampi(GameState.player_hp, 0, 2))
+	heart_2_state = _set_heart($HUD/HeartContainer2, heart_2_state, clampi(GameState.player_hp - 2, 0, 2))
+	heart_3_state = _set_heart($HUD/HeartContainer3, heart_3_state, clampi(GameState.player_hp - 4, 0, 2))
 
-func _update_heart(heart: AnimatedSprite2D, hp: int, threshold: int) -> void:
-	var heart_hp := clampi(hp - threshold, 0, 2)
-		
-	match heart_hp:
+func _set_heart(heart: AnimatedSprite2D, old_state: int, new_state: int) -> int:
+	if old_state == new_state:
+		return old_state
+	
+	match new_state:
 		2:
-			if heart.animation != ANIMATION.STATIC_FULL:
-				heart.animation = ANIMATION.STATIC_FULL
+			heart.play(ANIMATION.STATIC_FULL)
 		1:
-			if heart.animation == ANIMATION.STATIC_FULL:
+			if old_state == 2:
 				heart.play(ANIMATION.FULL_TO_HALF)
-			elif heart.animation != ANIMATION.STATIC_HALF:
-				heart.animation = ANIMATION.STATIC_HALF
+			else:
+				heart.play(ANIMATION.STATIC_HALF)
 		0:
-			if heart.animation == ANIMATION.STATIC_FULL:
+			if old_state == 2:
 				heart.play(ANIMATION.FULL_TO_EMPTY)
-			elif heart.animation == ANIMATION.STATIC_HALF:
+			elif old_state == 1:
 				heart.play(ANIMATION.HALF_TO_EMPTY)
-			elif heart.animation != ANIMATION.STATIC_EMPTY:
-				heart.animation = ANIMATION.STATIC_EMPTY
+			else:
+				heart.play(ANIMATION.STATIC_EMPTY)
+	
+	return new_state
 
 func _bounce_away_from_enemy(enemy: Node2D) -> void:
 	var dir := (global_position - enemy.global_position).normalized()
@@ -163,14 +166,14 @@ func _bounce_away_from_enemy(enemy: Node2D) -> void:
 	velocity.y = ENEMY_BOUNCE_FORCE_Y
 	
 func _reduce_hp(reduce_amount: int) -> void:
-	if is_iframes or current_hp <= 0:
+	if is_iframes or GameState.player_hp <= 0:
 		return
 	
 	_hitstop()
-	current_hp = max(current_hp - reduce_amount, 0)
+	GameState.player_hp = max(GameState.player_hp - reduce_amount, 0)
 	_update_hearts()
 	
-	if current_hp == 0:
+	if GameState.player_hp == 0:
 		camera.apply_shake(12.0)
 		_die()
 		return

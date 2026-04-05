@@ -31,8 +31,6 @@ func _physics_process(delta: float) -> void:
 	var right_wall_collider_name = right_wall_collider.name if right_wall_collider else null
 	var left_wall_collider_name = left_wall_collider.name if left_wall_collider else null
 	
-	print(left_wall_collider_name)
-
 	if dir == 1 and (!$RightRay.is_colliding() or ($RightWallRay.is_colliding()) and right_wall_collider_name != 'Player'):
 		$AnimatedSprite2D.flip_h = true
 		_wait_dir_changed(-1)
