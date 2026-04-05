@@ -10,7 +10,6 @@ func _process(delta: float) -> void:
 	pass
 
 func _input(event):
-	print('hello')
 	if event.is_action_pressed('pause'):
 		if get_tree().paused:
 			_resume_game()

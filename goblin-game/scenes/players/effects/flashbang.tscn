@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://dqg8c81rmgbx7"]
+
+[ext_resource type="Script" uid="uid://dt1avbgavvxok" path="res://scripts/effects/flashbang.gd" id="1_b30ul"]
+[ext_resource type="Texture2D" uid="uid://c258juv2yi5nj" path="res://assets/images/player/flash.png" id="1_ybnuq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ybnuq"]
+radius = 31.06445
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_joufn"]
+atlas = ExtResource("1_ybnuq")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pnl7n"]
+atlas = ExtResource("1_ybnuq")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xwpp"]
+atlas = ExtResource("1_ybnuq")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5w4vc"]
+atlas = ExtResource("1_ybnuq")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_65cha"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_joufn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pnl7n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xwpp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5w4vc")
+}],
+"loop": true,
+"name": &"flash-particles",
+"speed": 10.0
+}]
+
+[node name="FlashArea2D" type="Area2D" unique_id=202242063]
+script = ExtResource("1_b30ul")
+
+[node name="FlashCollisionShape2D" type="CollisionShape2D" parent="." unique_id=1394280906]
+position = Vector2(120, 0)
+scale = Vector2(3, 3)
+shape = SubResource("CircleShape2D_ybnuq")
+debug_color = Color(0.5924313, 0.5452901, 0.122444145, 0.41960785)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FlashCollisionShape2D" unique_id=1502835587]
+visible = false
+texture_filter = 1
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_65cha")
+animation = &"flash-particles"
+
+[connection signal="ready" from="." to="." method="_on_ready"]

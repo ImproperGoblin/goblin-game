@@ -112,13 +112,6 @@ func _process_spike_reset() -> void:
 			_reduce_hp(1)
 			break
 
-func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("use"):	
-		var children = $FlashArea2D.get_overlapping_bodies()
-		for child in children:
-			if child.has_method("_flashbang"):
-				child._flashbang()
-
 func _set_jump_boost(multiplier: float):
 	jump_boost = multiplier;
 
