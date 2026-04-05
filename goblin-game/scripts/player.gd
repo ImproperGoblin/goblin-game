@@ -7,6 +7,12 @@ const JUMP_VELOCITY: float = -800.0
 const COYOTE_TIME_LENGTH: float = 0.1
 const JUMP_BUFFER_MIN: float = 0.2
 
+const ANIMATION = {
+	"IDLE": "idle",
+	"JUMP": "jump",
+	"RUNNING": "running"
+}
+
 @onready var hazard_tilemap: TileMapLayer = $"../LushHazardTileMap"
 
 @onready var last_safe_coords: Vector2 = global_position
@@ -55,8 +61,11 @@ func _physics_process(delta: float) -> void:
 
 		var direction := Input.get_axis("move_left", "move_right")
 		if direction:
+			$AnimatedSprite2D.flip_h = direction == -1
+			_set_animation(ANIMATION.RUNNING)
 			velocity.x = move_toward(velocity.x, direction * MAX_SPEED * jump_boost, ACCELERATION * delta * jump_boost)
 		else:
+			_set_animation(ANIMATION.IDLE)
 			velocity.x = move_toward(velocity.x, 0, FRICTION * delta)
 
 		move_and_slide()
@@ -64,6 +73,7 @@ func _physics_process(delta: float) -> void:
 		
 func _jump() -> void:
 	velocity.y = JUMP_VELOCITY
+	_set_animation(ANIMATION.JUMP)
 	
 func _process_spike_reset() -> void:
 	for i in range(get_slide_collision_count()):
@@ -85,3 +95,15 @@ func _reset_to_safe_pos() -> void:
 
 func _set_safe_pos() -> void:
 	last_safe_coords = global_position
+	
+func _set_animation(animation: String) -> void:
+	if !is_on_floor():
+		print("jump")
+		animation = ANIMATION.JUMP
+		
+	if $AnimatedSprite2D.animation != animation:
+		if animation == ANIMATION.JUMP:
+			print("animated")
+		$AnimatedSprite2D.stop()
+		$AnimatedSprite2D.animation = animation
+		$AnimatedSprite2D.play()

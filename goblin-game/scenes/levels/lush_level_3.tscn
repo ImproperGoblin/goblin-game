@@ -43,19 +43,15 @@ position = Vector2(2025, 572)
 
 [node name="Mushroom" parent="Enemies/Mushrooms" unique_id=1222687371 instance=ExtResource("3_bd5bt")]
 position = Vector2(337, 601)
-dir = 1
 
 [node name="Mushroom2" parent="Enemies/Mushrooms" unique_id=1085815330 instance=ExtResource("3_bd5bt")]
 position = Vector2(206, 196)
-dir = 1
 
 [node name="Mushroom3" parent="Enemies/Mushrooms" unique_id=316524344 instance=ExtResource("3_bd5bt")]
 position = Vector2(1759, 759)
-dir = 1
 
 [node name="Mushroom4" parent="Enemies/Mushrooms" unique_id=678242100 instance=ExtResource("3_bd5bt")]
 position = Vector2(2083, 200)
-dir = 1
 
 [node name="Player" parent="." unique_id=1577636989 instance=ExtResource("4_gsbkw")]
 position = Vector2(35, 604)
