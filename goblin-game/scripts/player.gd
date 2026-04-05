@@ -136,9 +136,9 @@ func _set_animation(animation: String) -> void:
 		$AnimatedSprite2D.play()
 
 func _update_hearts() -> void:
-	heart_1_state = _set_heart($HUD/HeartContainer1, heart_1_state, clampi(GameState.player_hp, 0, 2))
-	heart_2_state = _set_heart($HUD/HeartContainer2, heart_2_state, clampi(GameState.player_hp - 2, 0, 2))
-	heart_3_state = _set_heart($HUD/HeartContainer3, heart_3_state, clampi(GameState.player_hp - 4, 0, 2))
+	heart_1_state = _set_heart($"../../HUD/HeartContainer1", heart_1_state, clampi(GameState.player_hp, 0, 2))
+	heart_2_state = _set_heart($"../../HUD/HeartContainer2", heart_2_state, clampi(GameState.player_hp - 2, 0, 2))
+	heart_3_state = _set_heart($"../../HUD/HeartContainer3", heart_3_state, clampi(GameState.player_hp - 4, 0, 2))
 
 func _set_heart(heart: AnimatedSprite2D, old_state: int, new_state: int) -> int:
 	if old_state == new_state:
