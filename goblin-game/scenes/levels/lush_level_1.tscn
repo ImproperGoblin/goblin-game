@@ -31,6 +31,7 @@ position = Vector2(162, 503)
 [node name="Exit" type="Area2D" parent="." unique_id=2131906182]
 position = Vector2(760, 685)
 metadata/_edit_group_ = true
+metadata/next_scene = "res://scenes/levels/lush_level_2.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit" unique_id=1976208651]
 position = Vector2(163, 43.5)
