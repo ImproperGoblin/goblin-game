@@ -85,7 +85,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wxmcl"]
-size = Vector2(80, 31)
+size = Vector2(90, 35)
 
 [node name="Dragonfly" type="Node2D" unique_id=1996650805]
 script = ExtResource("1_85r32")
@@ -112,7 +112,7 @@ animation = &"flying"
 frame_progress = 0.37297553
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DragonflyAnimation" unique_id=1321210846]
-position = Vector2(0, 21.040985)
+position = Vector2(0.5, 23.270493)
 shape = SubResource("RectangleShape2D_wxmcl")
 one_way_collision = true
 

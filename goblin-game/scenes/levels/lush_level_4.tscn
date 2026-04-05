@@ -7,82 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://cwba0i7kfioph" path="res://scenes/enemies/dragonfly.tscn" id="5_8la3l"]
 [ext_resource type="PackedScene" uid="uid://dej8u3upuscm5" path="res://scenes/enemies/mushroom.tscn" id="6_35i4i"]
 
-[sub_resource type="Animation" id="Animation_35i4i"]
-length = 4.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2.0666666),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(733, 360), Vector2(733, 360)]
-}
-
-[sub_resource type="Animation" id="Animation_8la3l"]
-resource_name = "default"
-length = 4.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2.0333333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(664, 450), Vector2(664, 275)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_35i4i"]
-_data = {
-&"RESET": SubResource("Animation_35i4i"),
-&"default": SubResource("Animation_8la3l")
-}
-
-[sub_resource type="Animation" id="Animation_ldxoj"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(957, 305)]
-}
-
-[sub_resource type="Animation" id="Animation_spdsg"]
-resource_name = "default"
-length = 4.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(957, 305), Vector2(957, 500)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ldxoj"]
-_data = {
-&"RESET": SubResource("Animation_ldxoj"),
-&"default": SubResource("Animation_spdsg")
-}
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sra0u"]
 size = Vector2(69, 159)
 
@@ -107,21 +31,13 @@ position = Vector2(1237, 457)
 [node name="Dragonflies" type="Node" parent="Enemies" unique_id=1319041593]
 
 [node name="Dragonfly" parent="Enemies/Dragonflies" unique_id=184690133 instance=ExtResource("5_8la3l")]
-position = Vector2(733, 360)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemies/Dragonflies/Dragonfly" unique_id=959017874]
-libraries/ = SubResource("AnimationLibrary_35i4i")
-autoplay = &"default"
+position = Vector2(658, 213)
 
 [node name="Dragonfly2" parent="Enemies/Dragonflies" unique_id=2129221075 instance=ExtResource("5_8la3l")]
-position = Vector2(957, 305)
+position = Vector2(851, 269)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemies/Dragonflies/Dragonfly2" unique_id=1677338521]
-libraries/ = SubResource("AnimationLibrary_ldxoj")
-autoplay = &"default"
-
-[node name="Dragonfly3" parent="Enemies/Dragonflies" unique_id=907323498 instance=ExtResource("5_8la3l")]
-position = Vector2(2157, 808)
+[node name="Dragonfly3" parent="Enemies/Dragonflies" unique_id=1996650805 instance=ExtResource("5_8la3l")]
+position = Vector2(1038, 329)
 
 [node name="Mushrooms" type="Node" parent="Enemies" unique_id=1812888171]
 
