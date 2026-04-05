@@ -24,7 +24,7 @@ const ENEMY_BOUNCE_FORCE_Y: float = -400.0
 @onready var camera: Camera2D = $Camera2D
 @onready var player_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var death_menu: Control = $"../../HUD/DeathMenu"
-
+@onready var hit_sound: AudioStreamPlayer2D = $HitSoundPlayer
 
 @onready var last_safe_coords: Vector2 = global_position
 @onready var room_start_coordinates: Vector2 = global_position
@@ -178,6 +178,7 @@ func _reduce_hp(reduce_amount: int) -> void:
 	if is_iframes or GameState.player_hp <= 0:
 		return
 	
+	hit_sound.play()
 	_hitstop()
 	GameState.player_hp = max(GameState.player_hp - reduce_amount, 0)
 	_update_hearts()
