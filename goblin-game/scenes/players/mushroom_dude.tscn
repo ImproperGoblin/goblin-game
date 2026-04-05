@@ -2,6 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://cf2u0k70fxvdl" path="res://assets/images/player/mushroom-dude.png" id="1_uqhk2"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uqhk2"]
+size = Vector2(17.000004, 16.2)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_cagbh"]
 atlas = ExtResource("1_uqhk2")
 region = Rect2(0, 0, 16, 16)
@@ -36,6 +39,9 @@ texture_filter = 1
 scale = Vector2(5, 5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=797851509]
+position = Vector2(0.10000023, -0.09999971)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_uqhk2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=413411771]
 sprite_frames = SubResource("SpriteFrames_77lxk")
