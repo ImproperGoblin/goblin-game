@@ -79,6 +79,17 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_gjocd")
 theme_override_styles/hover = SubResource("StyleBoxFlat_lx1ke")
 text = "OPTIONS"
 
+[node name="Button_MainMenu" type="Button" parent="ColorRect/Panel/VBoxContainer" unique_id=1823561215]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_unjiy")
+theme_override_font_sizes/font_size = 33
+theme_override_styles/normal = SubResource("StyleBoxFlat_gjocd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gjocd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lx1ke")
+text = "MAIN MENU"
+
 [node name="Button_Quit" type="Button" parent="ColorRect/Panel/VBoxContainer" unique_id=1142422518]
 texture_filter = 1
 layout_mode = 2
@@ -111,4 +122,5 @@ theme_override_font_sizes/font_size = 150
 text = "PAUSED"
 
 [connection signal="pressed" from="ColorRect/Panel/VBoxContainer/Button_Continue" to="." method="_on_button_continue_pressed"]
+[connection signal="pressed" from="ColorRect/Panel/VBoxContainer/Button_MainMenu" to="." method="_on_button_main_menu_pressed"]
 [connection signal="pressed" from="ColorRect/Panel/VBoxContainer/Button_Quit" to="." method="_on_button_quit_pressed"]

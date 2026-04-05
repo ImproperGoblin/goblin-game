@@ -23,5 +23,10 @@ func _resume_game():
 func _on_button_continue_pressed() -> void:
 	_resume_game()
 
+func _on_button_main_menu_pressed() -> void:
+	GameState._reset_game_state()
+	_resume_game()
+	get_tree().change_scene_to_file("res://scenes/levels/main_menu.tscn")
+
 func _on_button_quit_pressed() -> void:
 	get_tree().quit()
