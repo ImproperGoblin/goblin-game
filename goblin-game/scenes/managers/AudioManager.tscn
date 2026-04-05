@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dri82mvtuu0rd"]
+
+[ext_resource type="AudioStream" uid="uid://y63f3ljufb31" path="res://assets/audio/effects/death.wav" id="2_dynhf"]
+[ext_resource type="AudioStream" uid="uid://c1ya787b5lr0" path="res://assets/audio/effects/hit.wav" id="3_mvwxg"]
+[ext_resource type="AudioStream" uid="uid://egh24s6v5k3p" path="res://assets/audio/effects/pickup.wav" id="4_23ert"]
+[ext_resource type="AudioStream" uid="uid://bwmjpohif75r0" path="res://assets/audio/effects/victory.wav" id="5_n1uha"]
+
+[node name="AudioManager" type="Node2D" unique_id=1861210261]
+
+[node name="DeathSoundPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1646160051]
+stream = ExtResource("2_dynhf")
+panning_strength = 0.0
+
+[node name="HitSoundPlayer" type="AudioStreamPlayer2D" parent="." unique_id=621872546]
+stream = ExtResource("3_mvwxg")
+volume_db = -2.0
+panning_strength = 0.0
+
+[node name="PickupSoundPlayer" type="AudioStreamPlayer2D" parent="." unique_id=344529543]
+stream = ExtResource("4_23ert")
+panning_strength = 0.0
+
+[node name="VictorySoundPlayer" type="AudioStreamPlayer2D" parent="." unique_id=623256702]
+stream = ExtResource("5_n1uha")
+panning_strength = 0.0

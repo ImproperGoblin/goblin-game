@@ -2,6 +2,7 @@ extends Node2D
 
 const SNAP_TIME: float = 0.8
 
+
 var player_node: Node = null
 var increase_snap_timer: bool = false
 var snap_timer: float = 0.0

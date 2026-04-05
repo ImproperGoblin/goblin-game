@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dqdjoyxolirg7" path="res://scenes/tilemaps/LushTerrainTileMap.tscn" id="1_d5c71"]
 [ext_resource type="PackedScene" uid="uid://cesmyhqw2iryp" path="res://scenes/tilemaps/LushHazardTileMap.tscn" id="2_8la3l"]
 [ext_resource type="PackedScene" uid="uid://bhbcgcsgdsf0y" path="res://scenes/players/player.tscn" id="3_35i4i"]
-[ext_resource type="PackedScene" uid="uid://cxmflu65e4fmr" path="res://scenes/players/key.tscn" id="3_spdsg"]
+[ext_resource type="PackedScene" uid="uid://cebpg7kgn63h6" path="res://scenes/players/key.tscn" id="3_spdsg"]
 [ext_resource type="PackedScene" uid="uid://bcg8eynd2b5jp" path="res://scenes/enemies/venus-fly-trap.tscn" id="4_spdsg"]
 [ext_resource type="PackedScene" uid="uid://cwba0i7kfioph" path="res://scenes/enemies/dragonfly.tscn" id="5_8la3l"]
 [ext_resource type="PackedScene" uid="uid://dej8u3upuscm5" path="res://scenes/enemies/mushroom.tscn" id="6_35i4i"]

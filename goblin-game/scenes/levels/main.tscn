@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b8geb0cy12hy4" path="res://assets/images/player/heart.png" id="3_u81e1"]
 [ext_resource type="PackedScene" uid="uid://txxkb6khnlcj" path="res://scenes/levels/pause_menu.tscn" id="3_y0acb"]
 [ext_resource type="PackedScene" uid="uid://gip3ryf0f6jd" path="res://scenes/levels/death_menu.tscn" id="4_j4d2a"]
+[ext_resource type="PackedScene" uid="uid://dri82mvtuu0rd" path="res://scenes/managers/AudioManager.tscn" id="6_b6bv0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dhv88"]
 atlas = ExtResource("3_u81e1")
@@ -142,6 +143,8 @@ color = Color(0, 0, 0, 1)
 
 [node name="DeathMenu" parent="HUD" unique_id=43637439 instance=ExtResource("4_j4d2a")]
 process_mode = 3
+
+[node name="AudioManager" parent="." unique_id=1861210261 instance=ExtResource("6_b6bv0")]
 
 [node name="LevelManagement" type="Node2D" parent="." unique_id=1553198748]
 metadata/current_scene = "res://scenes/levels/lush_level_1.tscn"

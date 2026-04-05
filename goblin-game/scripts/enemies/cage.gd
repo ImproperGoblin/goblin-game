@@ -8,4 +8,5 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		if GameState._get_key_status():
 			GameState._set_mushroom_status()
+			AudioManager._play_sound_effect('win')
 			self.queue_free()

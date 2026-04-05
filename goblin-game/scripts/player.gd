@@ -24,8 +24,6 @@ const ENEMY_BOUNCE_FORCE_Y: float = -400.0
 @onready var camera: Camera2D = $Camera2D
 @onready var player_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var death_menu: Control = $"../../HUD/DeathMenu"
-@onready var hit_sound: AudioStreamPlayer2D = $HitSoundPlayer
-@onready var death_sound: AudioStreamPlayer2D = $DeathSoundPlayer
 
 @onready var last_safe_coords: Vector2 = global_position
 @onready var room_start_coordinates: Vector2 = global_position
@@ -183,10 +181,10 @@ func _bounce_away_from_enemy(enemy: Node2D) -> void:
 func _reduce_hp(reduce_amount: int) -> void:
 	if is_iframes or GameState._get_player_hp() <= 0:
 		return
-	
-	hit_sound.play()
-	_hitstop()
+
+	AudioManager._play_sound_effect('hit')
 	GameState._reduce_player_hp(reduce_amount)
+	_hitstop()
 	_update_hearts()
 	
 	if GameState._get_player_hp() == 0:
@@ -226,7 +224,8 @@ func _hitstop(duration: float = HITSTOP_DURATION, scale: float = HITSTOP_SCALE) 
 		hitstop_active = false
 
 func _die() -> void:
-	death_sound.play()
+	AudioManager._play_sound_effect('death')
+
 	await _play_death_animation()
 	if death_menu != null:
 		death_menu._activate()
