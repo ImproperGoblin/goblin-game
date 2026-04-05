@@ -94,6 +94,9 @@ tile_map_data = PackedByteArray("AAAAAP//AAACAAAAAAAAAAAAAAABAAAAAAAAAAEAAAABAAA
 [node name="LushHazardTileMap" parent="." unique_id=584079314 instance=ExtResource("2_8la3l")]
 tile_map_data = PackedByteArray("AAAPAAsAAAAHAAAAAAAOAAsAAAAHAAAAAAANAAsAAAAHAAAAAAAMAAsAAAAHAAAAAAALAAsAAAAHAAAAAAABAAsAAAAHAAAAAAACAAsAAAAHAAAAAAADAAsAAAAHAAAAAAA=")
 
+[node name="Player" parent="." unique_id=1577636989 instance=ExtResource("3_35i4i")]
+position = Vector2(2272, 829)
+
 [node name="Enemies" type="Node" parent="." unique_id=1904450290]
 
 [node name="VenusFlyTraps" type="Node" parent="Enemies" unique_id=1756402305]
@@ -120,16 +123,10 @@ position = Vector2(957, 305)
 libraries/ = SubResource("AnimationLibrary_ldxoj")
 autoplay = &"default"
 
-[node name="Dragonfly3" parent="Enemies/Dragonflies" unique_id=907323498 instance=ExtResource("5_8la3l")]
-position = Vector2(2157, 808)
-
 [node name="Mushrooms" type="Node" parent="Enemies" unique_id=1812888171]
 
 [node name="Mushroom" parent="Enemies/Mushrooms" unique_id=1580177328 instance=ExtResource("6_35i4i")]
 position = Vector2(1945, 833)
-
-[node name="Player" parent="." unique_id=1577636989 instance=ExtResource("3_35i4i")]
-position = Vector2(2270, 839)
 
 [node name="Exit" type="Area2D" parent="." unique_id=1609261141]
 position = Vector2(200, 214)

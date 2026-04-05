@@ -1,8 +1,16 @@
 [gd_scene format=3 uid="uid://cwba0i7kfioph"]
 
+[ext_resource type="Script" uid="uid://7yqxh8sxmy85" path="res://scripts/enemies/dragonfly.gd" id="1_85r32"]
 [ext_resource type="Texture2D" uid="uid://dylpdvexjp5m" path="res://assets/images/lush-cave-enemies/dragonfly-enemy.png" id="1_wxmcl"]
 [ext_resource type="Texture2D" uid="uid://cvq7eff0jryw5" path="res://assets/images/lush-cave-enemies/dragonfly-enemy-flying-animation.png" id="2_1kplc"]
+[ext_resource type="Script" uid="uid://cxkls8mci4eki" path="res://scripts/effects/flashbang_signal.gd" id="2_85r32"]
 [ext_resource type="Texture2D" uid="uid://bhb3dru7bk6ju" path="res://assets/images/lush-cave-enemies/dragonfly-enemy-stunned-animation.png" id="3_4oari"]
+
+[sub_resource type="Curve2D" id="Curve2D_me33v"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 200, 0, 200, 0, 0, 0, 200, 0, -200, 0, 0, 0, 0, 0, 200)
+}
+point_count = 3
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4oari"]
 atlas = ExtResource("2_1kplc")
@@ -55,7 +63,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_du58j")
 }],
 "loop": true,
-"name": &"default",
+"name": &"flying",
 "speed": 8.0
 }, {
 "frames": [{
@@ -79,15 +87,33 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wxmcl"]
 size = Vector2(80, 31)
 
-[node name="Dragonfly" type="AnimatableBody2D" unique_id=184690133]
-position = Vector2(0, 2.459015)
+[node name="Dragonfly" type="Node2D" unique_id=1996650805]
+script = ExtResource("1_85r32")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=717563840]
+[node name="Dragonfly" type="Path2D" parent="." unique_id=473555377]
+curve = SubResource("Curve2D_me33v")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Dragonfly" unique_id=1552979503]
+position = Vector2(0, 200)
+rotates = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Dragonfly/PathFollow2D" unique_id=1136342304]
+remote_path = NodePath("../../../DragonflyAnimation")
+
+[node name="DragonflyAnimation" type="AnimatableBody2D" parent="." unique_id=184690133]
+position = Vector2(0, 200)
+script = ExtResource("2_85r32")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="DragonflyAnimation" unique_id=717563840]
 texture_filter = 1
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_wxmcl")
-frame_progress = 0.96173304
+animation = &"flying"
+frame_progress = 0.37297553
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1321210846]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DragonflyAnimation" unique_id=1321210846]
 position = Vector2(0, 21.040985)
 shape = SubResource("RectangleShape2D_wxmcl")
+one_way_collision = true
+
+[connection signal="flashbang" from="DragonflyAnimation" to="." method="_on_dragonfly_animation_flashbang"]

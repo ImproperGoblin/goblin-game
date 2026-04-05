@@ -141,6 +141,9 @@ func _update_hearts() -> void:
 	heart_3_state = _set_heart($"../../HUD/HeartContainer3", heart_3_state, clampi(GameState.player_hp - 4, 0, 2))
 
 func _set_heart(heart: AnimatedSprite2D, old_state: int, new_state: int) -> int:
+	if(!heart):
+		return 1
+		
 	if old_state == new_state:
 		return old_state
 	
@@ -213,4 +216,5 @@ func _hitstop(duration: float = HITSTOP_DURATION, scale: float = HITSTOP_SCALE) 
 		hitstop_active = false
 
 func _die() -> void:
-	death_menu._activate()
+	if death_menu != null:
+		death_menu._activate()

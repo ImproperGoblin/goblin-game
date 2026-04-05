@@ -10,7 +10,9 @@ func _input(event: InputEvent) -> void:
 	
 	var children = get_overlapping_bodies()
 	for child in children:
+		print(child)
 		if child.has_method("_flashbang"):
+			print("has flash")
 			child._flashbang()
 
 func _trigger_animation() -> void:
