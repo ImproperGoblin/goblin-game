@@ -277,24 +277,24 @@ script = ExtResource("1_g2els")
 
 [node name="HeartContainer1" type="AnimatedSprite2D" parent="HUD" unique_id=807031873]
 texture_filter = 1
-position = Vector2(25, 25.000002)
-scale = Vector2(3, 3)
+position = Vector2(42, 37)
+scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_k6mkd")
 animation = &"full_to_empty"
 autoplay = "static_full"
 
 [node name="HeartContainer2" type="AnimatedSprite2D" parent="HUD" unique_id=178868213]
 texture_filter = 1
-position = Vector2(74, 25)
-scale = Vector2(3, 3)
+position = Vector2(124, 37)
+scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_k6mkd")
 animation = &"half_to_empty"
 autoplay = "static_full"
 
 [node name="HeartContainer3" type="AnimatedSprite2D" parent="HUD" unique_id=866753875]
 texture_filter = 1
-position = Vector2(123, 25)
-scale = Vector2(3, 3)
+position = Vector2(206, 37.000004)
+scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_k6mkd")
 animation = &"half_to_empty"
 autoplay = "static_full"

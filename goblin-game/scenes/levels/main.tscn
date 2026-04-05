@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b4r2dk6to375o" path="res://scenes/levels/lush_level_1.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://ns0dxlx1bdgo" path="res://scripts/main.gd" id="2_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://txxkb6khnlcj" path="res://scenes/levels/pause_menu.tscn" id="3_y0acb"]
 
 [node name="Main" type="Node2D" unique_id=54562665]
 script = ExtResource("2_0wfyh")
@@ -18,3 +19,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="PauseMenu" parent="HUD" unique_id=415201494 instance=ExtResource("3_y0acb")]
+process_mode = 3
