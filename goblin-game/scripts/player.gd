@@ -32,14 +32,14 @@ const ANIMATION = {
 	"RUNNING": "running",
 	"STATIC_FULL": "static_full",
 	"STATIC_HALF": "static_half",
-	"HALF": "lose_to_half",
-	"EMPTY": "lose_to_empty"
+	"STATIC_EMPTY": "static_empty",
+	"FULL_TO_HALF": "full_to_half",
+	"HALF_TO_EMPTY": "half_to_empty",
+	"FULL_TO_EMPTY": "full_to_empty"
 }
 
 func _ready() -> void:	
-	$HUD/HeartContainer1.animation = ANIMATION.STATIC_FULL
-	$HUD/HeartContainer2.animation = ANIMATION.STATIC_FULL
-	$HUD/HeartContainer3.animation = ANIMATION.STATIC_FULL
+	_update_hearts()
 
 func _physics_process(delta: float) -> void:
 	var gravity = get_gravity()
@@ -113,16 +113,39 @@ func _set_safe_pos() -> void:
 	
 func _set_animation(animation: String) -> void:
 	if !is_on_floor():
-		print("jump")
 		animation = ANIMATION.JUMP
 		
 	if $AnimatedSprite2D.animation != animation:
-		if animation == ANIMATION.JUMP:
-			print("animated")
 		$AnimatedSprite2D.stop()
 		$AnimatedSprite2D.animation = animation
 		$AnimatedSprite2D.play()
 
+func _update_hearts() -> void:
+	_update_heart($HUD/HeartContainer1, current_hp, 0)
+	_update_heart($HUD/HeartContainer2, current_hp, 2)
+	_update_heart($HUD/HeartContainer3, current_hp, 4)
+
+func _update_heart(heart: AnimatedSprite2D, hp: int, threshold: int) -> void:
+	var heart_hp := clampi(hp - threshold, 0, 2)
+	
+	print(heart, ' | ', heart_hp)
+	
+	match heart_hp:
+		2:
+			if heart.animation != ANIMATION.STATIC_FULL:
+				heart.animation = ANIMATION.STATIC_FULL
+		1:
+			if heart.animation == ANIMATION.STATIC_FULL:
+				heart.play(ANIMATION.FULL_TO_HALF)
+			elif heart.animation != ANIMATION.STATIC_HALF:
+				heart.animation = ANIMATION.STATIC_HALF
+		0:
+			if heart.animation == ANIMATION.STATIC_FULL:
+				heart.play(ANIMATION.FULL_TO_EMPTY)
+			elif heart.animation == ANIMATION.STATIC_HALF:
+				heart.play(ANIMATION.HALF_TO_EMPTY)
+			elif heart.animation != ANIMATION.STATIC_EMPTY:
+				heart.animation = ANIMATION.STATIC_EMPTY
 
 func _bounce_away_from_enemy(enemy: Node2D) -> void:
 	var dir := (global_position - enemy.global_position).normalized()
@@ -131,9 +154,11 @@ func _bounce_away_from_enemy(enemy: Node2D) -> void:
 	velocity.y = ENEMY_BOUNCE_FORCE_Y
 	
 func _reduce_hp(reduce_amount: int) -> int:
-	current_hp -= reduce_amount if current_hp >= 1 else 0
+	current_hp = max(current_hp - reduce_amount, 0)
 	
 	camera.apply_shake(8.0)
+	
+	_update_hearts()
 	
 	if current_hp == 0:
 		_die()

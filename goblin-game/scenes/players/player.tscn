@@ -5,19 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b8geb0cy12hy4" path="res://assets/images/player/heart.png" id="2_sguum"]
 [ext_resource type="Texture2D" uid="uid://dvrhdg1j05n6w" path="res://assets/images/player/goblin-sprite-jump.png" id="3_edvpf"]
 [ext_resource type="Texture2D" uid="uid://bjai4fvfrvq48" path="res://assets/images/player/goblin-sprite-walking.png" id="3_kc87p"]
-[ext_resource type="Script" path="res://scripts/player_camera.gd" id="5_olb2f"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4e0hv"]
-atlas = ExtResource("2_sguum")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gk1um"]
-atlas = ExtResource("2_sguum")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_blmnc"]
-atlas = ExtResource("2_sguum")
-region = Rect2(64, 0, 16, 16)
+[ext_resource type="Script" uid="uid://bwoy88t7vxbqp" path="res://scripts/player_camera.gd" id="5_olb2f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dhv88"]
 atlas = ExtResource("2_sguum")
@@ -27,11 +15,26 @@ region = Rect2(0, 0, 16, 16)
 atlas = ExtResource("2_sguum")
 region = Rect2(16, 0, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_gk1um"]
+atlas = ExtResource("2_sguum")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_blmnc"]
+atlas = ExtResource("2_sguum")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4e0hv"]
+atlas = ExtResource("2_sguum")
+region = Rect2(32, 0, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_k6mkd"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4e0hv")
+"texture": SubResource("AtlasTexture_dhv88")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xifll")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gk1um")
@@ -39,9 +42,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_blmnc")
 }],
-"loop": false,
-"name": &"lose_to_empty",
-"speed": 5.0
+"loop": true,
+"name": &"full_to_empty",
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -54,8 +57,30 @@ animations = [{
 "texture": SubResource("AtlasTexture_4e0hv")
 }],
 "loop": false,
-"name": &"lose_to_half",
+"name": &"full_to_half",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4e0hv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gk1um")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_blmnc")
+}],
+"loop": false,
+"name": &"half_to_empty",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_blmnc")
+}],
+"loop": false,
+"name": &"static_empty",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -249,26 +274,26 @@ script = ExtResource("1_g2els")
 
 [node name="HeartContainer1" type="AnimatedSprite2D" parent="HUD" unique_id=807031873]
 texture_filter = 1
-position = Vector2(43.000004, 37.000004)
-scale = Vector2(5, 5)
+position = Vector2(25, 25.000002)
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_k6mkd")
-animation = &"lose_to_empty"
+animation = &"full_to_empty"
 autoplay = "static_full"
 
 [node name="HeartContainer2" type="AnimatedSprite2D" parent="HUD" unique_id=178868213]
 texture_filter = 1
-position = Vector2(125.000015, 37.000004)
-scale = Vector2(5, 5)
+position = Vector2(74, 25)
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_k6mkd")
-animation = &"static_half"
+animation = &"half_to_empty"
 autoplay = "static_full"
 
 [node name="HeartContainer3" type="AnimatedSprite2D" parent="HUD" unique_id=866753875]
 texture_filter = 1
-position = Vector2(207, 37)
-scale = Vector2(5, 5)
+position = Vector2(123, 25)
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_k6mkd")
-animation = &"static_full"
+animation = &"half_to_empty"
 autoplay = "static_full"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=357779514]
