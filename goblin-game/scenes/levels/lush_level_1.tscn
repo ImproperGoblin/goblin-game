@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://cesmyhqw2iryp" path="res://scenes/tilemaps/LushHazardTileMap.tscn" id="2_ppse0"]
 [ext_resource type="FontFile" uid="uid://0yv2m2koturd" path="res://assets/font/alagard.ttf" id="4_ppse0"]
 [ext_resource type="Script" uid="uid://cokok15vf8wgq" path="res://scripts/dialogue_trigger.gd" id="5_v4hek"]
+[ext_resource type="PackedScene" uid="uid://blc1uccg40sae" path="res://scenes/players/mushroom_dude.tscn" id="6_w53lf"]
+[ext_resource type="PackedScene" uid="uid://bqwcwfcclnbau" path="res://scenes/enemies/cage.tscn" id="7_px0sh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xk5ng"]
 size = Vector2(339, 87)
@@ -58,5 +60,11 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueBox/DialogueTrigger" unique_id=943822838]
 position = Vector2(26, -70)
 shape = SubResource("RectangleShape2D_ppse0")
+
+[node name="MushroomDude" parent="." unique_id=2085604584 instance=ExtResource("6_w53lf")]
+position = Vector2(1182.0001, 519.00006)
+
+[node name="Cage" parent="." unique_id=686755222 instance=ExtResource("7_px0sh")]
+position = Vector2(1174, 502)
 
 [connection signal="body_entered" from="DialogueBox/DialogueTrigger" to="DialogueBox/DialogueTrigger" method="_on_body_entered"]

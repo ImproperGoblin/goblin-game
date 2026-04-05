@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://blc1uccg40sae"]
+
+[ext_resource type="Texture2D" uid="uid://cf2u0k70fxvdl" path="res://assets/images/player/mushroom-dude.png" id="1_uqhk2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cagbh"]
+atlas = ExtResource("1_uqhk2")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85yi0"]
+atlas = ExtResource("1_uqhk2")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lps84"]
+atlas = ExtResource("1_uqhk2")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_77lxk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cagbh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85yi0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lps84")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="MushroomDude" type="CharacterBody2D" unique_id=2085604584]
+texture_filter = 1
+scale = Vector2(5, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=797851509]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=413411771]
+sprite_frames = SubResource("SpriteFrames_77lxk")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.40443644
+flip_h = true
