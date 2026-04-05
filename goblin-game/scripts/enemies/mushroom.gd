@@ -24,10 +24,19 @@ func _on_ready() -> void:
 func _physics_process(delta: float) -> void:
 	if !is_aggressive:
 		return
-	if dir == 1 and (!$RightRay.is_colliding() or $RightWallRay.is_colliding()):
+		
+	var right_wall_collider = $RightWallRay.get_collider()
+	var left_wall_collider = $LeftWallRay.get_collider()
+	
+	var right_wall_collider_name = right_wall_collider.name if right_wall_collider else null
+	var left_wall_collider_name = left_wall_collider.name if left_wall_collider else null
+	
+	print(left_wall_collider_name)
+
+	if dir == 1 and (!$RightRay.is_colliding() or ($RightWallRay.is_colliding()) and right_wall_collider_name != 'Player'):
 		$AnimatedSprite2D.flip_h = true
 		_wait_dir_changed(-1)
-	if dir == -1 and (!$LeftRay.is_colliding() or $LeftWallRay.is_colliding()):
+	if dir == -1 and (!$LeftRay.is_colliding() or ($LeftWallRay.is_colliding()) and left_wall_collider_name != 'Player'):
 		$AnimatedSprite2D.flip_h = false
 		_wait_dir_changed(1)
 		
@@ -52,13 +61,14 @@ func _swap_aggressive_state():
 	$AnimatedSprite2D.animation = ANIMATION.PATROLLING if is_aggressive else ANIMATION.BOUNCE_PAD
 
 func _wait_dir_changed(new_dir: int) -> void:
-	await get_tree().create_timer(0.5).timeout
+	#await get_tree().create_timer(0.5).timeout
 	dir = new_dir
 
 # ToDo: change to a different reset?
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player" and is_aggressive:
-		body._reset_to_room_start()
+		body._bounce_away_from_enemy(self)
+		body._reduce_hp(1)
 
 func _on_bounce_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player" && !is_aggressive:

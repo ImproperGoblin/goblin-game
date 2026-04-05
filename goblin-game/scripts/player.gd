@@ -7,13 +7,13 @@ const JUMP_VELOCITY: float = -800.0
 const COYOTE_TIME_LENGTH: float = 0.1
 const JUMP_BUFFER_MIN: float = 0.2
 
-const ANIMATION = {
-	"IDLE": "idle",
-	"JUMP": "jump",
-	"RUNNING": "running"
-}
+const ENEMY_BOUNCE_FORCE_X: float = 800.0
+const ENEMY_BOUNCE_FORCE_Y: float = -600.0
+
+const MAX_HP: int = 6
 
 @onready var hazard_tilemap: TileMapLayer = $"../LushHazardTileMap"
+@onready var camera: Camera2D = $Camera2D
 
 @onready var last_safe_coords: Vector2 = global_position
 @onready var room_start_coordinates: Vector2 = global_position
@@ -24,8 +24,22 @@ var jump_buffer_timer: float = 0.0
 var buffered_jump: bool = false
 var jump_boost: float = 1.0
 
+var current_hp = MAX_HP
+
+const ANIMATION = {
+	"IDLE": "idle",
+	"JUMP": "jump",
+	"RUNNING": "running",
+	"STATIC_FULL": "static_full",
+	"STATIC_HALF": "static_half",
+	"HALF": "lose_to_half",
+	"EMPTY": "lose_to_empty"
+}
+
 func _ready() -> void:	
-	pass
+	$HUD/HeartContainer1.animation = ANIMATION.STATIC_FULL
+	$HUD/HeartContainer2.animation = ANIMATION.STATIC_FULL
+	$HUD/HeartContainer3.animation = ANIMATION.STATIC_FULL
 
 func _physics_process(delta: float) -> void:
 	var gravity = get_gravity()
@@ -82,6 +96,7 @@ func _process_spike_reset() -> void:
 		
 		if collider == hazard_tilemap:
 			_reset_to_safe_pos()
+			_reduce_hp(1)
 			break
 
 func _set_jump_boost(multiplier: float):
@@ -107,3 +122,23 @@ func _set_animation(animation: String) -> void:
 		$AnimatedSprite2D.stop()
 		$AnimatedSprite2D.animation = animation
 		$AnimatedSprite2D.play()
+
+
+func _bounce_away_from_enemy(enemy: Node2D) -> void:
+	var dir := (global_position - enemy.global_position).normalized()
+	
+	velocity.x = dir.x * ENEMY_BOUNCE_FORCE_X
+	velocity.y = ENEMY_BOUNCE_FORCE_Y
+	
+func _reduce_hp(reduce_amount: int) -> int:
+	current_hp -= reduce_amount if current_hp >= 1 else 0
+	
+	camera.apply_shake(8.0)
+	
+	if current_hp == 0:
+		_die()
+	
+	return current_hp
+	
+func _die() -> void:
+	get_tree().reload_current_scene()
