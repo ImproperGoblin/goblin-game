@@ -122,7 +122,7 @@ position = Vector2(1194.0001, 601.00006)
 metadata/_edit_group_ = true
 
 [node name="Cage" parent="." unique_id=686755222 instance=ExtResource("7_7f7ho")]
-position = Vector2(1193, 579)
+position = Vector2(1193, 577)
 metadata/_edit_group_ = true
 
 [node name="CameraLimiter" type="Area2D" parent="." unique_id=1538512882]
