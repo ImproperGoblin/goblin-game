@@ -15,7 +15,7 @@ size = Vector2(278, 87)
 size = Vector2(116, 208)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ppse0"]
-size = Vector2(72, 246)
+size = Vector2(144, 143)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_px0sh"]
 size = Vector2(1420.5, 703)
@@ -77,12 +77,12 @@ clip_text = true
 max_lines_visible = 8
 
 [node name="DialogueTrigger" type="Area2D" parent="DialogueBox" unique_id=1136903274]
-position = Vector2(1245, 588)
+position = Vector2(1203, 592)
 script = ExtResource("5_274v4")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueBox/DialogueTrigger" unique_id=943822838]
-position = Vector2(26, -70)
+position = Vector2(-10, -18.5)
 shape = SubResource("RectangleShape2D_ppse0")
 
 [node name="DialogueBox2" type="Node" parent="." unique_id=1461950343]
@@ -113,11 +113,11 @@ position = Vector2(26, -70)
 shape = SubResource("RectangleShape2D_ppse0")
 
 [node name="MushroomDude" parent="." unique_id=2085604584 instance=ExtResource("6_g0y6d")]
-position = Vector2(1193, 582.99994)
+position = Vector2(1194.0001, 601.00006)
 metadata/_edit_group_ = true
 
 [node name="Cage" parent="." unique_id=686755222 instance=ExtResource("7_7f7ho")]
-position = Vector2(1189, 576)
+position = Vector2(1193, 579)
 metadata/_edit_group_ = true
 
 [node name="CameraLimiter" type="Area2D" parent="." unique_id=1538512882]
