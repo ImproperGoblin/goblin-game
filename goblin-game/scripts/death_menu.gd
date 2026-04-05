@@ -3,9 +3,6 @@ extends Control
 func _ready() -> void:
 	pass # Replace with function body.
 
-func _process(delta: float) -> void:
-	pass
-
 func _activate() -> void:
 	show()
 	get_tree().paused = true
