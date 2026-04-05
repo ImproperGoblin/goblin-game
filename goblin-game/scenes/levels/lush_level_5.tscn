@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cokok15vf8wgq" path="res://scripts/dialogue_trigger.gd" id="5_274v4"]
 [ext_resource type="PackedScene" uid="uid://blc1uccg40sae" path="res://scenes/players/mushroom_dude.tscn" id="6_g0y6d"]
 [ext_resource type="PackedScene" uid="uid://bqwcwfcclnbau" path="res://scenes/enemies/cage.tscn" id="7_7f7ho"]
+[ext_resource type="PackedScene" uid="uid://cwba0i7kfioph" path="res://scenes/enemies/dragonfly.tscn" id="8_kji3d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xk5ng"]
 size = Vector2(278, 87)
@@ -53,10 +54,10 @@ shape = SubResource("RectangleShape2D_rllwt")
 
 [node name="Label" type="Label" parent="DialogueBox" unique_id=1681473606]
 texture_filter = 1
-offset_left = 778.0
-offset_top = 375.0
-offset_right = 1065.0
-offset_bottom = 653.0
+offset_left = 536.0
+offset_top = 377.0
+offset_right = 823.0
+offset_bottom = 655.0
 theme_override_colors/font_color = Color(0.9437328, 0.91340107, 1, 1)
 theme_override_colors/font_shadow_color = Color(0.7888507, 0.0011599511, 0.8853582, 0.81960785)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -127,6 +128,11 @@ visible = false
 position = Vector2(720.75, 356)
 shape = SubResource("RectangleShape2D_px0sh")
 disabled = true
+
+[node name="Enemy" type="Node" parent="." unique_id=337641442]
+
+[node name="Dragonfly" parent="Enemy" unique_id=1996650805 instance=ExtResource("8_kji3d")]
+position = Vector2(970, 385)
 
 [connection signal="body_entered" from="DialogueBox/DialogueTrigger" to="DialogueBox/DialogueTrigger" method="_on_body_entered"]
 [connection signal="body_entered" from="DialogueBox2/DialogueTrigger" to="DialogueBox2/DialogueTrigger" method="_on_body_entered"]
