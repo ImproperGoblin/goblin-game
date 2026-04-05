@@ -26,6 +26,7 @@ tile_map_data = PackedByteArray("AAAAAAUAAAADAAAAAAAAAAQAAAABAAAAAAAAAAIAAAABAAA
 tile_map_data = PackedByteArray("AAAIAAEAAAAHAAAAADAJAAEAAAAHAAAAADAKAAEAAAAHAAAAADD//wYAAAAHAAAAAFD//wcAAAAHAAAAAFANAAcAAAAHAAAAAAA=")
 
 [node name="Player" parent="." unique_id=1577636989 instance=ExtResource("2_ghhbn")]
+z_index = 1
 position = Vector2(162, 503)
 
 [node name="Exit" type="Area2D" parent="." unique_id=2131906182]
