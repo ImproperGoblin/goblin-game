@@ -35,7 +35,6 @@ size = Vector2(25, 7)
 
 [node name="Mushroom" type="CharacterBody2D" unique_id=1580177328]
 script = ExtResource("1_uk2no")
-dir = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2118624724]
 texture_filter = 1
@@ -66,25 +65,25 @@ position = Vector2(-0.5, 36.5)
 shape = SubResource("RectangleShape2D_uk2no")
 
 [node name="LeftRay" type="RayCast2D" parent="." unique_id=182463811]
-position = Vector2(-35, 15)
+position = Vector2(-50, 15)
 target_position = Vector2(0, 30)
 hit_from_inside = true
 
 [node name="RightRay" type="RayCast2D" parent="." unique_id=2127787947]
-position = Vector2(35, 15)
+position = Vector2(50, 15)
 target_position = Vector2(0, 30)
 hit_from_inside = true
 
 [node name="LeftWallRay" type="RayCast2D" parent="." unique_id=1467409173]
-position = Vector2(-35, 0)
+position = Vector2(-40, 0)
 rotation = 1.5707964
-target_position = Vector2(0, 30)
+target_position = Vector2(0, 60)
 hit_from_inside = true
 
 [node name="RightWallRay" type="RayCast2D" parent="." unique_id=625523758]
-position = Vector2(35, 0)
+position = Vector2(40, 0)
 rotation = -1.5707964
-target_position = Vector2(0, 30)
+target_position = Vector2(-2.6226833e-06, 60)
 hit_from_inside = true
 
 [connection signal="ready" from="." to="." method="_on_ready"]
