@@ -18,6 +18,7 @@ const ANIMATION = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$GPUParticles2D.emitting = false
 	$AnimatedSprite2D.animation = ANIMATION.STATIC
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -35,6 +36,8 @@ func _snap():
 	increase_snap_timer = false
 	snap_timer = 0.0
 	
+	$GPUParticles2D.emitting = false
+	
 	$AnimatedSprite2D.animation = ANIMATION.SNAP
 	$AnimatedSprite2D.play()
 
@@ -43,6 +46,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		player_node = body
 		snap_timer = 0
 		increase_snap_timer = true
+		$GPUParticles2D.emitting = true
 		
 		if not is_snap_animating and not is_unfurling:
 			$AnimatedSprite2D.animation = ANIMATION.AGITATED
@@ -54,6 +58,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		snap_timer = 0
 		increase_snap_timer = false
 		player_node = null
+		$GPUParticles2D.emitting = false
 		
 		if not is_snap_animating and not is_unfurling:
 			$AnimatedSprite2D.animation = ANIMATION.STATIC

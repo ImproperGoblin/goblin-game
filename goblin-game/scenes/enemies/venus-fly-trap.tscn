@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dkgea2fsmaod" path="res://assets/images/lush-cave-enemies/venus-fly-trap-platform.png" id="1_q0l02"]
 [ext_resource type="Script" uid="uid://bestt7xdo6xnl" path="res://scripts/enemies/venus_fly_trap.gd" id="1_q8i6q"]
 [ext_resource type="Texture2D" uid="uid://bsa6bobyrgem1" path="res://assets/images/lush-cave-enemies/venus-fly-trap-animation.png" id="2_30bbq"]
+[ext_resource type="Texture2D" uid="uid://dcyw6m2f0k8w1" path="res://assets/images/particles/flytrap-particles.png" id="4_6pc0l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6pc0l"]
 atlas = ExtResource("2_30bbq")
@@ -88,6 +89,33 @@ size = Vector2(160, 20)
 a = Vector2(-85, 0)
 b = Vector2(85, 0)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_prcts"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oa4tp"]
+lifetime_randomness = 0.1
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+particle_flag_damping_as_friction = true
+emission_shape = 3
+emission_box_extents = Vector3(75, 10, 1)
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(0, 10, 0)
+spread = 0.0
+initial_velocity_max = 169.23
+gravity = Vector3(0, 50, 0)
+linear_accel_min = -29.650002
+linear_accel_max = 19.999998
+radial_accel_min = -0.050002236
+radial_accel_max = -0.050002236
+tangential_accel_min = -34.050003
+tangential_accel_max = 57.149998
+anim_offset_max = 1.0
+
 [node name="VenusFlyTrap" type="Node2D" unique_id=1696436320]
 script = ExtResource("1_q8i6q")
 
@@ -102,7 +130,7 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1128778806]
-position = Vector2(-2, -15)
+position = Vector2(-2, -7)
 shape = SubResource("RectangleShape2D_q8i6q")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2057404173]
@@ -110,6 +138,14 @@ shape = SubResource("RectangleShape2D_q8i6q")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1006958897]
 shape = SubResource("SegmentShape2D_q8i6q")
 one_way_collision = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=700526831]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_prcts")
+position = Vector2(0, 13)
+amount = 10
+texture = ExtResource("4_6pc0l")
+process_material = SubResource("ParticleProcessMaterial_oa4tp")
 
 [connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
