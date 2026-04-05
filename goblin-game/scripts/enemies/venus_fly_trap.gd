@@ -26,8 +26,8 @@ func _process(delta: float) -> void:
 	if increase_snap_timer:
 		snap_timer += delta
 		
-	if player_node and snap_timer >= SNAP_TIME:
-		if not is_snap_animating:
+	if snap_timer >= SNAP_TIME:
+		if not is_snap_animating and not is_unfurling:
 			_snap()
 
 func _snap():
@@ -55,13 +55,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func _on_area_2d_body_exited(body: Node2D) -> void:	
 	if body.name == "Player":
-		snap_timer = 0
-		increase_snap_timer = false
 		player_node = null
-		$GPUParticles2D.emitting = false
-		
-		if not is_snap_animating and not is_unfurling:
-			$AnimatedSprite2D.animation = ANIMATION.STATIC
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	match $AnimatedSprite2D.animation:
