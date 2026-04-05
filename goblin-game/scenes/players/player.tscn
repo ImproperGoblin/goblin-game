@@ -3,6 +3,75 @@
 [ext_resource type="Script" uid="uid://1nfkhvquegp7" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://d3f67q2t3wwhu" path="res://assets/images/player/goblin-sprite.png" id="2_dqkch"]
 [ext_resource type="Texture2D" uid="uid://bjai4fvfrvq48" path="res://assets/images/player/goblin-sprite-walking.png" id="3_kc87p"]
+[ext_resource type="Texture2D" uid="uid://b8geb0cy12hy4" path="res://assets/images/player/heart.png" id="4_edvpf"]
+[ext_resource type="Script" uid="uid://bwoy88t7vxbqp" path="res://scripts/player_camera.gd" id="5_olb2f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7vuu"]
+atlas = ExtResource("4_edvpf")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdc4e"]
+atlas = ExtResource("4_edvpf")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qb7t6"]
+atlas = ExtResource("4_edvpf")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufgnv"]
+atlas = ExtResource("4_edvpf")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqqd5"]
+atlas = ExtResource("4_edvpf")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k6mkd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7vuu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdc4e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qb7t6")
+}],
+"loop": false,
+"name": &"lose_to_empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufgnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqqd5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7vuu")
+}],
+"loop": false,
+"name": &"lose_to_half",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufgnv")
+}],
+"loop": false,
+"name": &"static_full",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7vuu")
+}],
+"loop": false,
+"name": &"static_half",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_edvpf"]
 atlas = ExtResource("3_kc87p")
@@ -129,6 +198,32 @@ collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_g2els")
 
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1915641790]
+
+[node name="HeartContainer1" type="AnimatedSprite2D" parent="HUD" unique_id=807031873]
+texture_filter = 1
+position = Vector2(43.000004, 37.000004)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_k6mkd")
+animation = &"static_full"
+autoplay = "static_full"
+
+[node name="HeartContainer2" type="AnimatedSprite2D" parent="HUD" unique_id=178868213]
+texture_filter = 1
+position = Vector2(125.000015, 37.000004)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_k6mkd")
+animation = &"static_full"
+autoplay = "static_full"
+
+[node name="HeartContainer3" type="AnimatedSprite2D" parent="HUD" unique_id=866753875]
+texture_filter = 1
+position = Vector2(207, 37)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_k6mkd")
+animation = &"static_full"
+autoplay = "static_full"
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=357779514]
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_dmaw2")
@@ -141,6 +236,7 @@ position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_ldeu4")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=800009472]
+script = ExtResource("5_olb2f")
 
 [node name="JumpRay" type="RayCast2D" parent="." unique_id=1929357887]
 target_position = Vector2(0, 125)
