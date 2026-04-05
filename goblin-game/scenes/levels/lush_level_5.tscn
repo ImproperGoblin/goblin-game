@@ -111,7 +111,7 @@ shape = SubResource("RectangleShape2D_xk5ng")
 [node name="Exit2" type="Area2D" parent="." unique_id=701548557]
 position = Vector2(59, 316)
 metadata/_edit_group_ = true
-metadata/next_scene = "res://scenes/levels/lush_level_2.tscn"
+metadata/next_scene = "res://scenes/levels/main_menu.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit2" unique_id=1598562278]
 position = Vector2(82, -17)
