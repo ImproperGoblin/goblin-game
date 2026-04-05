@@ -67,7 +67,8 @@ func _wait_dir_changed(new_dir: int) -> void:
 # ToDo: change to a different reset?
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player" and is_aggressive:
-		body._reset_to_room_start()
+		body._bounce_away_from_enemy(self)
+		body._reduce_hp(1)
 
 func _on_bounce_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player" && !is_aggressive:

@@ -1,6 +1,6 @@
 extends Node2D
 
-const SNAP_TIME: float = 1.0
+const SNAP_TIME: float = 0.8
 
 var player_node: Node = null
 var increase_snap_timer: bool = false
@@ -62,7 +62,8 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	match $AnimatedSprite2D.animation:
 		'snap_shut':
 			if player_node:
-				player_node._reset_to_safe_pos()
+				player_node._bounce_away_from_enemy(self)
+				player_node._reduce_hp(1)
 				player_node = null
 			
 			is_snap_animating = false
