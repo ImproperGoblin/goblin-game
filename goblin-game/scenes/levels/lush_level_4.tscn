@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dqdjoyxolirg7" path="res://scenes/tilemaps/LushTerrainTileMap.tscn" id="1_d5c71"]
 [ext_resource type="PackedScene" uid="uid://cesmyhqw2iryp" path="res://scenes/tilemaps/LushHazardTileMap.tscn" id="2_8la3l"]
 [ext_resource type="PackedScene" uid="uid://bhbcgcsgdsf0y" path="res://scenes/players/player.tscn" id="3_35i4i"]
-[ext_resource type="PackedScene" path="res://scenes/players/key.tscn" id="3_spdsg"]
+[ext_resource type="PackedScene" uid="uid://cxmflu65e4fmr" path="res://scenes/players/key.tscn" id="3_spdsg"]
 [ext_resource type="PackedScene" uid="uid://bcg8eynd2b5jp" path="res://scenes/enemies/venus-fly-trap.tscn" id="4_spdsg"]
 [ext_resource type="PackedScene" uid="uid://cwba0i7kfioph" path="res://scenes/enemies/dragonfly.tscn" id="5_8la3l"]
 [ext_resource type="PackedScene" uid="uid://dej8u3upuscm5" path="res://scenes/enemies/mushroom.tscn" id="6_35i4i"]
@@ -16,6 +16,9 @@ size = Vector2(556, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_spdsg"]
 size = Vector2(480, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldxoj"]
+size = Vector2(2354.5, 1020)
 
 [node name="LevelRoot" type="Node2D" unique_id=1581097223]
 
@@ -96,3 +99,10 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TunnelExits/test" unique_id=194699272]
 shape = SubResource("RectangleShape2D_spdsg")
 debug_color = Color(0.91370267, 0.21486238, 0.5053108, 0.41960785)
+
+[node name="CameraLimiter" type="Area2D" parent="." unique_id=2112524561]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraLimiter" unique_id=204261026]
+position = Vector2(1199.75, 437)
+shape = SubResource("RectangleShape2D_ldxoj")
+disabled = true

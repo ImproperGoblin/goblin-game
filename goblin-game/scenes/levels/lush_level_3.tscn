@@ -15,6 +15,9 @@ size = Vector2(482, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q43uw"]
 size = Vector2(78, 54)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ikfy"]
+size = Vector2(2371.5, 1017)
+
 [node name="LevelRoot" type="Node2D" unique_id=1581097223]
 
 [node name="LushTerrainTileMap" parent="." unique_id=459895185 instance=ExtResource("2_h0e6c")]
@@ -90,3 +93,10 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TunnelExits/L3Primary" unique_id=307386576]
 shape = SubResource("RectangleShape2D_q43uw")
 debug_color = Color(0.8986262, 0.23995525, 0.52076167, 0.41960785)
+
+[node name="CameraLimiter" type="Area2D" parent="." unique_id=1998270998]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraLimiter" unique_id=1548512391]
+position = Vector2(1119.25, 359.5)
+shape = SubResource("RectangleShape2D_5ikfy")
+disabled = true

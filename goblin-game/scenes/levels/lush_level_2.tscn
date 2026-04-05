@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bhbcgcsgdsf0y" path="res://scenes/players/player.tscn" id="2_vms3p"]
 [ext_resource type="PackedScene" uid="uid://bcg8eynd2b5jp" path="res://scenes/enemies/venus-fly-trap.tscn" id="3_82alk"]
 [ext_resource type="FontFile" uid="uid://0yv2m2koturd" path="res://assets/font/alagard.ttf" id="5_8kiam"]
-[ext_resource type="Script" path="res://scripts/dialogue_trigger.gd" id="6_ph3lr"]
+[ext_resource type="Script" uid="uid://cokok15vf8wgq" path="res://scripts/dialogue_trigger.gd" id="6_ph3lr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sra0u"]
 size = Vector2(69, 159)
@@ -15,6 +15,9 @@ size = Vector2(160, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8kiam"]
 size = Vector2(82, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ph3lr"]
+size = Vector2(2381.5, 1022)
 
 [node name="LevelRoot" type="Node2D" unique_id=1581097223]
 
@@ -91,5 +94,12 @@ metadata/exit_name = "test"
 position = Vector2(-76, 0)
 shape = SubResource("RectangleShape2D_8kiam")
 debug_color = Color(0.9599317, 5.7756904e-07, 0.5215726, 0.41960785)
+
+[node name="CameraLimiter" type="Area2D" parent="." unique_id=1053500028]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraLimiter" unique_id=1842237073]
+position = Vector2(1197.25, 438)
+shape = SubResource("RectangleShape2D_ph3lr")
+disabled = true
 
 [connection signal="body_entered" from="DialogueBox/DialogueTrigger" to="DialogueBox/DialogueTrigger" method="_on_body_entered"]

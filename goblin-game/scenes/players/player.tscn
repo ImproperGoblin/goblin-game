@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bnhma6jrgpiwf" path="res://assets/images/player/goblin-sprite-death.png" id="2_jwv1m"]
 [ext_resource type="Texture2D" uid="uid://dvrhdg1j05n6w" path="res://assets/images/player/goblin-sprite-jump.png" id="3_edvpf"]
 [ext_resource type="Texture2D" uid="uid://bjai4fvfrvq48" path="res://assets/images/player/goblin-sprite-walking.png" id="3_kc87p"]
-[ext_resource type="Script" path="res://scripts/player_camera.gd" id="5_olb2f"]
+[ext_resource type="Script" uid="uid://bwoy88t7vxbqp" path="res://scripts/player_camera.gd" id="5_olb2f"]
 [ext_resource type="PackedScene" uid="uid://dqg8c81rmgbx7" path="res://scenes/players/effects/flashbang.tscn" id="7_jwv1m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4e0hv"]
@@ -216,6 +216,7 @@ position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_ldeu4")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=800009472]
+limit_smoothed = true
 script = ExtResource("5_olb2f")
 
 [node name="JumpRay" type="RayCast2D" parent="." unique_id=1929357887]

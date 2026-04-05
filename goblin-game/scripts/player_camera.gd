@@ -4,8 +4,11 @@ const SHAKE_FADE: float = 20.0
 const SHAKE_SMOOTHING: float = 0.4
 
 var shake_strength: float = 0.0
+@onready var collision_shape_2d: CollisionShape2D = $"../../CameraLimiter/CollisionShape2D"
+
 
 func _ready() -> void:
+	set_camera_limits()
 	pass # Replace with function body.
 
 func _process(delta: float) -> void:
@@ -21,3 +24,20 @@ func _process(delta: float) -> void:
 
 func apply_shake(strength: float) -> void:
 	shake_strength = max(shake_strength, strength)
+
+func set_camera_limits() -> void:
+	var shape : Shape2D = collision_shape_2d.shape
+	var local_rect : Rect2 = shape.get_rect()
+	
+	var global_pos = collision_shape_2d.global_transform.origin + local_rect.position
+	
+	var camera_limit : Rect2i = Rect2i(Vector2i(global_pos), Vector2i(local_rect.size))
+	
+	limit_left = camera_limit.position.x
+	limit_top = camera_limit.position.y
+	limit_right = (camera_limit.position.x + camera_limit.size.x)
+	limit_bottom = (camera_limit.position.y + camera_limit.size.y)
+	
+	print(camera_limit.position.x,camera_limit.size.x)
+	print(camera_limit.position.y,camera_limit.size.y)
+	pass
