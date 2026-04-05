@@ -1,16 +1,64 @@
 [gd_scene format=3 uid="uid://bcg8eynd2b5jp"]
 
 [ext_resource type="Texture2D" uid="uid://dkgea2fsmaod" path="res://assets/images/lush-cave-enemies/venus-fly-trap-platform.png" id="1_q0l02"]
-[ext_resource type="Script" uid="uid://bestt7xdo6xnl" path="res://scripts/enemies/venus_fly_trap.gd" id="1_q8i6q"]
+[ext_resource type="Script" path="res://scripts/enemies/venus_fly_trap.gd" id="1_q8i6q"]
+[ext_resource type="Texture2D" uid="uid://bsa6bobyrgem1" path="res://assets/images/lush-cave-enemies/venus-fly-trap-animation.png" id="2_30bbq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pc0l"]
+atlas = ExtResource("2_30bbq")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prcts"]
+atlas = ExtResource("2_30bbq")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oa4tp"]
+atlas = ExtResource("2_30bbq")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmg8x"]
+atlas = ExtResource("2_30bbq")
+region = Rect2(96, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yekv4"]
+atlas = ExtResource("2_30bbq")
+region = Rect2(128, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30bbq"]
+atlas = ExtResource("2_30bbq")
+region = Rect2(96, 0, 32, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u7c8i"]
 animations = [{
+"frames": [{
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_6pc0l")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_prcts")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_oa4tp")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_nmg8x")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_yekv4")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_30bbq")
+}],
+"loop": true,
+"name": &"snap_shut",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_q0l02")
 }],
 "loop": true,
-"name": &"default",
+"name": &"static",
 "speed": 5.0
 }]
 
@@ -28,6 +76,7 @@ script = ExtResource("1_q8i6q")
 texture_filter = 1
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_u7c8i")
+animation = &"static"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=785347660]
 collision_layer = 3
