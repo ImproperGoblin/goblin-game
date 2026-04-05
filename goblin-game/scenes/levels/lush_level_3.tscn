@@ -69,6 +69,7 @@ position = Vector2(35, 604)
 position = Vector2(1402.0001, -339)
 scale = Vector2(5, 5)
 metadata/_edit_group_ = true
+metadata/next_scene = "res://scenes/levels/lush_level_4.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit" unique_id=1902315778]
 position = Vector2(144.29993, 46.35)

@@ -25,6 +25,7 @@ const ENEMY_BOUNCE_FORCE_Y: float = -400.0
 @onready var player_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var death_menu: Control = $"../../HUD/DeathMenu"
 @onready var hit_sound: AudioStreamPlayer2D = $HitSoundPlayer
+@onready var death_sound: AudioStreamPlayer2D = $DeathSoundPlayer
 
 @onready var last_safe_coords: Vector2 = global_position
 @onready var room_start_coordinates: Vector2 = global_position
@@ -113,8 +114,11 @@ func _process_spike_reset() -> void:
 		var collider := collision.get_collider()
 		
 		if collider == hazard_tilemap:
-			_reset_to_safe_pos()
 			_reduce_hp(1)
+			
+			if GameState.player_hp != 0:
+				_reset_to_safe_pos()
+			
 			break
 
 func _set_jump_boost(multiplier: float):
@@ -220,6 +224,7 @@ func _hitstop(duration: float = HITSTOP_DURATION, scale: float = HITSTOP_SCALE) 
 		hitstop_active = false
 
 func _die() -> void:
+	death_sound.play()
 	await _play_death_animation()
 	if death_menu != null:
 		death_menu._activate()

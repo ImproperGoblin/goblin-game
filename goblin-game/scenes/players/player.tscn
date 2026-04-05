@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bwoy88t7vxbqp" path="res://scripts/player_camera.gd" id="5_olb2f"]
 [ext_resource type="PackedScene" uid="uid://dqg8c81rmgbx7" path="res://scenes/players/effects/flashbang.tscn" id="7_jwv1m"]
 [ext_resource type="AudioStream" uid="uid://c1ya787b5lr0" path="res://assets/audio/effects/hit.wav" id="8_phaeh"]
+[ext_resource type="AudioStream" uid="uid://y63f3ljufb31" path="res://assets/audio/effects/death.wav" id="8_yl2j2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4e0hv"]
 atlas = ExtResource("2_jwv1m")
@@ -224,6 +225,9 @@ script = ExtResource("5_olb2f")
 target_position = Vector2(0, 125)
 
 [node name="FlashArea2D" parent="." unique_id=202242063 instance=ExtResource("7_jwv1m")]
+
+[node name="DeathSoundPlayer" type="AudioStreamPlayer2D" parent="." unique_id=360591548]
+stream = ExtResource("8_yl2j2")
 
 [node name="HitSoundPlayer" type="AudioStreamPlayer2D" parent="." unique_id=735390373]
 stream = ExtResource("8_phaeh")
