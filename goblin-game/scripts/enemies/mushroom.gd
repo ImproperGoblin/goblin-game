@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED: float = 75
+const SPEED: float = 100
 const GRAVITY = 15
 const BOUNCE_TIMER: float = 4
 const ANIMATION = {
