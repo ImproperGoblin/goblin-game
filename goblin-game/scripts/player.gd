@@ -3,8 +3,8 @@ extends CharacterBody2D
 signal player_death
 
 const MAX_SPEED: float = 400.0
-const ACCELERATION: float = 1200.0
-const FRICTION: float = 1400.0
+const ACCELERATION: float = 2000.0
+const FRICTION: float = 2200.0
 const JUMP_VELOCITY: float = -800.0
 const COYOTE_TIME_LENGTH: float = 0.1
 const JUMP_BUFFER_MIN: float = 0.2
@@ -67,7 +67,7 @@ func _physics_process(delta: float) -> void:
 		coyote_timer = 0
 		jump_buffer_timer = 0
 		
-		if $JumpRay.is_colliding() and 'VenusFlyTrap' not in $JumpRay.get_collider().get_parent().name:
+		if $JumpRay.is_colliding() and not _is_on_or_above_node('VenusFlyTrap'):
 			_set_safe_pos()
 		
 		if buffered_jump:
@@ -118,6 +118,13 @@ func _process_spike_reset() -> void:
 				_reset_to_safe_pos()
 			
 			break
+			
+func _is_on_or_above_node(node_name: String) -> bool:
+	return (
+		$JumpRay.is_colliding() and node_name in $JumpRay.get_collider().get_parent().name
+		or $JumpRayLeft.is_colliding() and node_name in $JumpRayLeft.get_collider().get_parent().name
+		or $JumpRayRight.is_colliding() and node_name in $JumpRayRight.get_collider().get_parent().name
+	)
 
 func _set_jump_boost(multiplier: float):
 	jump_boost = multiplier;

@@ -195,9 +195,8 @@ animations = [{
 "speed": 14.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ldeu4"]
-radius = 24.0
-height = 62.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jwv1m"]
+size = Vector2(40, 64)
 
 [node name="Player" type="CharacterBody2D" unique_id=1577636989]
 texture_filter = 1
@@ -208,18 +207,26 @@ script = ExtResource("1_g2els")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=357779514]
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_dmaw2")
-animation = &"death"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1080745021]
-position = Vector2(0, 1)
-shape = SubResource("CapsuleShape2D_ldeu4")
+shape = SubResource("RectangleShape2D_jwv1m")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=800009472]
 limit_smoothed = true
 script = ExtResource("5_olb2f")
 
 [node name="JumpRay" type="RayCast2D" parent="." unique_id=1929357887]
-target_position = Vector2(0, 125)
+position = Vector2(0, 32)
+target_position = Vector2(0, 90)
+
+[node name="JumpRayRight" type="RayCast2D" parent="." unique_id=1681676953]
+position = Vector2(20, 32)
+target_position = Vector2(0, 90)
+
+[node name="JumpRayLeft" type="RayCast2D" parent="." unique_id=638804002]
+position = Vector2(-20, 32)
+target_position = Vector2(0, 90)
 
 [node name="FlashArea2D" parent="." unique_id=202242063 instance=ExtResource("7_jwv1m")]

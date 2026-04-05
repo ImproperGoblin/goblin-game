@@ -79,11 +79,11 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q8i6q"]
-size = Vector2(160, 20)
+size = Vector2(145, 17.75)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_q8i6q"]
-a = Vector2(-85, 0)
-b = Vector2(85, 0)
+a = Vector2(-73, -1)
+b = Vector2(72, -1)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_prcts"]
 particles_animation = true
@@ -131,7 +131,7 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1128778806]
-position = Vector2(-2, -7)
+position = Vector2(-0.5, -11.125)
 shape = SubResource("RectangleShape2D_q8i6q")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2057404173]
