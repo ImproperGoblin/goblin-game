@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dqg8c81rmgbx7"]
 
 [ext_resource type="Script" uid="uid://dt1avbgavvxok" path="res://scripts/effects/flashbang.gd" id="1_b30ul"]
-[ext_resource type="Texture2D" uid="uid://c258juv2yi5nj" path="res://assets/images/player/flash.png" id="1_ybnuq"]
+[ext_resource type="Texture2D" uid="uid://c258juv2yi5nj" path="res://assets/images/particles/flash.png" id="1_ybnuq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ybnuq"]
 radius = 31.06445
