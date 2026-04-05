@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b8geb0cy12hy4" path="res://assets/images/player/heart.png" id="2_sguum"]
 [ext_resource type="Texture2D" uid="uid://dvrhdg1j05n6w" path="res://assets/images/player/goblin-sprite-jump.png" id="3_edvpf"]
 [ext_resource type="Texture2D" uid="uid://bjai4fvfrvq48" path="res://assets/images/player/goblin-sprite-walking.png" id="3_kc87p"]
-[ext_resource type="Script" uid="uid://bwoy88t7vxbqp" path="res://scripts/player_camera.gd" id="5_olb2f"]
+[ext_resource type="Script" path="res://scripts/player_camera.gd" id="5_olb2f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dhv88"]
 atlas = ExtResource("2_sguum")
@@ -264,6 +264,9 @@ animations = [{
 radius = 24.0
 height = 62.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_sguum"]
+radius = 31.06445
+
 [node name="Player" type="CharacterBody2D" unique_id=1577636989]
 texture_filter = 1
 collision_layer = 3
@@ -311,3 +314,10 @@ script = ExtResource("5_olb2f")
 
 [node name="JumpRay" type="RayCast2D" parent="." unique_id=1929357887]
 target_position = Vector2(0, 125)
+
+[node name="FlashArea2D" type="Area2D" parent="." unique_id=1101895670]
+
+[node name="FlashCollisionShape2D" type="CollisionShape2D" parent="FlashArea2D" unique_id=2095898146]
+position = Vector2(120, 0)
+scale = Vector2(3, 3)
+shape = SubResource("CircleShape2D_sguum")

@@ -42,15 +42,11 @@ func _physics_process(delta: float) -> void:
 	velocity.y += GRAVITY
 	move_and_slide()
 
-## ToDo: Remove and replace with flash trigger
-func _input(event: InputEvent) -> void:
-	if Input.is_key_pressed(KEY_F) and is_aggressive:
-		_wait_bounce_pad_mode()
-
-func _wait_bounce_pad_mode() -> void:
-	_swap_aggressive_state()
-	await get_tree().create_timer(BOUNCE_TIMER).timeout
-	_swap_aggressive_state()
+func _flashbang() -> void:
+	if is_aggressive:
+		_swap_aggressive_state()
+		await get_tree().create_timer(BOUNCE_TIMER).timeout
+		_swap_aggressive_state()
 
 func _swap_aggressive_state():
 	is_aggressive = !is_aggressive
@@ -62,7 +58,6 @@ func _wait_dir_changed(new_dir: int) -> void:
 	#await get_tree().create_timer(0.5).timeout
 	dir = new_dir
 
-# ToDo: change to a different reset?
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player" and is_aggressive:
 		body._bounce_away_from_enemy(self)

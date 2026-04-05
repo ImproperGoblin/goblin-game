@@ -88,6 +88,7 @@ func _physics_process(delta: float) -> void:
 		var direction := Input.get_axis("move_left", "move_right")
 		if direction:
 			$AnimatedSprite2D.flip_h = direction == -1
+			$FlashArea2D/FlashCollisionShape2D.position.x = 120 * direction
 			_set_animation(ANIMATION.RUNNING)
 			velocity.x = move_toward(velocity.x, direction * MAX_SPEED * jump_boost, ACCELERATION * delta * jump_boost)
 		else:
@@ -110,6 +111,13 @@ func _process_spike_reset() -> void:
 			_reset_to_safe_pos()
 			_reduce_hp(1)
 			break
+
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("use"):	
+		var children = $FlashArea2D.get_overlapping_bodies()
+		for child in children:
+			if child.has_method("_flashbang"):
+				child._flashbang()
 
 func _set_jump_boost(multiplier: float):
 	jump_boost = multiplier;
