@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://dkgea2fsmaod" path="res://assets/images/lush-cave-enemies/venus-fly-trap-platform.png" id="1_q0l02"]
 [ext_resource type="Script" uid="uid://bestt7xdo6xnl" path="res://scripts/enemies/venus_fly_trap.gd" id="1_q8i6q"]
 [ext_resource type="Texture2D" uid="uid://bsa6bobyrgem1" path="res://assets/images/lush-cave-enemies/venus-fly-trap-animation.png" id="2_30bbq"]
-[ext_resource type="Texture2D" uid="uid://dcyw6m2f0k8w1" path="res://assets/images/particles/flytrap-particles.png" id="4_6pc0l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6pc0l"]
 atlas = ExtResource("2_30bbq")
@@ -51,9 +50,6 @@ animations = [{
 }, {
 "duration": 0.8,
 "texture": SubResource("AtlasTexture_nmg8x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yekv4")
 }],
 "loop": false,
 "name": &"snap_shut",
@@ -91,8 +87,8 @@ b = Vector2(85, 0)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_prcts"]
 particles_animation = true
-particles_anim_h_frames = 3
-particles_anim_v_frames = 1
+particles_anim_h_frames = 10
+particles_anim_v_frames = 10
 particles_anim_loop = false
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oa4tp"]
@@ -114,6 +110,11 @@ radial_accel_min = -0.050002236
 radial_accel_max = -0.050002236
 tangential_accel_min = -34.050003
 tangential_accel_max = 57.149998
+scale_min = 0.0
+scale_max = 77.92
+color = Color(0.49803922, 0.72156864, 0, 0.79607844)
+hue_variation_min = -0.22000001
+hue_variation_max = 0.30999997
 anim_offset_max = 1.0
 
 [node name="VenusFlyTrap" type="Node2D" unique_id=1696436320]
@@ -123,7 +124,7 @@ script = ExtResource("1_q8i6q")
 texture_filter = 1
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_u7c8i")
-animation = &"unfurl"
+animation = &"snap_shut"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=785347660]
 collision_layer = 3
@@ -143,8 +144,7 @@ one_way_collision = true
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_prcts")
 position = Vector2(0, 13)
-amount = 10
-texture = ExtResource("4_6pc0l")
+amount = 20
 process_material = SubResource("ParticleProcessMaterial_oa4tp")
 
 [connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
