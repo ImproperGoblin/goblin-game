@@ -1,29 +1,93 @@
-[gd_scene format=3 uid="uid://dacl0o8gq7204"]
+[gd_scene format=3 uid="uid://cwba0i7kfioph"]
 
 [ext_resource type="Texture2D" uid="uid://dylpdvexjp5m" path="res://assets/images/lush-cave-enemies/dragonfly-enemy.png" id="1_wxmcl"]
+[ext_resource type="Texture2D" uid="uid://cvq7eff0jryw5" path="res://assets/images/lush-cave-enemies/dragonfly-enemy-flying-animation.png" id="2_1kplc"]
+[ext_resource type="Texture2D" uid="uid://bhb3dru7bk6ju" path="res://assets/images/lush-cave-enemies/dragonfly-enemy-stunned-animation.png" id="3_4oari"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wxmcl"]
-size = Vector2(80, 54)
+[sub_resource type="AtlasTexture" id="AtlasTexture_4oari"]
+atlas = ExtResource("2_1kplc")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_me33v"]
+atlas = ExtResource("2_1kplc")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85r32"]
+atlas = ExtResource("2_1kplc")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_du58j"]
+atlas = ExtResource("2_1kplc")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_74gyb"]
+atlas = ExtResource("3_4oari")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8qxw"]
+atlas = ExtResource("3_4oari")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugs4r"]
+atlas = ExtResource("3_4oari")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hl4te"]
+atlas = ExtResource("3_4oari")
+region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wxmcl"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_wxmcl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4oari")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_me33v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85r32")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_du58j")
 }],
 "loop": true,
 "name": &"default",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_74gyb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d8qxw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ugs4r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hl4te")
+}],
+"loop": true,
+"name": &"stunned",
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wxmcl"]
+size = Vector2(80, 31)
+
 [node name="Dragonfly" type="AnimatableBody2D" unique_id=184690133]
 position = Vector2(0, 2.459015)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1321210846]
-position = Vector2(0, -3)
-shape = SubResource("RectangleShape2D_wxmcl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=717563840]
 texture_filter = 1
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_wxmcl")
+frame_progress = 0.96173304
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1321210846]
+position = Vector2(0, 21.040985)
+shape = SubResource("RectangleShape2D_wxmcl")
