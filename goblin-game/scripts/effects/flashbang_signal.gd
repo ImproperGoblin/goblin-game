@@ -1,6 +1,6 @@
 extends Node2D
 
-signal flashbang;
+signal flashbang
 
 func _flashbang() -> void:
 	flashbang.emit()

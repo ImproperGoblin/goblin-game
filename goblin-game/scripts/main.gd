@@ -32,6 +32,8 @@ func _load_level(level_number:int, exit_name: String = "") -> void:
 	await _fade(0.0)
 	
 func _setup_level(level_root: Node, exit_name: String = "") -> void:
+	var player = level_root.get_node("Player")
+	player.player_death.connect(_on_player_death)
 	
 	# Connect EXIT
 	var exit = level_root.get_node_or_null("Exit")
@@ -41,7 +43,6 @@ func _setup_level(level_root: Node, exit_name: String = "") -> void:
 	if exit_name != "":
 		var tunnel_exit = level_root.get_node_or_null("TunnelExits/" + exit_name)
 		if tunnel_exit:
-			var player = level_root.get_node("Player")
 			player.position = tunnel_exit.global_position
 			
 	var tunnel_entrances = level_root.get_node_or_null("TunnelEntrances")
@@ -73,6 +74,10 @@ func _on_tunnel_body_entered(body: Node2D, entrance: Node2D) -> void:
 		body.can_move = false
 		await _fade(1.0)
 		call_deferred("_load_level", (level), exit_name)
+
+func _on_player_death() -> void:
+	await _fade(1.0)
+
 # -----------------
 # VISUALS
 # -----------------

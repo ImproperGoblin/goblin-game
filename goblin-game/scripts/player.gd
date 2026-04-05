@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal player_death
+
 const MAX_SPEED: float = 400.0
 const ACCELERATION: float = 1200.0
 const FRICTION: float = 1400.0
@@ -44,6 +46,7 @@ const ANIMATION = {
 	"IDLE": "idle",
 	"JUMP": "jump",
 	"RUNNING": "running",
+	"DEATH": "death",
 	"STATIC_FULL": "static_full",
 	"STATIC_HALF": "static_half",
 	"STATIC_EMPTY": "static_empty",
@@ -89,7 +92,7 @@ func _physics_process(delta: float) -> void:
 
 		var direction := Input.get_axis("move_left", "move_right")
 		if direction:
-			$AnimatedSprite2D.flip_h = direction == -1
+			player_sprite.flip_h = direction == -1
 			$FlashArea2D/FlashCollisionShape2D.position.x = 120 * direction
 			_set_animation(ANIMATION.RUNNING)
 			velocity.x = move_toward(velocity.x, direction * MAX_SPEED * jump_boost, ACCELERATION * delta * jump_boost)
@@ -130,10 +133,10 @@ func _set_animation(animation: String) -> void:
 	if !is_on_floor():
 		animation = ANIMATION.JUMP
 		
-	if $AnimatedSprite2D.animation != animation:
-		$AnimatedSprite2D.stop()
-		$AnimatedSprite2D.animation = animation
-		$AnimatedSprite2D.play()
+	if player_sprite.animation != animation:
+		player_sprite.stop()
+		player_sprite.animation = animation
+		player_sprite.play()
 
 func _update_hearts() -> void:
 	heart_1_state = _set_heart($"../../HUD/HeartContainer1", heart_1_state, clampi(GameState.player_hp, 0, 2))
@@ -216,5 +219,16 @@ func _hitstop(duration: float = HITSTOP_DURATION, scale: float = HITSTOP_SCALE) 
 		hitstop_active = false
 
 func _die() -> void:
+	await _play_death_animation()
 	if death_menu != null:
 		death_menu._activate()
+
+func _play_death_animation() -> void:
+	can_move = false
+	player_sprite.stop()
+	await get_tree().create_timer(1).timeout
+	player_sprite.animation = ANIMATION.DEATH
+	velocity.y *= 5
+	player_sprite.play()
+	player_death.emit()
+	await player_sprite.animation_finished
