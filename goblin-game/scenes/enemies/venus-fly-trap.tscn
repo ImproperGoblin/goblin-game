@@ -51,9 +51,6 @@ animations = [{
 }, {
 "duration": 0.8,
 "texture": SubResource("AtlasTexture_nmg8x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yekv4")
 }],
 "loop": false,
 "name": &"snap_shut",
@@ -123,7 +120,7 @@ script = ExtResource("1_q8i6q")
 texture_filter = 1
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_u7c8i")
-animation = &"unfurl"
+animation = &"snap_shut"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=785347660]
 collision_layer = 3
