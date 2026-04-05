@@ -38,7 +38,6 @@ func _snap():
 	snap_timer = 0.0
 	
 	$GPUParticles2D.emitting = false
-	
 	$AnimatedSprite2D.animation = ANIMATION.SNAP
 	$AnimatedSprite2D.play()
 
@@ -65,6 +64,8 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 				player_node._bounce_away_from_enemy(self)
 				player_node._reduce_hp(1)
 				player_node = null
+				
+			$StaticBody2D/CollisionShape2D.disabled = true
 			
 			is_snap_animating = false
 			is_unfurling = true
@@ -75,6 +76,8 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		'unfurl':
 			is_snap_animating = false
 			is_unfurling = false
+			
+			$StaticBody2D/CollisionShape2D.disabled = false
 			
 			if player_node:
 				snap_timer = 0
