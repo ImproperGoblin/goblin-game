@@ -7,13 +7,6 @@
 [ext_resource type="Script" uid="uid://cokok15vf8wgq" path="res://scripts/dialogue_trigger.gd" id="5_274v4"]
 [ext_resource type="PackedScene" uid="uid://blc1uccg40sae" path="res://scenes/players/mushroom_dude.tscn" id="6_g0y6d"]
 [ext_resource type="PackedScene" uid="uid://bqwcwfcclnbau" path="res://scenes/enemies/cage.tscn" id="7_7f7ho"]
-[ext_resource type="PackedScene" uid="uid://cebpg7kgn63h6" path="res://scenes/players/key.tscn" id="8_kji3d"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xk5ng"]
-size = Vector2(278, 87)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rllwt"]
-size = Vector2(116, 208)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ppse0"]
 size = Vector2(144, 143)
@@ -138,9 +131,6 @@ visible = false
 position = Vector2(720.75, 356)
 shape = SubResource("RectangleShape2D_px0sh")
 disabled = true
-
-[node name="Key" parent="." unique_id=1414805340 instance=ExtResource("8_kji3d")]
-position = Vector2(1134, 178)
 
 [connection signal="body_entered" from="DialogueBox/DialogueTrigger" to="DialogueBox/DialogueTrigger" method="_on_body_entered"]
 [connection signal="body_entered" from="DialogueBox2/DialogueTrigger" to="DialogueBox2/DialogueTrigger" method="_on_body_entered"]
