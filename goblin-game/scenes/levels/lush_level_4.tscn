@@ -3,12 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://dqdjoyxolirg7" path="res://scenes/tilemaps/LushTerrainTileMap.tscn" id="1_d5c71"]
 [ext_resource type="PackedScene" uid="uid://cesmyhqw2iryp" path="res://scenes/tilemaps/LushHazardTileMap.tscn" id="2_8la3l"]
 [ext_resource type="PackedScene" uid="uid://bhbcgcsgdsf0y" path="res://scenes/players/player.tscn" id="3_35i4i"]
+[ext_resource type="PackedScene" uid="uid://cxmflu65e4fmr" path="res://scenes/players/key.tscn" id="3_spdsg"]
 [ext_resource type="PackedScene" uid="uid://bcg8eynd2b5jp" path="res://scenes/enemies/venus-fly-trap.tscn" id="4_spdsg"]
 [ext_resource type="PackedScene" uid="uid://cwba0i7kfioph" path="res://scenes/enemies/dragonfly.tscn" id="5_8la3l"]
 [ext_resource type="PackedScene" uid="uid://dej8u3upuscm5" path="res://scenes/enemies/mushroom.tscn" id="6_35i4i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sra0u"]
-size = Vector2(199, 159)
+size = Vector2(106, 300)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_35i4i"]
 size = Vector2(556, 64)
@@ -23,6 +24,9 @@ tile_map_data = PackedByteArray("AAAAAP//AAACAAAAAAAAAAAAAAABAAAAAAAAAAEAAAABAAA
 
 [node name="LushHazardTileMap" parent="." unique_id=584079314 instance=ExtResource("2_8la3l")]
 tile_map_data = PackedByteArray("AAAPAAsAAAAHAAAAAAAOAAsAAAAHAAAAAAANAAsAAAAHAAAAAAAMAAsAAAAHAAAAAAALAAsAAAAHAAAAAAABAAsAAAAHAAAAAAACAAsAAAAHAAAAAAADAAsAAAAHAAAAAAA=")
+
+[node name="Key" parent="." unique_id=1725951325 instance=ExtResource("3_spdsg")]
+position = Vector2(422, 221)
 
 [node name="Enemies" type="Node" parent="." unique_id=1904450290]
 
@@ -58,7 +62,7 @@ position = Vector2(200, 214)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit" unique_id=308829517]
-position = Vector2(11.5, 7.5)
+position = Vector2(17, -43)
 shape = SubResource("RectangleShape2D_sra0u")
 
 [node name="TunnelEntrances" type="Node2D" parent="." unique_id=1754667353]
