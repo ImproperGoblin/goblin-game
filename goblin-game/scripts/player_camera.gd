@@ -38,6 +38,4 @@ func set_camera_limits() -> void:
 	limit_right = (camera_limit.position.x + camera_limit.size.x)
 	limit_bottom = (camera_limit.position.y + camera_limit.size.y)
 	
-	print(camera_limit.position.x,camera_limit.size.x)
-	print(camera_limit.position.y,camera_limit.size.y)
 	pass
