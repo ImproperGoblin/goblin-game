@@ -7,13 +7,22 @@ const JUMP_VELOCITY: float = -800.0
 const COYOTE_TIME_LENGTH: float = 0.1
 const JUMP_BUFFER_MIN: float = 0.2
 
-const ENEMY_BOUNCE_FORCE_X: float = 800.0
-const ENEMY_BOUNCE_FORCE_Y: float = -600.0
+const IFRAMES: float = 1.0
+const BLINK_COUNT: int = 6
+const BLINK_INTERVAL: float = 0.06
+const BLINK_DIM_ALPHA: float = 0.4
+
+const HITSTOP_DURATION: float = 0.08
+const HITSTOP_SCALE: float = 0.02
+
+const ENEMY_BOUNCE_FORCE_X: float = 600.0
+const ENEMY_BOUNCE_FORCE_Y: float = -400.0
 
 const MAX_HP: int = 6
 
 @onready var hazard_tilemap: TileMapLayer = $"../LushHazardTileMap"
 @onready var camera: Camera2D = $Camera2D
+@onready var player_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 @onready var last_safe_coords: Vector2 = global_position
 @onready var room_start_coordinates: Vector2 = global_position
@@ -24,7 +33,9 @@ var jump_buffer_timer: float = 0.0
 var buffered_jump: bool = false
 var jump_boost: float = 1.0
 
-var current_hp = MAX_HP
+var current_hp: int = 6
+var is_iframes: bool = false
+var hitstop_active: bool = false
 
 const ANIMATION = {
 	"IDLE": "idle",
@@ -127,9 +138,7 @@ func _update_hearts() -> void:
 
 func _update_heart(heart: AnimatedSprite2D, hp: int, threshold: int) -> void:
 	var heart_hp := clampi(hp - threshold, 0, 2)
-	
-	print(heart, ' | ', heart_hp)
-	
+		
 	match heart_hp:
 		2:
 			if heart.animation != ANIMATION.STATIC_FULL:
@@ -153,17 +162,50 @@ func _bounce_away_from_enemy(enemy: Node2D) -> void:
 	velocity.x = dir.x * ENEMY_BOUNCE_FORCE_X
 	velocity.y = ENEMY_BOUNCE_FORCE_Y
 	
-func _reduce_hp(reduce_amount: int) -> int:
+func _reduce_hp(reduce_amount: int) -> void:
+	if is_iframes or current_hp <= 0:
+		return
+	
+	_hitstop()
 	current_hp = max(current_hp - reduce_amount, 0)
-	
-	camera.apply_shake(8.0)
-	
 	_update_hearts()
 	
 	if current_hp == 0:
+		camera.apply_shake(12.0)
 		_die()
+		return
+	else:
+		camera.apply_shake(8.0)
+
+	_start_iframes()
+		
+func _start_iframes() -> void:
+	is_iframes = true
+	await _blink_sprite()
 	
-	return current_hp
+	player_sprite.modulate.a = BLINK_DIM_ALPHA
 	
+	await get_tree().create_timer(IFRAMES).timeout
+	
+	is_iframes = false
+	player_sprite.modulate.a = 1.0
+
+func _blink_sprite() -> void:
+	for i in BLINK_COUNT:
+		player_sprite.modulate.a = BLINK_DIM_ALPHA
+		await get_tree().create_timer(BLINK_INTERVAL).timeout
+		
+		player_sprite.modulate.a = 1.0
+		await get_tree().create_timer(BLINK_INTERVAL).timeout
+		
+func _hitstop(duration: float = HITSTOP_DURATION, scale: float = HITSTOP_SCALE) -> void:
+	if not hitstop_active:
+		hitstop_active = true
+		Engine.time_scale = scale
+		await get_tree().create_timer(duration, true, false, true).timeout
+		Engine.time_scale = 1.0
+		hitstop_active = false
+
 func _die() -> void:
-	get_tree().reload_current_scene()
+	#TODO you died screen
+	pass
