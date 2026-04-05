@@ -17,7 +17,7 @@ func _ready() -> void:
 # LEVEL MANAGEMENT
 # -----------------
 
-func _load_level(level_number:int) -> void:
+func _load_level(level_number:int, exit_name: String = "") -> void:
 	
 	if current_level_root:
 		current_level_root.queue_free()
@@ -27,16 +27,29 @@ func _load_level(level_number:int) -> void:
 	current_level_root = load(level_path).instantiate()
 	add_child(current_level_root)
 	current_level_root.name = "LevelRoot"
-	_setup_level(current_level_root)
+	_setup_level(current_level_root, exit_name)
 	
 	await _fade(0.0)
 	
-func _setup_level(level_root: Node) -> void:
+func _setup_level(level_root: Node, exit_name: String = "") -> void:
 	
 	# Connect EXIT
 	var exit = level_root.get_node_or_null("Exit")
 	if exit:
 		exit.body_entered.connect(_on_exit_body_entered)
+	
+	if exit_name != "":
+		var tunnel_exit = level_root.get_node_or_null("TunnelExits/" + exit_name)
+		if tunnel_exit:
+			var player = level_root.get_node("Player")
+			player.position = tunnel_exit.global_position
+			
+	var tunnel_entrances = level_root.get_node_or_null("TunnelEntrances")
+	if !tunnel_entrances or tunnel_entrances.get_child_count() == 0:
+		return
+	
+	for entrance in tunnel_entrances.get_children():
+		entrance.body_entered.connect(_on_tunnel_body_entered.bind(entrance))
 
 # -----------------
 # SIGNAL HANDLERS
@@ -47,7 +60,19 @@ func _on_exit_body_entered(body: Node2D) -> void:
 		body.can_move = false
 		await _fade(1.0)
 		call_deferred("_load_level",(level))
+
+func _on_tunnel_body_entered(body: Node2D, entrance: Node2D) -> void:
+	if body.name == "Player":
+		var level_id = entrance.get_meta("level_id")
+		var exit_name = entrance.get_meta("exit_name")
 		
+		if !level_id or !exit_name:
+			return
+			
+		level = level_id
+		body.can_move = false
+		await _fade(1.0)
+		call_deferred("_load_level", (level), exit_name)
 # -----------------
 # VISUALS
 # -----------------

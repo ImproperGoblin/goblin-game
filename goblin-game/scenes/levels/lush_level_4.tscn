@@ -8,7 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://dej8u3upuscm5" path="res://scenes/enemies/mushroom.tscn" id="6_35i4i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sra0u"]
-size = Vector2(69, 159)
+size = Vector2(199, 159)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_35i4i"]
+size = Vector2(556, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_spdsg"]
+size = Vector2(480, 64)
 
 [node name="LevelRoot" type="Node2D" unique_id=1581097223]
 
@@ -54,3 +60,35 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit" unique_id=308829517]
 position = Vector2(11.5, 7.5)
 shape = SubResource("RectangleShape2D_sra0u")
+
+[node name="TunnelEntrances" type="Node2D" parent="." unique_id=1754667353]
+
+[node name="L3CeilingEntrance" type="Area2D" parent="TunnelEntrances" unique_id=871876274]
+position = Vector2(602, 954)
+metadata/level_id = 3
+metadata/exit_name = "L3Ceiling"
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TunnelEntrances/L3CeilingEntrance" unique_id=76598734]
+shape = SubResource("RectangleShape2D_35i4i")
+debug_color = Color(0.8997517, 0.24133834, 0.5110996, 0.41960785)
+
+[node name="L3Primary" type="Area2D" parent="TunnelEntrances" unique_id=631688217]
+position = Vector2(2132, 993)
+metadata/level_id = 3
+metadata/exit_name = "L3Primary"
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TunnelEntrances/L3Primary" unique_id=1263514293]
+shape = SubResource("RectangleShape2D_35i4i")
+debug_color = Color(0.8997517, 0.24133834, 0.5110996, 0.41960785)
+
+[node name="TunnelExits" type="Node2D" parent="." unique_id=1724082280]
+position = Vector2(1710, 429)
+metadata/_edit_group_ = true
+
+[node name="test" type="Area2D" parent="TunnelExits" unique_id=1102468624]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TunnelExits/test" unique_id=194699272]
+shape = SubResource("RectangleShape2D_spdsg")
+debug_color = Color(0.91370267, 0.21486238, 0.5053108, 0.41960785)

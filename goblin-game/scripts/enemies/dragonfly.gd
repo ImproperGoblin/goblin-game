@@ -16,6 +16,7 @@ var speed = 100
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	sprite.animation = ANIMATION.FLYING
+	sprite.play()
 	
 func _process(delta: float) -> void:
 	if(is_stunned):

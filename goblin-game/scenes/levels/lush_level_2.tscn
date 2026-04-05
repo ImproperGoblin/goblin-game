@@ -5,13 +5,16 @@
 [ext_resource type="PackedScene" uid="uid://bhbcgcsgdsf0y" path="res://scenes/players/player.tscn" id="2_vms3p"]
 [ext_resource type="PackedScene" uid="uid://bcg8eynd2b5jp" path="res://scenes/enemies/venus-fly-trap.tscn" id="3_82alk"]
 [ext_resource type="FontFile" uid="uid://0yv2m2koturd" path="res://assets/font/alagard.ttf" id="5_8kiam"]
-[ext_resource type="Script" uid="uid://cokok15vf8wgq" path="res://scripts/dialogue_trigger.gd" id="6_ph3lr"]
+[ext_resource type="Script" path="res://scripts/dialogue_trigger.gd" id="6_ph3lr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sra0u"]
 size = Vector2(69, 159)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q883a"]
 size = Vector2(160, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8kiam"]
+size = Vector2(82, 64)
 
 [node name="LevelRoot" type="Node2D" unique_id=1581097223]
 
@@ -73,5 +76,20 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueBox/DialogueTrigger" unique_id=1467238127]
 position = Vector2(25, -56)
 shape = SubResource("RectangleShape2D_q883a")
+
+[node name="TunnelEntrances" type="Node2D" parent="." unique_id=947257610]
+position = Vector2(200, 744)
+metadata/_edit_group_ = true
+
+[node name="test" type="Area2D" parent="TunnelEntrances" unique_id=1711460830]
+position = Vector2(0, 13)
+metadata/level_id = 4
+metadata/_edit_group_ = true
+metadata/exit_name = "test"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TunnelEntrances/test" unique_id=510517519]
+position = Vector2(-76, 0)
+shape = SubResource("RectangleShape2D_8kiam")
+debug_color = Color(0.9599317, 5.7756904e-07, 0.5215726, 0.41960785)
 
 [connection signal="body_entered" from="DialogueBox/DialogueTrigger" to="DialogueBox/DialogueTrigger" method="_on_body_entered"]
