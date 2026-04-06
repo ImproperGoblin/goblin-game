@@ -36,7 +36,10 @@ position = Vector2(411, 226)
 [node name="VenusFlyTraps" type="Node" parent="Enemies" unique_id=1756402305]
 
 [node name="VenusFlyTrap" parent="Enemies/VenusFlyTraps" unique_id=1696436320 instance=ExtResource("4_spdsg")]
-position = Vector2(2112, 621)
+position = Vector2(2149, 671)
+
+[node name="VenusFlyTrap3" parent="Enemies/VenusFlyTraps" unique_id=1792855842 instance=ExtResource("4_spdsg")]
+position = Vector2(2016, 555)
 
 [node name="VenusFlyTrap2" parent="Enemies/VenusFlyTraps" unique_id=811473559 instance=ExtResource("4_spdsg")]
 position = Vector2(1237, 457)

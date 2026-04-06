@@ -1,25 +1,28 @@
-[gd_scene format=3 uid="uid://dri82mvtuu0rd"]
+[gd_scene format=3 uid="uid://d3yq2uoauoufk"]
 
+[ext_resource type="Script" uid="uid://cu7a2c4w03gvq" path="res://scripts/audio_manager.gd" id="1_5qtp6"]
 [ext_resource type="AudioStream" uid="uid://y63f3ljufb31" path="res://assets/audio/effects/death.wav" id="2_dynhf"]
 [ext_resource type="AudioStream" uid="uid://c1ya787b5lr0" path="res://assets/audio/effects/hit.wav" id="3_mvwxg"]
 [ext_resource type="AudioStream" uid="uid://egh24s6v5k3p" path="res://assets/audio/effects/pickup.wav" id="4_23ert"]
 [ext_resource type="AudioStream" uid="uid://bwmjpohif75r0" path="res://assets/audio/effects/victory.wav" id="5_n1uha"]
 
-[node name="AudioManager" type="Node2D" unique_id=1861210261]
+[node name="AudioManager" type="Node" unique_id=194172753]
+script = ExtResource("1_5qtp6")
 
-[node name="DeathSoundPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1646160051]
+[node name="SFX" type="Node" parent="." unique_id=1620787048]
+
+[node name="DeathSFX" type="AudioStreamPlayer" parent="SFX" unique_id=600115482]
 stream = ExtResource("2_dynhf")
-panning_strength = 0.0
+bus = &"SFX"
 
-[node name="HitSoundPlayer" type="AudioStreamPlayer2D" parent="." unique_id=621872546]
+[node name="HitSFX" type="AudioStreamPlayer" parent="SFX" unique_id=1016655740]
 stream = ExtResource("3_mvwxg")
-volume_db = -2.0
-panning_strength = 0.0
+bus = &"SFX"
 
-[node name="PickupSoundPlayer" type="AudioStreamPlayer2D" parent="." unique_id=344529543]
+[node name="PickupSFX" type="AudioStreamPlayer" parent="SFX" unique_id=314012893]
 stream = ExtResource("4_23ert")
-panning_strength = 0.0
+bus = &"SFX"
 
-[node name="VictorySoundPlayer" type="AudioStreamPlayer2D" parent="." unique_id=623256702]
+[node name="VictorySFX" type="AudioStreamPlayer" parent="SFX" unique_id=1862272958]
 stream = ExtResource("5_n1uha")
-panning_strength = 0.0
+bus = &"SFX"

@@ -1,7 +1,5 @@
 extends Node2D
 
-@onready var fade: ColorRect = $HUD/Fade
-
 var level: int = 1
 var current_level_root: Node = null
 var level_management: Node = null
@@ -11,7 +9,8 @@ var exit: Node = null
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Set up Level
-	fade.modulate.a = 1.0
+	UIManager._show_gameplay_ui()
+	UIManager._set_fade(1.0)
 	current_level_root = get_node("LevelRoot")
 	level_management = get_node("LevelManagement")
 	await _load_level(level)
@@ -32,7 +31,7 @@ func _load_level(level_number:int, exit_name: String = "") -> void:
 	current_level_root.name = "LevelRoot"
 	_setup_level(current_level_root, exit_name)
 	
-	await _fade(0.0)
+	await UIManager._fade(0.0)
 	
 func _setup_level(level_root: Node, exit_name: String = "") -> void:
 	var player = level_root.get_node("Player")
@@ -63,7 +62,7 @@ func _on_exit_body_entered(body: Node2D) -> void:
 		level += 1
 		body.can_move = false
 		level_management.set_meta("current_scene", (exit.get_meta("next_scene")))
-		await _fade(1.0)
+		await UIManager._fade(1.0, 0.8)
 		call_deferred("_load_level",(level))
 
 func _on_tunnel_body_entered(body: Node2D, entrance: Node2D) -> void:
@@ -76,16 +75,8 @@ func _on_tunnel_body_entered(body: Node2D, entrance: Node2D) -> void:
 			
 		level = level_id
 		body.can_move = false
-		await _fade(1.0)
+		await UIManager._fade(1.0, 0.8)
 		call_deferred("_load_level", (level), exit_name)
 
 func _on_player_death() -> void:
-	await _fade(1.0)
-
-# -----------------
-# VISUALS
-# -----------------
-func _fade(to_alpha: float) -> void:
-	var fade_tween := create_tween()
-	fade_tween.tween_property(fade, "modulate:a", to_alpha, 1.2)
-	await fade_tween.finished
+	await UIManager._fade(1.0)

@@ -23,7 +23,6 @@ const ENEMY_BOUNCE_FORCE_Y: float = -400.0
 @onready var hazard_tilemap: TileMapLayer = $"../LushHazardTileMap"
 @onready var camera: Camera2D = $Camera2D
 @onready var player_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var death_menu: Control = $"../../HUD/DeathMenu"
 
 @onready var last_safe_coords: Vector2 = global_position
 @onready var room_start_coordinates: Vector2 = global_position
@@ -45,17 +44,11 @@ const ANIMATION = {
 	"IDLE": "idle",
 	"JUMP": "jump",
 	"RUNNING": "running",
-	"DEATH": "death",
-	"STATIC_FULL": "static_full",
-	"STATIC_HALF": "static_half",
-	"STATIC_EMPTY": "static_empty",
-	"FULL_TO_HALF": "full_to_half",
-	"HALF_TO_EMPTY": "half_to_empty",
-	"FULL_TO_EMPTY": "full_to_empty"
+	"DEATH": "death"
 }
 
 func _ready() -> void:	
-	_update_hearts()
+	UIManager._update_hearts()
 
 func _physics_process(delta: float) -> void:
 	var gravity = get_gravity()
@@ -147,38 +140,6 @@ func _set_animation(animation: String) -> void:
 		player_sprite.animation = animation
 		player_sprite.play()
 
-func _update_hearts() -> void:
-	var hp = GameState._get_player_hp()
-	
-	heart_1_state = _set_heart($"../../HUD/HeartContainer1", heart_1_state, clampi(hp, 0, 2))
-	heart_2_state = _set_heart($"../../HUD/HeartContainer2", heart_2_state, clampi(hp - 2, 0, 2))
-	heart_3_state = _set_heart($"../../HUD/HeartContainer3", heart_3_state, clampi(hp - 4, 0, 2))
-
-func _set_heart(heart: AnimatedSprite2D, old_state: int, new_state: int) -> int:
-	if(!heart):
-		return 1
-		
-	if old_state == new_state:
-		return old_state
-	
-	match new_state:
-		2:
-			heart.play(ANIMATION.STATIC_FULL)
-		1:
-			if old_state == 2:
-				heart.play(ANIMATION.FULL_TO_HALF)
-			else:
-				heart.play(ANIMATION.STATIC_HALF)
-		0:
-			if old_state == 2:
-				heart.play(ANIMATION.FULL_TO_EMPTY)
-			elif old_state == 1:
-				heart.play(ANIMATION.HALF_TO_EMPTY)
-			else:
-				heart.play(ANIMATION.STATIC_EMPTY)
-	
-	return new_state
-
 func _bounce_away_from_enemy(enemy: Node2D) -> void:
 	var dir := (global_position - enemy.global_position).normalized()
 	
@@ -192,7 +153,7 @@ func _reduce_hp(reduce_amount: int) -> void:
 	AudioManager._play_sound_effect('hit')
 	GameState._reduce_player_hp(reduce_amount)
 	_hitstop()
-	_update_hearts()
+	UIManager._update_hearts()
 	
 	if GameState._get_player_hp() == 0:
 		camera.apply_shake(12.0)
@@ -206,9 +167,7 @@ func _reduce_hp(reduce_amount: int) -> void:
 func _start_iframes() -> void:
 	is_iframes = true
 	await _blink_sprite()
-	
 	player_sprite.modulate.a = BLINK_DIM_ALPHA
-	
 	await get_tree().create_timer(IFRAMES).timeout
 	
 	is_iframes = false
@@ -232,10 +191,8 @@ func _hitstop(duration: float = HITSTOP_DURATION, scale: float = HITSTOP_SCALE) 
 
 func _die() -> void:
 	AudioManager._play_sound_effect('death')
-
 	await _play_death_animation()
-	if death_menu != null:
-		death_menu._activate()
+	MenuManager._show_death_menu()
 
 func _play_death_animation() -> void:
 	can_move = false

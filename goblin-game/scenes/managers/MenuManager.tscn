@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dyi0md5op3gqd"]
+
+[ext_resource type="Script" uid="uid://33bw6cukgsiq" path="res://scripts/menu_manager.gd" id="1_7ysvw"]
+[ext_resource type="PackedScene" uid="uid://txxkb6khnlcj" path="res://scenes/levels/pause_menu.tscn" id="3_5wdmt"]
+[ext_resource type="PackedScene" uid="uid://gip3ryf0f6jd" path="res://scenes/levels/death_menu.tscn" id="4_t32hq"]
+
+[node name="MenuManager" type="Node" unique_id=67444722]
+script = ExtResource("1_7ysvw")
+
+[node name="MenuLayer" type="CanvasLayer" parent="." unique_id=400407221]
+layer = 10
+
+[node name="PauseMenu" parent="MenuLayer" unique_id=415201494 instance=ExtResource("3_5wdmt")]
+
+[node name="DeathMenu" parent="MenuLayer" unique_id=43637439 instance=ExtResource("4_t32hq")]

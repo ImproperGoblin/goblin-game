@@ -1,0 +1,138 @@
+[gd_scene format=3 uid="uid://bgcfxy21x2nhf"]
+
+[ext_resource type="Script" uid="uid://dtlldlc4g4kfk" path="res://scripts/ui_manager.gd" id="1_58rvg"]
+[ext_resource type="Texture2D" uid="uid://b8geb0cy12hy4" path="res://assets/images/player/heart.png" id="1_nfexg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhv88"]
+atlas = ExtResource("1_nfexg")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xifll"]
+atlas = ExtResource("1_nfexg")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gk1um"]
+atlas = ExtResource("1_nfexg")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_blmnc"]
+atlas = ExtResource("1_nfexg")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4e0hv"]
+atlas = ExtResource("1_nfexg")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_58rvg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhv88")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xifll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gk1um")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_blmnc")
+}],
+"loop": true,
+"name": &"full_to_empty",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhv88")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xifll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4e0hv")
+}],
+"loop": false,
+"name": &"full_to_half",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4e0hv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gk1um")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_blmnc")
+}],
+"loop": false,
+"name": &"half_to_empty",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_blmnc")
+}],
+"loop": false,
+"name": &"static_empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhv88")
+}],
+"loop": false,
+"name": &"static_full",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4e0hv")
+}],
+"loop": false,
+"name": &"static_half",
+"speed": 5.0
+}]
+
+[node name="UIManager" type="Node" unique_id=941483311]
+script = ExtResource("1_58rvg")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=2118928068]
+
+[node name="Hearts" type="CanvasLayer" parent="HUD" unique_id=1218121488]
+
+[node name="HeartContainer1" type="AnimatedSprite2D" parent="HUD/Hearts" unique_id=95429774]
+texture_filter = 1
+position = Vector2(42, 37)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_58rvg")
+animation = &"full_to_empty"
+autoplay = "static_full"
+
+[node name="HeartContainer2" type="AnimatedSprite2D" parent="HUD/Hearts" unique_id=545024502]
+texture_filter = 1
+position = Vector2(124, 37)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_58rvg")
+animation = &"half_to_empty"
+autoplay = "static_full"
+
+[node name="HeartContainer3" type="AnimatedSprite2D" parent="HUD/Hearts" unique_id=1414678990]
+texture_filter = 1
+position = Vector2(206, 37.000004)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_58rvg")
+animation = &"half_to_empty"
+autoplay = "static_full"
+
+[node name="Overlay" type="CanvasLayer" parent="." unique_id=1045046336]
+
+[node name="Fade" type="ColorRect" parent="Overlay" unique_id=125091956]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
