@@ -20,8 +20,7 @@ const HITSTOP_SCALE: float = 0.02
 const ENEMY_BOUNCE_FORCE_X: float = 600.0
 const ENEMY_BOUNCE_FORCE_Y: float = -400.0
 
-@onready var hazard_tilemap: TileMapLayer = $"../LushHazardTileMap"
-@onready var camera: Camera2D = $Camera2D
+@onready var camera: Camera2D = $"../PlayerCamera"
 @onready var player_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 @onready var last_safe_coords: Vector2 = global_position
@@ -36,9 +35,7 @@ var jump_boost: float = 1.0
 var is_iframes: bool = false
 var hitstop_active: bool = false
 
-var heart_1_state: int = -1
-var heart_2_state: int = -1
-var heart_3_state: int = -1
+var hazard_tilemap: TileMapLayer
 
 const ANIMATION = {
 	"IDLE": "idle",

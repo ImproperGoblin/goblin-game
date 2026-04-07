@@ -7,6 +7,3 @@
 script = ExtResource("2_0wfyh")
 
 [node name="LevelRoot" parent="." unique_id=1680235478 instance=ExtResource("1_o5qli")]
-
-[node name="LevelManagement" type="Node2D" parent="." unique_id=1553198748]
-metadata/current_scene = "res://scenes/levels/lush_level_1.tscn"

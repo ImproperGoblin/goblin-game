@@ -1,46 +1,86 @@
 [gd_scene format=4 uid="uid://b4r2dk6to375o"]
 
+[ext_resource type="Script" uid="uid://eaug0acklxt8" path="res://scripts/room.gd" id="1_fc30d"]
 [ext_resource type="PackedScene" uid="uid://dqdjoyxolirg7" path="res://scenes/tilemaps/LushTerrainTileMap.tscn" id="1_ghhbn"]
-[ext_resource type="PackedScene" uid="uid://bhbcgcsgdsf0y" path="res://scenes/players/player.tscn" id="2_ghhbn"]
 [ext_resource type="PackedScene" uid="uid://cesmyhqw2iryp" path="res://scenes/tilemaps/LushHazardTileMap.tscn" id="2_ppse0"]
+[ext_resource type="PackedScene" uid="uid://max0svfpqfc5" path="res://scenes/misc/exit.tscn" id="3_px0sh"]
 [ext_resource type="FontFile" uid="uid://0yv2m2koturd" path="res://assets/font/alagard.ttf" id="4_ppse0"]
 [ext_resource type="Script" uid="uid://cokok15vf8wgq" path="res://scripts/dialogue_trigger.gd" id="5_v4hek"]
 [ext_resource type="PackedScene" uid="uid://blc1uccg40sae" path="res://scenes/players/mushroom_dude.tscn" id="6_w53lf"]
 [ext_resource type="PackedScene" uid="uid://bqwcwfcclnbau" path="res://scenes/enemies/cage.tscn" id="7_px0sh"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xk5ng"]
-size = Vector2(347, 87)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_px0sh"]
+size = Vector2(1420.5, 703)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fc30d"]
+resource_local_to_scene = true
+size = Vector2(381, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b3uor"]
+resource_local_to_scene = true
+size = Vector2(20, 195)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ppse0"]
 size = Vector2(72, 246)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_px0sh"]
-size = Vector2(1420.5, 703)
-
 [node name="LevelRoot" type="Node2D" unique_id=1680235478]
+script = ExtResource("1_fc30d")
 
-[node name="LushTerrainTileMap" parent="." unique_id=459895185 instance=ExtResource("1_ghhbn")]
-tile_map_data = PackedByteArray("AAAAAAUAAQADAAAAAAAAAAQAAQABAAAAAAAAAAIAAQABAAAAAAAAAAMAAQABAAAAAAARAAUAAQABAAAAAAARAAQAAQABAAAAAAARAAMAAQABAAAAAAARAAIAAQABAAAAAAABAAUAAQAEAAAAAAABAAMAAQALAAAAAAACAAMAAQALAAAAAAADAAMAAQALAAAAAAAEAAMAAQALAAAAAAAFAAMAAQALAAAAAAAGAAMAAQALAAAAAAAHAAMAAQALAAAAAAAIAAMAAQALAAAAAAAJAAMAAQALAAAAAAAKAAMAAQALAAAAAAALAAMAAQALAAAAAAAQAAMAAQALAAAAAAAQAAQAAQALAAAAAAAQAAUAAQALAAAAAAAPAAUAAQALAAAAAAAOAAUAAQALAAAAAAAMAAUAAQALAAAAAAALAAUAAQALAAAAAAAKAAUAAQALAAAAAAAJAAUAAQALAAAAAAAIAAUAAQALAAAAAAAHAAUAAQALAAAAAAAGAAUAAQALAAAAAAAFAAUAAQALAAAAAAAEAAUAAQALAAAAAAADAAUAAQAGAAAAAAACAAUAAQAFAAAAAAAEAAQAAQALAAAAAAAFAAQAAQALAAAAAAAGAAQAAQALAAAAAAAHAAQAAQALAAAAAAAIAAQAAQALAAAAAAAJAAQAAQALAAAAAAAKAAQAAQALAAAAAAALAAQAAQALAAAAAAAMAAQAAQALAAAAAAANAAQAAQAEAAAAAAAOAAQAAQAFAAAAAAAPAAQAAQAGAAAAAAABAAIAAQALAAAAAAACAAIAAQALAAAAAAADAAIAAQALAAAAAAAEAAIAAQALAAAAAAAFAAIAAQALAAAAAAAGAAIAAQALAAAAAAAHAAIAAQALAAAAAAAIAAIAAQALAAAAAAAJAAIAAQALAAAAAAAKAAIAAQALAAAAAAALAAIAAQALAAAAAAAQAAIAAQALAAAAAAANAAUAAQALAAAAAAAAAAAAAQACAAAAAAABAAAAAQAIAAAAAAACAAAAAQAJAAAAAAADAAAAAQAJAAAAAAAEAAAAAQAJAAAAAAAFAAAAAQAJAAAAAAAGAAAAAQAJAAAAAAAHAAAAAQAJAAAAAAAIAAAAAQAJAAAAAAAJAAAAAQAJAAAAAAAKAAAAAQAJAAAAAAALAAAAAQAJAAAAAAAMAAAAAQAJAAAAAAANAAAAAQAJAAAAAAAOAAAAAQAJAAAAAAAPAAAAAQAJAAAAAAAQAAAAAQAKAAAAAAARAAAAAQACAAAAAAAAAAcAAQALAAAAAAABAAcAAQALAAAAAAACAAcAAQALAAAAAAADAAcAAQALAAAAAAAEAAcAAQALAAAAAAAFAAcAAQALAAAAAAAGAAcAAQALAAAAAAAHAAcAAQALAAAAAAAIAAcAAQALAAAAAAAJAAcAAQALAAAAAAAKAAcAAQALAAAAAAALAAcAAQALAAAAAAAMAAcAAQALAAAAAAANAAcAAQALAAAAAAAOAAcAAQALAAAAAAAPAAcAAQALAAAAAAAQAAcAAQALAAAAAAARAAcAAQADAAAAAAAAAAgAAQAEAAAAAAABAAgAAQAFAAAAAAACAAgAAQAFAAAAAAADAAgAAQAFAAAAAAAEAAgAAQAFAAAAAAAFAAgAAQAFAAAAAAAGAAgAAQAFAAAAAAAHAAgAAQAFAAAAAAAIAAgAAQAFAAAAAAAJAAgAAQAGAAAAAAAKAAgAAQALAAAAAAALAAgAAQALAAAAAAAMAAgAAQALAAAAAAAOAAgAAQAEAAAAAAAPAAgAAQAFAAAAAAAQAAgAAQAFAAAAAAARAAgAAQAGAAAAAAARAAYAAQABAAAAAAARAAEAAQABAAAAAAAAAAEAAQABAAAAAAABAAEAAQALAAAAAAACAAEAAQALAAAAAAADAAEAAQALAAAAAAAEAAEAAQALAAAAAAAFAAEAAQALAAAAAAAGAAEAAQALAAAAAAAHAAEAAQALAAAAAAAIAAEAAQALAAAAAAAJAAEAAQALAAAAAAAKAAEAAQALAAAAAAALAAEAAQALAAAAAAAMAAEAAQALAAAAAAANAAEAAQALAAAAAAAOAAEAAQALAAAAAAAPAAEAAQALAAAAAAAQAAEAAQALAAAAAAAQAAYAAQALAAAAAAAPAAYAAQALAAAAAAAOAAYAAQALAAAAAAANAAYAAQALAAAAAAAMAAYAAQALAAAAAAALAAYAAQALAAAAAAAKAAYAAQALAAAAAAAJAAYAAQALAAAAAAAIAAYAAQALAAAAAAAHAAYAAQALAAAAAAAGAAYAAQALAAAAAAAFAAYAAQALAAAAAAAEAAYAAQALAAAAAAADAAYAAQALAAAAAAACAAYAAQALAAAAAAABAAYAAQALAAAAAAAAAAYAAQALAAAAAAABAAQAAQALAAAAAAACAAQAAQALAAAAAAADAAQAAQALAAAAAAAMAAMAAQALAAAAAAANAAMAAQALAAAAAAAOAAMAAQALAAAAAAAPAAMAAQALAAAAAAAMAAIAAQALAAAAAAANAAIAAQALAAAAAAAOAAIAAQALAAAAAAAPAAIAAQALAAAAAAANAAgAAQALAAAAAAA=")
+[node name="CameraLimiter" type="Area2D" parent="." unique_id=1538512882]
 
-[node name="LushHazardTileMap" parent="." unique_id=584079314 instance=ExtResource("2_ppse0")]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraLimiter" unique_id=1794383924]
+position = Vector2(720.75, 356)
+shape = SubResource("RectangleShape2D_px0sh")
+disabled = true
+
+[node name="TileMaps" type="Node" parent="." unique_id=1001849767]
+
+[node name="LushTerrainTileMap" parent="TileMaps" unique_id=459895185 instance=ExtResource("1_ghhbn")]
+tile_map_data = PackedByteArray("AAAAAAUAAQADAAAAAAAAAAQAAQABAAAAAAAAAAIAAQABAAAAAAAAAAMAAQABAAAAAAARAAUAAQABAAAAAAARAAQAAQACAAAAAAARAAMAAQALAAAAAAARAAIAAQALAAAAAAABAAUAAQAEAAAAAAABAAMAAQALAAAAAAACAAMAAQALAAAAAAADAAMAAQALAAAAAAAEAAMAAQALAAAAAAAFAAMAAQALAAAAAAAGAAMAAQALAAAAAAAHAAMAAQALAAAAAAAIAAMAAQALAAAAAAAJAAMAAQALAAAAAAAKAAMAAQALAAAAAAALAAMAAQALAAAAAAAQAAMAAQALAAAAAAAQAAQAAQALAAAAAAAQAAUAAQALAAAAAAAPAAUAAQALAAAAAAAOAAUAAQALAAAAAAAMAAUAAQALAAAAAAALAAUAAQALAAAAAAAKAAUAAQALAAAAAAAJAAUAAQALAAAAAAAIAAUAAQALAAAAAAAHAAUAAQALAAAAAAAGAAUAAQALAAAAAAAFAAUAAQALAAAAAAAEAAUAAQALAAAAAAADAAUAAQAGAAAAAAACAAUAAQAFAAAAAAAEAAQAAQALAAAAAAAFAAQAAQALAAAAAAAGAAQAAQALAAAAAAAHAAQAAQALAAAAAAAIAAQAAQALAAAAAAAJAAQAAQALAAAAAAAKAAQAAQALAAAAAAALAAQAAQALAAAAAAAMAAQAAQALAAAAAAANAAQAAQAEAAAAAAAOAAQAAQAFAAAAAAAPAAQAAQAGAAAAAAABAAIAAQALAAAAAAACAAIAAQALAAAAAAADAAIAAQALAAAAAAAEAAIAAQALAAAAAAAFAAIAAQALAAAAAAAGAAIAAQALAAAAAAAHAAIAAQALAAAAAAAIAAIAAQALAAAAAAAJAAIAAQALAAAAAAAKAAIAAQALAAAAAAALAAIAAQALAAAAAAAQAAIAAQALAAAAAAANAAUAAQALAAAAAAAAAAAAAQACAAAAAAABAAAAAQAIAAAAAAACAAAAAQAJAAAAAAADAAAAAQAJAAAAAAAEAAAAAQAJAAAAAAAFAAAAAQAJAAAAAAAGAAAAAQAJAAAAAAAHAAAAAQAJAAAAAAAIAAAAAQAJAAAAAAAJAAAAAQAJAAAAAAAKAAAAAQAJAAAAAAALAAAAAQAJAAAAAAAMAAAAAQAJAAAAAAANAAAAAQAJAAAAAAAOAAAAAQAJAAAAAAAPAAAAAQAJAAAAAAAQAAAAAQAKAAAAAAARAAAAAQACAAAAAAAAAAcAAQALAAAAAAABAAcAAQALAAAAAAACAAcAAQALAAAAAAADAAcAAQALAAAAAAAEAAcAAQALAAAAAAAFAAcAAQALAAAAAAAGAAcAAQALAAAAAAAHAAcAAQALAAAAAAAIAAcAAQALAAAAAAAJAAcAAQALAAAAAAAKAAcAAQALAAAAAAALAAcAAQALAAAAAAAMAAcAAQALAAAAAAANAAcAAQALAAAAAAAOAAcAAQALAAAAAAAPAAcAAQALAAAAAAAQAAcAAQALAAAAAAARAAcAAQADAAAAAAAAAAgAAQAEAAAAAAABAAgAAQAFAAAAAAACAAgAAQAFAAAAAAADAAgAAQAFAAAAAAAEAAgAAQAFAAAAAAAFAAgAAQAFAAAAAAAGAAgAAQAFAAAAAAAHAAgAAQAFAAAAAAAIAAgAAQAFAAAAAAAJAAgAAQAGAAAAAAAKAAgAAQALAAAAAAALAAgAAQALAAAAAAAMAAgAAQALAAAAAAAOAAgAAQAEAAAAAAAPAAgAAQAFAAAAAAAQAAgAAQAFAAAAAAARAAgAAQAGAAAAAAARAAYAAQABAAAAAAARAAEAAQADAAAAAAAAAAEAAQABAAAAAAABAAEAAQALAAAAAAACAAEAAQALAAAAAAADAAEAAQALAAAAAAAEAAEAAQALAAAAAAAFAAEAAQALAAAAAAAGAAEAAQALAAAAAAAHAAEAAQALAAAAAAAIAAEAAQALAAAAAAAJAAEAAQALAAAAAAAKAAEAAQALAAAAAAALAAEAAQALAAAAAAAMAAEAAQALAAAAAAANAAEAAQALAAAAAAAOAAEAAQALAAAAAAAPAAEAAQALAAAAAAAQAAEAAQALAAAAAAAQAAYAAQALAAAAAAAPAAYAAQALAAAAAAAOAAYAAQALAAAAAAANAAYAAQALAAAAAAAMAAYAAQALAAAAAAALAAYAAQALAAAAAAAKAAYAAQALAAAAAAAJAAYAAQALAAAAAAAIAAYAAQALAAAAAAAHAAYAAQALAAAAAAAGAAYAAQALAAAAAAAFAAYAAQALAAAAAAAEAAYAAQALAAAAAAADAAYAAQALAAAAAAACAAYAAQALAAAAAAABAAYAAQALAAAAAAAAAAYAAQALAAAAAAABAAQAAQALAAAAAAACAAQAAQALAAAAAAADAAQAAQALAAAAAAAMAAMAAQALAAAAAAANAAMAAQALAAAAAAAOAAMAAQALAAAAAAAPAAMAAQALAAAAAAAMAAIAAQALAAAAAAANAAIAAQALAAAAAAAOAAIAAQALAAAAAAAPAAIAAQALAAAAAAANAAgAAQALAAAAAAA=")
+
+[node name="LushHazardTileMap" parent="TileMaps" unique_id=584079314 instance=ExtResource("2_ppse0")]
 tile_map_data = PackedByteArray("AAAIAAEAAQAAAAAAADAJAAEAAQAAAAAAADAKAAEAAQAAAAAAADD//wYAAQAAAAAAAFD//wcAAQAAAAAAAFA=")
 
-[node name="Player" parent="." unique_id=1577636989 instance=ExtResource("2_ghhbn")]
-z_index = 1
-position = Vector2(162, 503)
+[node name="Exits" type="Node" parent="." unique_id=24183984]
 
-[node name="Exit" type="Area2D" parent="." unique_id=2131906182]
-position = Vector2(760, 685)
-metadata/_edit_group_ = true
-metadata/next_scene = "res://scenes/levels/lush_level_2.tscn"
+[node name="ExitA" parent="Exits" unique_id=30043287 instance=ExtResource("3_px0sh")]
+position = Vector2(952, 707)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit" unique_id=1976208651]
-position = Vector2(197.5, 43.5)
-shape = SubResource("RectangleShape2D_xk5ng")
+[node name="Area2D" parent="Exits/ExitA" index="0" unique_id=1313078815]
+target_room_path = "uid://cer8vro5ch76j"
+target_spawn_name = "SpawnA"
 
-[node name="DialogueBox" type="Node" parent="." unique_id=1740896584]
+[node name="CollisionShape2D" parent="Exits/ExitA/Area2D" index="0" unique_id=1306335981]
+position = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_fc30d")
 
-[node name="Label" type="Label" parent="DialogueBox" unique_id=1681473606]
+[node name="ExitB" parent="Exits" unique_id=584629364 instance=ExtResource("3_px0sh")]
+position = Vector2(1430, 250)
+
+[node name="Area2D" parent="Exits/ExitB" index="0" unique_id=1313078815]
+target_room_path = "uid://35chs7yy3alr"
+target_spawn_name = "SpawnB"
+
+[node name="CollisionShape2D" parent="Exits/ExitB/Area2D" index="0" unique_id=1306335981]
+position = Vector2(0, -9.5)
+shape = SubResource("RectangleShape2D_b3uor")
+
+[node name="Spawns" type="Node" parent="." unique_id=937951035]
+
+[node name="SpawnA" type="Marker2D" parent="Spawns" unique_id=645752284]
+position = Vector2(235, 574)
+
+[node name="SpawnB" type="Marker2D" parent="Spawns" unique_id=1067493705]
+position = Vector2(738, 600)
+
+[node name="SpawnC" type="Marker2D" parent="Spawns" unique_id=631605269]
+position = Vector2(1240, 294)
+
+[node name="Dialogues" type="Node" parent="." unique_id=88169018]
+
+[node name="DialogueBox" type="Node" parent="Dialogues" unique_id=1740896584]
+
+[node name="Label" type="Label" parent="Dialogues/DialogueBox" unique_id=1681473606]
 texture_filter = 1
 offset_left = 809.0
 offset_top = 487.0
@@ -60,18 +100,18 @@ autowrap_mode = 2
 clip_text = true
 max_lines_visible = 3
 
-[node name="DialogueTrigger" type="Area2D" parent="DialogueBox" unique_id=1136903274]
+[node name="DialogueTrigger" type="Area2D" parent="Dialogues/DialogueBox" unique_id=1136903274]
 position = Vector2(563, 587)
 script = ExtResource("5_v4hek")
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueBox/DialogueTrigger" unique_id=943822838]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dialogues/DialogueBox/DialogueTrigger" unique_id=943822838]
 position = Vector2(26, -70)
 shape = SubResource("RectangleShape2D_ppse0")
 
-[node name="DialogueBox2" type="Node" parent="." unique_id=1461950343]
+[node name="DialogueBox2" type="Node" parent="Dialogues" unique_id=1461950343]
 
-[node name="Label" type="Label" parent="DialogueBox2" unique_id=913856882]
+[node name="Label" type="Label" parent="Dialogues/DialogueBox2" unique_id=913856882]
 texture_filter = 1
 offset_left = 87.0
 offset_top = 487.0
@@ -87,30 +127,29 @@ autowrap_mode = 2
 clip_text = true
 max_lines_visible = 3
 
-[node name="DialogueTrigger" type="Area2D" parent="DialogueBox2" unique_id=311494982]
+[node name="DialogueTrigger" type="Area2D" parent="Dialogues/DialogueBox2" unique_id=311494982]
 position = Vector2(15, 616)
 script = ExtResource("5_v4hek")
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueBox2/DialogueTrigger" unique_id=778427366]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dialogues/DialogueBox2/DialogueTrigger" unique_id=778427366]
 position = Vector2(26, -70)
 shape = SubResource("RectangleShape2D_ppse0")
 
-[node name="MushroomDude" parent="." unique_id=2085604584 instance=ExtResource("6_w53lf")]
+[node name="NPCs" type="Node" parent="." unique_id=1990979111]
+
+[node name="MushroomDude" parent="NPCs" unique_id=2085604584 instance=ExtResource("6_w53lf")]
 position = Vector2(1193, 582.99994)
 metadata/_edit_group_ = true
 
-[node name="Cage" parent="." unique_id=686755222 instance=ExtResource("7_px0sh")]
+[node name="Objects" type="Node" parent="." unique_id=1848508850]
+
+[node name="Cage" parent="Objects" unique_id=686755222 instance=ExtResource("7_px0sh")]
 position = Vector2(1192, 575)
 metadata/_edit_group_ = true
 
-[node name="CameraLimiter" type="Area2D" parent="." unique_id=1538512882]
-visible = false
+[connection signal="body_entered" from="Dialogues/DialogueBox/DialogueTrigger" to="Dialogues/DialogueBox/DialogueTrigger" method="_on_body_entered"]
+[connection signal="body_entered" from="Dialogues/DialogueBox2/DialogueTrigger" to="Dialogues/DialogueBox2/DialogueTrigger" method="_on_body_entered"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraLimiter" unique_id=1794383924]
-position = Vector2(720.75, 356)
-shape = SubResource("RectangleShape2D_px0sh")
-disabled = true
-
-[connection signal="body_entered" from="DialogueBox/DialogueTrigger" to="DialogueBox/DialogueTrigger" method="_on_body_entered"]
-[connection signal="body_entered" from="DialogueBox2/DialogueTrigger" to="DialogueBox2/DialogueTrigger" method="_on_body_entered"]
+[editable path="Exits/ExitA"]
+[editable path="Exits/ExitB"]

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cbn35auhcn6v"]
+
+[ext_resource type="Script" uid="uid://48yhpjxtxlw2" path="res://scripts/scene_manager.gd" id="1_updk6"]
+[ext_resource type="PackedScene" uid="uid://bhbcgcsgdsf0y" path="res://scenes/players/player.tscn" id="2_y1dv3"]
+[ext_resource type="Script" uid="uid://bwoy88t7vxbqp" path="res://scripts/player_camera.gd" id="3_nxywp"]
+
+[node name="SceneManager" type="Node" unique_id=2075418770]
+script = ExtResource("1_updk6")
+
+[node name="ActiveRoom" type="Node" parent="." unique_id=2088676567]
+
+[node name="Player" parent="." unique_id=1577636989 instance=ExtResource("2_y1dv3")]
+
+[node name="PlayerCamera" type="Camera2D" parent="." unique_id=1635947944 node_paths=PackedStringArray("target")]
+limit_smoothed = true
+script = ExtResource("3_nxywp")
+target = NodePath("../Player")

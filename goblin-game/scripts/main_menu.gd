@@ -4,7 +4,7 @@ func _ready() -> void:
 	UIManager._hide_gameplay_ui()
 
 func _on_button_start_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/levels/main.tscn")
+	get_tree().change_scene_to_file("res://scenes/managers/Game.tscn")
 
 func _on_button_option_pressed() -> void:
 	pass # Replace with function body.

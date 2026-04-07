@@ -1,17 +1,18 @@
 extends Camera2D
 
+@export var target: Node2D 
+
 const SHAKE_FADE: float = 20.0
 const SHAKE_SMOOTHING: float = 0.4
 
 var shake_strength: float = 0.0
-@onready var collision_shape_2d: CollisionShape2D = $"../../CameraLimiter/CollisionShape2D"
 
-
-func _ready() -> void:
-	set_camera_limits()
-	pass # Replace with function body.
+var collision_shape_2d: CollisionShape2D
 
 func _process(delta: float) -> void:
+	if target:
+		global_position = target.global_position
+		
 	if shake_strength > 0:
 		var target_offset := Vector2(
 			randf_range(-shake_strength, shake_strength),
