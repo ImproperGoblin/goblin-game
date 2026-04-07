@@ -24,6 +24,9 @@ size = Vector2(20, 288)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ppse0"]
 size = Vector2(72, 246)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m27nu"]
+size = Vector2(144, 143)
+
 [node name="LevelRoot" type="Node2D" unique_id=1680235478]
 script = ExtResource("1_b3uor")
 
@@ -140,6 +143,42 @@ metadata/_edit_group_ = true
 position = Vector2(26, -70)
 shape = SubResource("RectangleShape2D_ppse0")
 
+[node name="DialogueBox3" type="Node" parent="Dialogues" unique_id=708258978]
+
+[node name="Label" type="Label" parent="Dialogues/DialogueBox3" unique_id=1844345133]
+texture_filter = 1
+offset_left = 770.0
+offset_top = 358.0
+offset_right = 1124.0
+offset_bottom = 651.0
+theme_override_colors/font_color = Color(0.9437328, 0.91340107, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.7888507, 0.0011599511, 0.8853582, 0.81960785)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_ppse0")
+theme_override_font_sizes/font_size = 22
+text = "My Hero!
+Thank you for the help.
+As a thank you, I'll bestow the mushroom jump knowledge on to you ...
+
+There's a path into the cavern above!
+
+WHy don't you put your new jump to the test...
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+clip_text = true
+max_lines_visible = 11
+
+[node name="DialogueTrigger" type="Area2D" parent="Dialogues/DialogueBox3" unique_id=625946206]
+position = Vector2(1203, 592)
+script = ExtResource("5_v4hek")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dialogues/DialogueBox3/DialogueTrigger" unique_id=492718504]
+position = Vector2(-10, -18.5)
+shape = SubResource("RectangleShape2D_m27nu")
+
 [node name="NPCs" type="Node" parent="." unique_id=1990979111]
 
 [node name="MushroomDude" parent="NPCs" unique_id=2085604584 instance=ExtResource("6_w53lf")]
@@ -154,6 +193,7 @@ metadata/_edit_group_ = true
 
 [connection signal="body_entered" from="Dialogues/DialogueBox/DialogueTrigger" to="Dialogues/DialogueBox/DialogueTrigger" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogues/DialogueBox2/DialogueTrigger" to="Dialogues/DialogueBox2/DialogueTrigger" method="_on_body_entered"]
+[connection signal="body_entered" from="Dialogues/DialogueBox3/DialogueTrigger" to="Dialogues/DialogueBox3/DialogueTrigger" method="_on_body_entered"]
 
 [editable path="Exits/ExitA"]
 [editable path="Exits/ExitB"]

@@ -17,7 +17,7 @@ size = Vector2(20, 178)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v5w15"]
 resource_local_to_scene = true
-size = Vector2(247, 22)
+size = Vector2(247, 87)
 
 [node name="LevelRoot" type="Node2D" unique_id=1581097223]
 script = ExtResource("1_q43uw")
@@ -97,7 +97,7 @@ target_room_path = "uid://35chs7yy3alr"
 target_spawn_name = "SpawnA"
 
 [node name="CollisionShape2D" parent="Exits/ExitB/Area2D" index="0" unique_id=1306335981]
-position = Vector2(77.5, 1)
+position = Vector2(77.5, 38.5)
 shape = SubResource("RectangleShape2D_v5w15")
 
 [node name="Spawns" type="Node" parent="." unique_id=2066439058]

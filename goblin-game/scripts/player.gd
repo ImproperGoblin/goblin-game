@@ -110,10 +110,14 @@ func _process_spike_reset() -> void:
 			break
 			
 func _is_on_or_above_node(node_name: String) -> bool:
+	var middle_collider = $JumpRay.get_collider()
+	var left_collider = $JumpRayLeft.get_collider()
+	var right_collider = $JumpRayRight.get_collider()
+	
 	return (
-		$JumpRay.is_colliding() and node_name in $JumpRay.get_collider().get_parent().name
-		or $JumpRayLeft.is_colliding() and node_name in $JumpRayLeft.get_collider().get_parent().name
-		or $JumpRayRight.is_colliding() and node_name in $JumpRayRight.get_collider().get_parent().name
+		$JumpRay.is_colliding() and middle_collider and node_name in middle_collider.get_parent().name
+		or $JumpRayLeft.is_colliding() and left_collider and node_name in left_collider.get_parent().name
+		or $JumpRayRight.is_colliding() and right_collider and node_name in right_collider.get_parent().name
 	)
 
 func _set_jump_boost(multiplier: float):
