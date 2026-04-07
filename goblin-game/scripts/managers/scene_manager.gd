@@ -18,7 +18,7 @@ func _set_room_container(given_room_container: Node) -> void:
 
 func _run_game() -> void:
 	UIManager._show_gameplay_ui()
-	_move_player_to_scene("res://scenes/levels/lush_level_1.tscn", 'SpawnA')
+	_move_player_to_scene("res://scenes/levels/lush_caves/lush_level_1.tscn", 'SpawnA')
 	
 func _move_player_to_scene(target_room_path, target_spawn_name) -> void:
 	UIManager._set_fade(1.0)

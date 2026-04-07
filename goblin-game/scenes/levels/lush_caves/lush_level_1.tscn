@@ -1,17 +1,23 @@
 [gd_scene format=4 uid="uid://b4r2dk6to375o"]
 
-[ext_resource type="Script" uid="uid://eaug0acklxt8" path="res://scripts/room.gd" id="1_b3uor"]
+[ext_resource type="Script" uid="uid://eaug0acklxt8" path="res://scripts/rooms/room.gd" id="1_b3uor"]
 [ext_resource type="PackedScene" uid="uid://eqljyduwurws" path="res://scenes/tilemaps/LushBackgroundTileMap.tscn" id="1_fc30d"]
 [ext_resource type="PackedScene" uid="uid://dqdjoyxolirg7" path="res://scenes/tilemaps/LushTerrainTileMap.tscn" id="1_ghhbn"]
 [ext_resource type="PackedScene" uid="uid://cesmyhqw2iryp" path="res://scenes/tilemaps/LushHazardTileMap.tscn" id="2_ppse0"]
 [ext_resource type="PackedScene" uid="uid://max0svfpqfc5" path="res://scenes/misc/exit.tscn" id="3_px0sh"]
 [ext_resource type="FontFile" uid="uid://0yv2m2koturd" path="res://assets/font/alagard.ttf" id="4_ppse0"]
-[ext_resource type="Script" uid="uid://cokok15vf8wgq" path="res://scripts/dialogue_trigger.gd" id="5_v4hek"]
-[ext_resource type="PackedScene" uid="uid://blc1uccg40sae" path="res://scenes/players/mushroom_dude.tscn" id="6_w53lf"]
-[ext_resource type="PackedScene" uid="uid://bqwcwfcclnbau" path="res://scenes/enemies/cage.tscn" id="7_px0sh"]
+[ext_resource type="Script" uid="uid://cokok15vf8wgq" path="res://scripts/dialogue/dialogue_trigger.gd" id="5_v4hek"]
+[ext_resource type="PackedScene" uid="uid://blc1uccg40sae" path="res://scenes/npcs/mushroom_dude.tscn" id="6_w53lf"]
+[ext_resource type="PackedScene" uid="uid://bqwcwfcclnbau" path="res://scenes/objects/cage.tscn" id="7_px0sh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_px0sh"]
 size = Vector2(1420.5, 703)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ppse0"]
+size = Vector2(72, 246)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m27nu"]
+size = Vector2(144, 143)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b3uor"]
 resource_local_to_scene = true
@@ -20,12 +26,6 @@ size = Vector2(381, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fwuu0"]
 resource_local_to_scene = true
 size = Vector2(20, 288)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ppse0"]
-size = Vector2(72, 246)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m27nu"]
-size = Vector2(144, 143)
 
 [node name="LevelRoot" type="Node2D" unique_id=1680235478]
 script = ExtResource("1_b3uor")
@@ -48,40 +48,17 @@ tile_map_data = PackedByteArray("AAARAAUAAgACAAAAAAARAAQAAgAJAAAAAAABAAUAAgAOAAA
 [node name="LushHazardTileMap" parent="TileMaps" unique_id=1968885620 instance=ExtResource("2_ppse0")]
 tile_map_data = PackedByteArray("AAAIAAEAAgABAAAAADAJAAEAAgACAAAAADAKAAEAAgABAAAAADD//wYAAgABAAAAAFD//wcAAgABAAAAAFA=")
 
-[node name="Exits" type="Node" parent="." unique_id=24183984]
+[node name="NPCs" type="Node" parent="." unique_id=1990979111]
 
-[node name="ExitA" parent="Exits" unique_id=30043287 instance=ExtResource("3_px0sh")]
-position = Vector2(952, 707)
+[node name="MushroomDude" parent="NPCs" unique_id=2085604584 instance=ExtResource("6_w53lf")]
+position = Vector2(1193, 582.99994)
+metadata/_edit_group_ = true
 
-[node name="Area2D" parent="Exits/ExitA" index="0" unique_id=1313078815]
-target_room_path = "uid://cer8vro5ch76j"
-target_spawn_name = "SpawnA"
+[node name="Objects" type="Node" parent="." unique_id=1848508850]
 
-[node name="CollisionShape2D" parent="Exits/ExitA/Area2D" index="0" unique_id=1306335981]
-position = Vector2(4, 4)
-shape = SubResource("RectangleShape2D_b3uor")
-
-[node name="ExitB" parent="Exits" unique_id=584629364 instance=ExtResource("3_px0sh")]
-position = Vector2(1430, 250)
-
-[node name="Area2D" parent="Exits/ExitB" index="0" unique_id=1313078815]
-target_room_path = "uid://35chs7yy3alr"
-target_spawn_name = "SpawnC"
-
-[node name="CollisionShape2D" parent="Exits/ExitB/Area2D" index="0" unique_id=1306335981]
-position = Vector2(0, -56)
-shape = SubResource("RectangleShape2D_fwuu0")
-
-[node name="Spawns" type="Node" parent="." unique_id=937951035]
-
-[node name="SpawnA" type="Marker2D" parent="Spawns" unique_id=645752284]
-position = Vector2(235, 574)
-
-[node name="SpawnB" type="Marker2D" parent="Spawns" unique_id=1067493705]
-position = Vector2(738, 600)
-
-[node name="SpawnC" type="Marker2D" parent="Spawns" unique_id=631605269]
-position = Vector2(1240, 294)
+[node name="Cage" parent="Objects" unique_id=686755222 instance=ExtResource("7_px0sh")]
+position = Vector2(1192, 575)
+metadata/_edit_group_ = true
 
 [node name="Dialogues" type="Node" parent="." unique_id=88169018]
 
@@ -179,17 +156,40 @@ metadata/_edit_group_ = true
 position = Vector2(-10, -18.5)
 shape = SubResource("RectangleShape2D_m27nu")
 
-[node name="NPCs" type="Node" parent="." unique_id=1990979111]
+[node name="Exits" type="Node" parent="." unique_id=24183984]
 
-[node name="MushroomDude" parent="NPCs" unique_id=2085604584 instance=ExtResource("6_w53lf")]
-position = Vector2(1193, 582.99994)
-metadata/_edit_group_ = true
+[node name="ExitA" parent="Exits" unique_id=30043287 instance=ExtResource("3_px0sh")]
+position = Vector2(952, 707)
 
-[node name="Objects" type="Node" parent="." unique_id=1848508850]
+[node name="Area2D" parent="Exits/ExitA" index="0" unique_id=1313078815]
+target_room_path = "uid://cer8vro5ch76j"
+target_spawn_name = "SpawnA"
 
-[node name="Cage" parent="Objects" unique_id=686755222 instance=ExtResource("7_px0sh")]
-position = Vector2(1192, 575)
-metadata/_edit_group_ = true
+[node name="CollisionShape2D" parent="Exits/ExitA/Area2D" index="0" unique_id=1306335981]
+position = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_b3uor")
+
+[node name="ExitB" parent="Exits" unique_id=584629364 instance=ExtResource("3_px0sh")]
+position = Vector2(1430, 250)
+
+[node name="Area2D" parent="Exits/ExitB" index="0" unique_id=1313078815]
+target_room_path = "uid://35chs7yy3alr"
+target_spawn_name = "SpawnC"
+
+[node name="CollisionShape2D" parent="Exits/ExitB/Area2D" index="0" unique_id=1306335981]
+position = Vector2(0, -56)
+shape = SubResource("RectangleShape2D_fwuu0")
+
+[node name="Spawns" type="Node" parent="." unique_id=937951035]
+
+[node name="SpawnA" type="Marker2D" parent="Spawns" unique_id=645752284]
+position = Vector2(235, 574)
+
+[node name="SpawnB" type="Marker2D" parent="Spawns" unique_id=1067493705]
+position = Vector2(738, 600)
+
+[node name="SpawnC" type="Marker2D" parent="Spawns" unique_id=631605269]
+position = Vector2(1240, 294)
 
 [connection signal="body_entered" from="Dialogues/DialogueBox/DialogueTrigger" to="Dialogues/DialogueBox/DialogueTrigger" method="_on_body_entered"]
 [connection signal="body_entered" from="Dialogues/DialogueBox2/DialogueTrigger" to="Dialogues/DialogueBox2/DialogueTrigger" method="_on_body_entered"]

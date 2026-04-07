@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://max0svfpqfc5"]
 
-[ext_resource type="Script" uid="uid://yfbe85emv4jk" path="res://scripts/room_exit.gd" id="1_bn6ww"]
+[ext_resource type="Script" uid="uid://yfbe85emv4jk" path="res://scripts/rooms/room_exit.gd" id="1_bn6ww"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2hdfb"]
 resource_local_to_scene = true

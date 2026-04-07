@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://cx16837irwqq8"]
 
-[ext_resource type="Script" uid="uid://eaug0acklxt8" path="res://scripts/room.gd" id="1_q43uw"]
+[ext_resource type="Script" uid="uid://eaug0acklxt8" path="res://scripts/rooms/room.gd" id="1_q43uw"]
 [ext_resource type="PackedScene" uid="uid://eqljyduwurws" path="res://scenes/tilemaps/LushBackgroundTileMap.tscn" id="1_tpcq7"]
 [ext_resource type="PackedScene" uid="uid://bcg8eynd2b5jp" path="res://scenes/enemies/venus-fly-trap.tscn" id="2_bakwm"]
 [ext_resource type="PackedScene" uid="uid://dqdjoyxolirg7" path="res://scenes/tilemaps/LushTerrainTileMap.tscn" id="2_h0e6c"]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://gip3ryf0f6jd"]
 
-[ext_resource type="Script" uid="uid://i25alab4m54m" path="res://scripts/death_menu.gd" id="1_12w82"]
+[ext_resource type="Script" uid="uid://i25alab4m54m" path="res://scripts/menus/death_menu.gd" id="1_12w82"]
 [ext_resource type="FontFile" uid="uid://0yv2m2koturd" path="res://assets/font/alagard.ttf" id="1_mecbo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mecbo"]

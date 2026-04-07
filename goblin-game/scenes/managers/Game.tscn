@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cbn35auhcn6v"]
 
-[ext_resource type="Script" uid="uid://cxfug204eukdq" path="res://scripts/game.gd" id="1_d55h8"]
+[ext_resource type="Script" uid="uid://cxfug204eukdq" path="res://scripts/managers/game.gd" id="1_d55h8"]
 [ext_resource type="PackedScene" uid="uid://bhbcgcsgdsf0y" path="res://scenes/players/player.tscn" id="2_w1cel"]
-[ext_resource type="Script" uid="uid://bwoy88t7vxbqp" path="res://scripts/player_camera.gd" id="3_ltte8"]
+[ext_resource type="Script" uid="uid://bwoy88t7vxbqp" path="res://scripts/players/player_camera.gd" id="3_ltte8"]
 
 [node name="Game" type="Node" unique_id=2075418770]
 script = ExtResource("1_d55h8")

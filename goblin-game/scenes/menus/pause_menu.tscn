@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://txxkb6khnlcj"]
 
-[ext_resource type="Script" uid="uid://b3vfaccfrsncd" path="res://scripts/pause_menu.gd" id="1_gjocd"]
+[ext_resource type="Script" uid="uid://b3vfaccfrsncd" path="res://scripts/menus/pause_menu.gd" id="1_gjocd"]
 [ext_resource type="FontFile" uid="uid://0yv2m2koturd" path="res://assets/font/alagard.ttf" id="1_unjiy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gjocd"]

@@ -2,12 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://dqdjoyxolirg7" path="res://scenes/tilemaps/LushTerrainTileMap.tscn" id="1_82alk"]
 [ext_resource type="PackedScene" uid="uid://eqljyduwurws" path="res://scenes/tilemaps/LushBackgroundTileMap.tscn" id="1_ph3lr"]
-[ext_resource type="Script" uid="uid://eaug0acklxt8" path="res://scripts/room.gd" id="1_q883a"]
+[ext_resource type="Script" uid="uid://eaug0acklxt8" path="res://scripts/rooms/room.gd" id="1_q883a"]
 [ext_resource type="PackedScene" uid="uid://cesmyhqw2iryp" path="res://scenes/tilemaps/LushHazardTileMap.tscn" id="2_8kiam"]
 [ext_resource type="PackedScene" uid="uid://bcg8eynd2b5jp" path="res://scenes/enemies/venus-fly-trap.tscn" id="3_82alk"]
 [ext_resource type="FontFile" uid="uid://0yv2m2koturd" path="res://assets/font/alagard.ttf" id="5_8kiam"]
 [ext_resource type="PackedScene" uid="uid://max0svfpqfc5" path="res://scenes/misc/exit.tscn" id="6_8kiam"]
-[ext_resource type="Script" uid="uid://cokok15vf8wgq" path="res://scripts/dialogue_trigger.gd" id="6_ph3lr"]
+[ext_resource type="Script" uid="uid://cokok15vf8wgq" path="res://scripts/dialogue/dialogue_trigger.gd" id="6_ph3lr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ph3lr"]
 size = Vector2(2381.5, 1022)
