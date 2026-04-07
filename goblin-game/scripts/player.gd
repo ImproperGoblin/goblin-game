@@ -189,6 +189,7 @@ func _hitstop(duration: float = HITSTOP_DURATION, scale: float = HITSTOP_SCALE) 
 func _die() -> void:
 	AudioManager._play_sound_effect('death')
 	await _play_death_animation()
+	await UIManager._fade(1)
 	MenuManager._show_death_menu()
 
 func _play_death_animation() -> void:
@@ -198,5 +199,4 @@ func _play_death_animation() -> void:
 	player_sprite.animation = ANIMATION.DEATH
 	velocity.y *= 5
 	player_sprite.play()
-	player_death.emit()
 	await player_sprite.animation_finished
