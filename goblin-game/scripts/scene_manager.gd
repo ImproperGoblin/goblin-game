@@ -47,5 +47,5 @@ func _move_player_to_scene(target_room_path, target_spawn_name) -> void:
 	
 	player.set_physics_process(true)
 	
-	await UIManager._fade(0.0)
+	await UIManager._fade(0.0, 0.5)
 	is_transitioning = false
