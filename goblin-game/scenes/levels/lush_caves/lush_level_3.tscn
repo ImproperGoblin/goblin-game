@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dqdjoyxolirg7" path="res://scenes/tilemaps/LushTerrainTileMap.tscn" id="2_h0e6c"]
 [ext_resource type="PackedScene" uid="uid://cesmyhqw2iryp" path="res://scenes/tilemaps/LushHazardTileMap.tscn" id="2_tpcq7"]
 [ext_resource type="PackedScene" uid="uid://dej8u3upuscm5" path="res://scenes/enemies/mushroom.tscn" id="3_bd5bt"]
-[ext_resource type="PackedScene" uid="uid://max0svfpqfc5" path="res://scenes/misc/exit.tscn" id="7_q43uw"]
+[ext_resource type="PackedScene" uid="uid://max0svfpqfc5" path="res://scenes/rooms/exit.tscn" id="7_q43uw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ikfy"]
 size = Vector2(2371.5, 1017)
