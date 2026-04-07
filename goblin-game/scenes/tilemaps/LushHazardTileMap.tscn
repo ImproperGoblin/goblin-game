@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dcdmrg3m0jdng" path="res://assets/images/lush-cave-platforms/tileset.png" id="1_ykbio"]
 [ext_resource type="Texture2D" uid="uid://cykjoee33cl5r" path="res://assets/images/lush-cave-platforms/tileset-v2-hazards.png" id="2_2xwvu"]
+[ext_resource type="Texture2D" uid="uid://b4p1tp81abn8m" path="res://assets/images/lush-cave-platforms/tileset-v3-hazards.png" id="3_0nhv7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2xwvu"]
 texture = ExtResource("1_ykbio")
@@ -13,10 +14,20 @@ texture = ExtResource("2_2xwvu")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -3, 8, -3, 8, 8, -8, 8)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uttx4"]
+texture = ExtResource("3_0nhv7")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -2.6666665, 8, -2.6666665, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -2.6666665, 8, -2.6666665, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -2.6666665, 8, -2.6666665, 8, 8, -8, 8)
+
 [sub_resource type="TileSet" id="TileSet_0nhv7"]
 physics_layer_0/collision_layer = 2
 sources/0 = SubResource("TileSetAtlasSource_2xwvu")
 sources/1 = SubResource("TileSetAtlasSource_0nhv7")
+sources/2 = SubResource("TileSetAtlasSource_uttx4")
 
 [node name="LushHazardTileMap" type="TileMapLayer" unique_id=584079314]
 texture_filter = 1

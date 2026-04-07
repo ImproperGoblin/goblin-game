@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://eqljyduwurws"]
+
+[ext_resource type="Texture2D" uid="uid://cnqf587ifbx2l" path="res://assets/images/lush-cave-platforms/tileset-v3-background.png" id="1_v2r8x"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4t5yp"]
+texture = ExtResource("1_v2r8x")
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_0nhv7"]
+physics_layer_0/collision_layer = 2
+sources/3 = SubResource("TileSetAtlasSource_4t5yp")
+
+[node name="LushBackgroundTileMap" type="TileMapLayer" unique_id=584079314]
+texture_filter = 1
+scale = Vector2(5, 5)
+tile_set = SubResource("TileSet_0nhv7")
