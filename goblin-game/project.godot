@@ -22,9 +22,8 @@ buses/default_bus_layout="uid://du055ncksoshn"
 [autoload]
 
 GameState="*uid://bph4d6klbqrm3"
-AudioManager="*uid://d3yq2uoauoufk"
-SceneManager="*uid://cbn35auhcn6v"
 UIManager="*uid://bgcfxy21x2nhf"
+AudioManager="*uid://d3yq2uoauoufk"
 MenuManager="*uid://dyi0md5op3gqd"
 
 [display]
