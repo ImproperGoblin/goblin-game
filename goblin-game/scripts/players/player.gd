@@ -1,7 +1,5 @@
 extends CharacterBody2D
 
-signal player_death
-
 const MAX_SPEED: float = 400.0
 const ACCELERATION: float = 2000.0
 const FRICTION: float = 2200.0

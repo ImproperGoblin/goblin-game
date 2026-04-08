@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://blc1uccg40sae"]
 
-[ext_resource type="Script" uid="uid://bj62nqu4u7m3t" path="res://scripts/mushroom_dude.gd" id="1_cagbh"]
+[ext_resource type="Script" uid="uid://bj62nqu4u7m3t" path="res://scripts/npcs/mushroom_dude.gd" id="1_cagbh"]
 [ext_resource type="Texture2D" uid="uid://cf2u0k70fxvdl" path="res://assets/images/player/mushroom-dude.png" id="1_uqhk2"]
+[ext_resource type="Texture2D" uid="uid://bl0tyjitk6f21" path="res://assets/images/lush-cave-enemies/cage.png" id="4_dyjgp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xq37o"]
 atlas = ExtResource("1_uqhk2")
@@ -61,6 +62,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uqhk2"]
 size = Vector2(17.000004, 16.2)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rpcix"]
+size = Vector2(17.400002, 16.6)
+
 [node name="MushroomDude" type="Node2D" unique_id=1922128237]
 texture_filter = 1
 scale = Vector2(5, 5)
@@ -79,3 +83,17 @@ flip_h = true
 position = Vector2(0.10000023, -0.09999971)
 scale = Vector2(0.99999976, 0.99999976)
 shape = SubResource("RectangleShape2D_uqhk2")
+
+[node name="Cage" type="Node2D" parent="." unique_id=943602371]
+
+[node name="Area2D" type="Area2D" parent="Cage" unique_id=1080473137]
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cage/Area2D" unique_id=38265221]
+position = Vector2(0.10000128, -0.09999941)
+scale = Vector2(0.9999998, 0.9999998)
+shape = SubResource("RectangleShape2D_rpcix")
+
+[node name="Sprite2D" type="Sprite2D" parent="Cage" unique_id=395905842]
+scale = Vector2(0.9999998, 0.9999998)
+texture = ExtResource("4_dyjgp")
