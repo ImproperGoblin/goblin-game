@@ -30,13 +30,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if player_node and player_node._is_on_or_above_node('VenusFlyTrap'):
-		global_position.x = default_pos.x + sin(snap_timer * SHAKE_SPEED) * SHAKE_AMOUNT
-
-		if not is_agitating:
-			_agitate()
+	if player_node and player_node._is_on_or_above_node('VenusFlyTrap') and not is_agitating:
+		_agitate()
 	
 	if increase_snap_timer:
+		global_position.x = default_pos.x + sin(snap_timer * SHAKE_SPEED) * SHAKE_AMOUNT
 		snap_timer += delta
 		
 	if snap_timer >= SNAP_TIME:
@@ -54,14 +52,10 @@ func _agitate():
 		$AnimatedSprite2D.play()
 
 func _snap():
-	global_position.x = default_pos.x
 	is_agitating = false
 	is_snap_animating = true
 	is_unfurling = false
-	increase_snap_timer = false
-	snap_timer = 0.0
 	
-	$GPUParticles2D.emitting = false
 	$AnimatedSprite2D.animation = ANIMATION.SNAP
 	$AnimatedSprite2D.play()	
 
@@ -82,7 +76,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 				player_node = null
 				
 			$StaticBody2D/CollisionShape2D.disabled = true
-			
+	
 			is_snap_animating = false
 			is_unfurling = true
 
@@ -96,9 +90,13 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 
 			$StaticBody2D/CollisionShape2D.disabled = false
 			
+			snap_timer = 0
+
 			if player_node:
-				snap_timer = 0
 				increase_snap_timer = true
 				$AnimatedSprite2D.animation = ANIMATION.AGITATED
 			else:
+				$GPUParticles2D.emitting = false
+				increase_snap_timer = false
 				$AnimatedSprite2D.animation = ANIMATION.STATIC
+				global_position.x = default_pos.x
