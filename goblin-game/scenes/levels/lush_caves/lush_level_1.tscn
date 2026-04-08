@@ -8,7 +8,7 @@
 [ext_resource type="FontFile" uid="uid://0yv2m2koturd" path="res://assets/font/alagard.ttf" id="4_ppse0"]
 [ext_resource type="Script" uid="uid://cokok15vf8wgq" path="res://scripts/dialogue/dialogue_trigger.gd" id="5_v4hek"]
 [ext_resource type="PackedScene" uid="uid://blc1uccg40sae" path="res://scenes/npcs/mushroom_dude.tscn" id="6_w53lf"]
-[ext_resource type="PackedScene" uid="uid://bqwcwfcclnbau" path="res://scenes/objects/cage.tscn" id="7_px0sh"]
+[ext_resource type="PackedScene" uid="uid://bqwcwfcclnbau" path="res://scenes/objects/mushroom_cage.tscn" id="7_px0sh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_px0sh"]
 size = Vector2(1420.5, 703)
@@ -19,11 +19,11 @@ size = Vector2(72, 246)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m27nu"]
 size = Vector2(144, 143)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_b3uor"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qr1wa"]
 resource_local_to_scene = true
 size = Vector2(381, 20)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fwuu0"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dplqn"]
 resource_local_to_scene = true
 size = Vector2(20, 288)
 
@@ -167,18 +167,18 @@ target_spawn_name = "SpawnA"
 
 [node name="CollisionShape2D" parent="Exits/ExitA/Area2D" index="0" unique_id=1306335981]
 position = Vector2(4, 4)
-shape = SubResource("RectangleShape2D_b3uor")
+shape = SubResource("RectangleShape2D_qr1wa")
 
 [node name="ExitB" parent="Exits" unique_id=584629364 instance=ExtResource("3_px0sh")]
 position = Vector2(1430, 250)
 
 [node name="Area2D" parent="Exits/ExitB" index="0" unique_id=1313078815]
 target_room_path = "uid://35chs7yy3alr"
-target_spawn_name = "SpawnC"
+target_spawn_name = "SpawnB"
 
 [node name="CollisionShape2D" parent="Exits/ExitB/Area2D" index="0" unique_id=1306335981]
 position = Vector2(0, -56)
-shape = SubResource("RectangleShape2D_fwuu0")
+shape = SubResource("RectangleShape2D_dplqn")
 
 [node name="Spawns" type="Node" parent="." unique_id=937951035]
 

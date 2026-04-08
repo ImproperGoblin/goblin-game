@@ -1,16 +1,12 @@
 extends Node2D
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	
 	# Check if he is freed
-	if GameState._get_mushroom_status():
+	if GameState._get_flag('progression.mushroom_cage_opened'):
 		$AnimatedSprite2D.flip_h = false
 		$AnimatedSprite2D.animation = "celebrate"
 		$AnimatedSprite2D.play()

@@ -39,7 +39,7 @@ func _set_fade(to_alpha: float) -> void:
 	fade.modulate.a = to_alpha
 
 func _update_hearts() -> void:
-	var hp = GameState._get_player_hp()
+	var hp = PlayerState._get_player_hp()
 	
 	heart_1_state = _set_heart(heart_1, heart_1_state, clampi(hp, 0, 2))
 	heart_2_state = _set_heart(heart_2, heart_2_state, clampi(hp - 2, 0, 2))

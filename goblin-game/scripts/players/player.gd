@@ -104,7 +104,7 @@ func _process_spike_reset() -> void:
 		if collider == hazard_tilemap:
 			_reduce_hp(1)
 			
-			if GameState._get_player_hp() != 0:
+			if PlayerState._get_player_hp() != 0:
 				_reset_to_safe_pos()
 			
 			break
@@ -148,15 +148,15 @@ func _bounce_away_from_enemy(enemy: Node2D) -> void:
 	velocity.y = ENEMY_BOUNCE_FORCE_Y
 	
 func _reduce_hp(reduce_amount: int) -> void:
-	if is_iframes or GameState._get_player_hp() <= 0:
+	if is_iframes or PlayerState._get_player_hp() <= 0:
 		return
 
 	AudioManager._play_sound_effect('hit')
-	GameState._reduce_player_hp(reduce_amount)
+	PlayerState._reduce_player_hp(reduce_amount)
 	_hitstop()
 	UIManager._update_hearts()
 	
-	if GameState._get_player_hp() == 0:
+	if PlayerState._get_player_hp() == 0:
 		camera.apply_shake(12.0)
 		_die()
 		return
