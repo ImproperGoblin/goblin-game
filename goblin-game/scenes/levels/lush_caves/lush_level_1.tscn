@@ -51,13 +51,13 @@ tile_map_data = PackedByteArray("AAAIAAEAAgABAAAAADAJAAEAAgACAAAAADAKAAEAAgABAAA
 [node name="NPCs" type="Node" parent="." unique_id=1990979111]
 
 [node name="MushroomDude" parent="NPCs" unique_id=2085604584 instance=ExtResource("6_w53lf")]
-position = Vector2(1193, 582.99994)
+position = Vector2(1193, 599.9999)
 metadata/_edit_group_ = true
 
 [node name="Objects" type="Node" parent="." unique_id=1848508850]
 
 [node name="Cage" parent="Objects" unique_id=686755222 instance=ExtResource("7_px0sh")]
-position = Vector2(1192, 575)
+position = Vector2(1198, 577)
 metadata/_edit_group_ = true
 
 [node name="Dialogues" type="Node" parent="." unique_id=88169018]
@@ -148,7 +148,7 @@ clip_text = true
 max_lines_visible = 11
 
 [node name="DialogueTrigger" type="Area2D" parent="Dialogues/DialogueBox3" unique_id=625946206]
-position = Vector2(1203, 592)
+position = Vector2(1208, 588)
 script = ExtResource("5_v4hek")
 metadata/_edit_group_ = true
 
