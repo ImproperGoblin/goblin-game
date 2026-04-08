@@ -1,0 +1,154 @@
+[gd_scene format=3 uid="uid://bcg8eynd2b5jp"]
+
+[ext_resource type="Texture2D" uid="uid://dkgea2fsmaod" path="res://assets/images/lush-cave-enemies/venus-fly-trap-platform.png" id="1_q0l02"]
+[ext_resource type="Script" uid="uid://bestt7xdo6xnl" path="res://scripts/enemies/venus_fly_trap.gd" id="1_q8i6q"]
+[ext_resource type="Texture2D" uid="uid://bsa6bobyrgem1" path="res://assets/images/lush-cave-enemies/venus-fly-trap-animation.png" id="2_30bbq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pc0l"]
+atlas = ExtResource("2_30bbq")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prcts"]
+atlas = ExtResource("2_30bbq")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oa4tp"]
+atlas = ExtResource("2_30bbq")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmg8x"]
+atlas = ExtResource("2_30bbq")
+region = Rect2(96, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yekv4"]
+atlas = ExtResource("2_30bbq")
+region = Rect2(128, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30bbq"]
+atlas = ExtResource("2_30bbq")
+region = Rect2(96, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u7c8i"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_6pc0l")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_prcts")
+}],
+"loop": true,
+"name": &"agitated",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_prcts")
+}, {
+"duration": 0.7,
+"texture": SubResource("AtlasTexture_oa4tp")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_nmg8x")
+}],
+"loop": false,
+"name": &"snap_shut",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_q0l02")
+}],
+"loop": false,
+"name": &"static",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yekv4")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_30bbq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6pc0l")
+}],
+"loop": false,
+"name": &"unfurl",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q8i6q"]
+size = Vector2(145, 17.75)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_q8i6q"]
+a = Vector2(-73, -1)
+b = Vector2(72, -1)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_prcts"]
+particles_animation = true
+particles_anim_h_frames = 10
+particles_anim_v_frames = 10
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oa4tp"]
+lifetime_randomness = 0.1
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+particle_flag_damping_as_friction = true
+emission_shape = 3
+emission_box_extents = Vector3(75, 10, 1)
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(0, 10, 0)
+spread = 0.0
+initial_velocity_max = 169.23
+gravity = Vector3(0, 50, 0)
+linear_accel_min = -29.650002
+linear_accel_max = 19.999998
+radial_accel_min = -0.050002236
+radial_accel_max = -0.050002236
+tangential_accel_min = -34.050003
+tangential_accel_max = 57.149998
+scale_min = 0.0
+scale_max = 77.92
+color = Color(0.49803922, 0.72156864, 0, 0.79607844)
+hue_variation_min = -0.22000001
+hue_variation_max = 0.30999997
+anim_offset_max = 1.0
+
+[node name="VenusFlyTrap" type="Node2D" unique_id=1696436320]
+script = ExtResource("1_q8i6q")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=951016447]
+texture_filter = 1
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_u7c8i")
+animation = &"snap_shut"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=785347660]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1128778806]
+position = Vector2(-0.5, -11.125)
+shape = SubResource("RectangleShape2D_q8i6q")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2057404173]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1006958897]
+shape = SubResource("SegmentShape2D_q8i6q")
+one_way_collision = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=700526831]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_prcts")
+position = Vector2(0, 13)
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_oa4tp")
+
+[connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

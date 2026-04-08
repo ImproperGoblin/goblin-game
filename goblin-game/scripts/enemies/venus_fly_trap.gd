@@ -1,7 +1,10 @@
 extends Node2D
 
 const SNAP_TIME: float = 0.8
+const SHAKE_AMOUNT: float = 3.0
+const SHAKE_SPEED: float = 40.0
 
+var default_pos: Vector2
 
 var player_node: Node = null
 var increase_snap_timer: bool = false
@@ -20,13 +23,18 @@ const ANIMATION = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	default_pos = global_position
+	
 	$GPUParticles2D.emitting = false
 	$AnimatedSprite2D.animation = ANIMATION.STATIC
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if player_node and player_node._is_on_or_above_node('VenusFlyTrap') and not is_agitating:
-		_agitate()
+	if player_node and player_node._is_on_or_above_node('VenusFlyTrap'):
+		global_position.x = default_pos.x + sin(snap_timer * SHAKE_SPEED) * SHAKE_AMOUNT
+
+		if not is_agitating:
+			_agitate()
 	
 	if increase_snap_timer:
 		snap_timer += delta
@@ -46,6 +54,7 @@ func _agitate():
 		$AnimatedSprite2D.play()
 
 func _snap():
+	global_position.x = default_pos.x
 	is_agitating = false
 	is_snap_animating = true
 	is_unfurling = false
@@ -54,7 +63,7 @@ func _snap():
 	
 	$GPUParticles2D.emitting = false
 	$AnimatedSprite2D.animation = ANIMATION.SNAP
-	$AnimatedSprite2D.play()
+	$AnimatedSprite2D.play()	
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
