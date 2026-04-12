@@ -29,6 +29,7 @@ var coyote_timer: float = 0.0
 var jump_buffer_timer: float = 0.0
 var buffered_jump: bool = false
 var jump_boost: float = 1.0
+var jump_count = 0
 
 var is_iframes: bool = false
 var hitstop_active: bool = false
@@ -54,6 +55,7 @@ func _physics_process(delta: float) -> void:
 			_set_jump_boost(1)
 		coyote_timer = 0
 		jump_buffer_timer = 0
+		jump_count = 0
 		
 		if $JumpRay.is_colliding() and not _is_on_or_above_node('VenusFlyTrap'):
 			_set_safe_pos()
@@ -65,10 +67,13 @@ func _physics_process(delta: float) -> void:
 		coyote_timer += delta
 		jump_buffer_timer += delta
 		velocity += current_gravity * delta
-
+		
+	if _is_player_falling() and jump_count == 0:
+		jump_count = 1
+	
 	if can_move:
 		if Input.is_action_just_pressed("jump"):
-			if (is_on_floor() or coyote_timer <= COYOTE_TIME_LENGTH):
+			if !_is_player_falling() or jump_count < PlayerState._get_max_jumps():
 				_jump()
 				
 			if $JumpRay.is_colliding() and !is_on_floor() and jump_buffer_timer > JUMP_BUFFER_MIN:
@@ -93,6 +98,7 @@ func _physics_process(delta: float) -> void:
 func _jump() -> void:
 	velocity.y = JUMP_VELOCITY
 	_set_animation(ANIMATION.JUMP)
+	jump_count += 1
 	
 func _process_spike_reset() -> void:
 	for i in range(get_slide_collision_count()):
@@ -117,6 +123,9 @@ func _is_on_or_above_node(node_name: String) -> bool:
 		or $JumpRayLeft.is_colliding() and left_collider and node_name in left_collider.get_parent().name
 		or $JumpRayRight.is_colliding() and right_collider and node_name in right_collider.get_parent().name
 	)
+
+func _is_player_falling() -> bool:
+	return !is_on_floor() and coyote_timer >= COYOTE_TIME_LENGTH
 
 func _set_jump_boost(multiplier: float):
 	jump_boost = multiplier;

@@ -4,6 +4,8 @@ const __MAX_PLAYER_HP: int = 6
 
 var __player_hp: int = __MAX_PLAYER_HP
 
+var __max_jumps: int = 2
+
 func _ready() -> void:
 	pass # Replace with function body.
 
@@ -19,3 +21,9 @@ func _reduce_player_hp(hp_to_reduce: int = 1) -> int:
 
 func _reset_game_state():
 	__player_hp = __MAX_PLAYER_HP
+
+func _enable_double_jump():
+	__max_jumps = 2
+	
+func _get_max_jumps() -> int:
+	return __max_jumps
