@@ -1,5 +1,7 @@
 extends Area2D
 
+var dialogue_enabled: bool = true
+
 func _ready() -> void:
 	$"../Label".visible_ratio = 0
 	
@@ -9,5 +11,8 @@ func _display_dialogue() -> void:
 	await dialogue_tween.finished
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.name == "Player":
+	if body.name == "Player" and dialogue_enabled:
 		_display_dialogue()
+
+func _disable_dialogue() -> void:
+	dialogue_enabled = false

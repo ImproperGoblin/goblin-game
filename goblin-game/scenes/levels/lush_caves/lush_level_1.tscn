@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://max0svfpqfc5" path="res://scenes/rooms/exit.tscn" id="3_px0sh"]
 [ext_resource type="FontFile" uid="uid://0yv2m2koturd" path="res://assets/font/alagard.ttf" id="4_ppse0"]
 [ext_resource type="Script" uid="uid://cokok15vf8wgq" path="res://scripts/dialogue/dialogue_trigger.gd" id="5_v4hek"]
+[ext_resource type="Script" uid="uid://bicgwxgo1rsat" path="res://scripts/dialogue/custom/lush_level_one.gd" id="6_qr1wa"]
 [ext_resource type="PackedScene" uid="uid://blc1uccg40sae" path="res://scenes/npcs/mushroom_dude.tscn" id="6_w53lf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_px0sh"]
@@ -56,10 +57,11 @@ metadata/_edit_group_ = true
 [node name="Objects" type="Node" parent="." unique_id=1848508850]
 
 [node name="Dialogues" type="Node" parent="." unique_id=88169018]
+script = ExtResource("6_qr1wa")
 
-[node name="DialogueBox" type="Node" parent="Dialogues" unique_id=1740896584]
+[node name="DialogueBoxInitial" type="Node" parent="Dialogues" unique_id=1740896584]
 
-[node name="Label" type="Label" parent="Dialogues/DialogueBox" unique_id=1681473606]
+[node name="Label" type="Label" parent="Dialogues/DialogueBoxInitial" unique_id=1681473606]
 texture_filter = 1
 offset_left = 809.0
 offset_top = 487.0
@@ -79,18 +81,18 @@ autowrap_mode = 2
 clip_text = true
 max_lines_visible = 3
 
-[node name="DialogueTrigger" type="Area2D" parent="Dialogues/DialogueBox" unique_id=1136903274]
+[node name="DialogueTrigger" type="Area2D" parent="Dialogues/DialogueBoxInitial" unique_id=1136903274]
 position = Vector2(563, 587)
 script = ExtResource("5_v4hek")
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Dialogues/DialogueBox/DialogueTrigger" unique_id=943822838]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dialogues/DialogueBoxInitial/DialogueTrigger" unique_id=943822838]
 position = Vector2(26, -70)
 shape = SubResource("RectangleShape2D_ppse0")
 
-[node name="DialogueBox2" type="Node" parent="Dialogues" unique_id=1461950343]
+[node name="DialogueBoxExit" type="Node" parent="Dialogues" unique_id=1461950343]
 
-[node name="Label" type="Label" parent="Dialogues/DialogueBox2" unique_id=913856882]
+[node name="Label" type="Label" parent="Dialogues/DialogueBoxExit" unique_id=913856882]
 texture_filter = 1
 offset_left = 87.0
 offset_top = 487.0
@@ -106,18 +108,18 @@ autowrap_mode = 2
 clip_text = true
 max_lines_visible = 3
 
-[node name="DialogueTrigger" type="Area2D" parent="Dialogues/DialogueBox2" unique_id=311494982]
+[node name="DialogueTrigger" type="Area2D" parent="Dialogues/DialogueBoxExit" unique_id=311494982]
 position = Vector2(15, 616)
 script = ExtResource("5_v4hek")
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Dialogues/DialogueBox2/DialogueTrigger" unique_id=778427366]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dialogues/DialogueBoxExit/DialogueTrigger" unique_id=778427366]
 position = Vector2(26, -70)
 shape = SubResource("RectangleShape2D_ppse0")
 
-[node name="DialogueBox3" type="Node" parent="Dialogues" unique_id=708258978]
+[node name="DialogueBoxEnd" type="Node" parent="Dialogues" unique_id=708258978]
 
-[node name="Label" type="Label" parent="Dialogues/DialogueBox3" unique_id=1844345133]
+[node name="Label" type="Label" parent="Dialogues/DialogueBoxEnd" unique_id=1844345133]
 texture_filter = 1
 offset_left = 770.0
 offset_top = 358.0
@@ -142,12 +144,12 @@ autowrap_mode = 2
 clip_text = true
 max_lines_visible = 11
 
-[node name="DialogueTrigger" type="Area2D" parent="Dialogues/DialogueBox3" unique_id=625946206]
+[node name="DialogueTrigger" type="Area2D" parent="Dialogues/DialogueBoxEnd" unique_id=625946206]
 position = Vector2(1208, 588)
 script = ExtResource("5_v4hek")
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Dialogues/DialogueBox3/DialogueTrigger" unique_id=492718504]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dialogues/DialogueBoxEnd/DialogueTrigger" unique_id=492718504]
 position = Vector2(-10, -18.5)
 shape = SubResource("RectangleShape2D_m27nu")
 
@@ -186,9 +188,9 @@ position = Vector2(738, 600)
 [node name="SpawnC" type="Marker2D" parent="Spawns" unique_id=631605269]
 position = Vector2(1240, 294)
 
-[connection signal="body_entered" from="Dialogues/DialogueBox/DialogueTrigger" to="Dialogues/DialogueBox/DialogueTrigger" method="_on_body_entered"]
-[connection signal="body_entered" from="Dialogues/DialogueBox2/DialogueTrigger" to="Dialogues/DialogueBox2/DialogueTrigger" method="_on_body_entered"]
-[connection signal="body_entered" from="Dialogues/DialogueBox3/DialogueTrigger" to="Dialogues/DialogueBox3/DialogueTrigger" method="_on_body_entered"]
+[connection signal="body_entered" from="Dialogues/DialogueBoxInitial/DialogueTrigger" to="Dialogues/DialogueBoxInitial/DialogueTrigger" method="_on_body_entered"]
+[connection signal="body_entered" from="Dialogues/DialogueBoxExit/DialogueTrigger" to="Dialogues/DialogueBoxExit/DialogueTrigger" method="_on_body_entered"]
+[connection signal="body_entered" from="Dialogues/DialogueBoxEnd/DialogueTrigger" to="Dialogues/DialogueBoxEnd/DialogueTrigger" method="_on_body_entered"]
 
 [editable path="Exits/ExitA"]
 [editable path="Exits/ExitB"]

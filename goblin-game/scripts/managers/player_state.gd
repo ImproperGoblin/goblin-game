@@ -4,7 +4,7 @@ const __MAX_PLAYER_HP: int = 6
 
 var __player_hp: int = __MAX_PLAYER_HP
 
-var __max_jumps: int = 2
+var __max_jumps: int = 1
 
 func _ready() -> void:
 	pass # Replace with function body.

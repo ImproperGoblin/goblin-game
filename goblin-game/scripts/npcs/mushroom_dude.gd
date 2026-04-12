@@ -25,3 +25,4 @@ func _on_cage_area_body_entered(body: Node2D) -> void:
 			WorldState.set_flag(NPC_STATE_FLAG, 'free')
 			AudioManager._play_sound_effect('win')
 			_update_state()
+			PlayerState._enable_double_jump()

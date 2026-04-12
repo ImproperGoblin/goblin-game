@@ -15,11 +15,11 @@ size = Vector2(2381.5, 1022)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q883a"]
 size = Vector2(160, 32)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mntew"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qnbno"]
 resource_local_to_scene = true
 size = Vector2(332, 20)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_803gd"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_01e48"]
 resource_local_to_scene = true
 size = Vector2(20, 189)
 
@@ -103,7 +103,7 @@ target_spawn_name = "SpawnB"
 
 [node name="CollisionShape2D" parent="Exits/ExitA/Area2D" index="0" unique_id=1306335981]
 position = Vector2(-6, -47)
-shape = SubResource("RectangleShape2D_mntew")
+shape = SubResource("RectangleShape2D_qnbno")
 
 [node name="ExitB" parent="Exits" unique_id=1936150714 instance=ExtResource("6_8kiam")]
 position = Vector2(2392, 877)
@@ -114,7 +114,7 @@ target_spawn_name = "SpawnA"
 
 [node name="CollisionShape2D" parent="Exits/ExitB/Area2D" index="0" unique_id=1306335981]
 position = Vector2(0, -84.5)
-shape = SubResource("RectangleShape2D_803gd")
+shape = SubResource("RectangleShape2D_01e48")
 
 [node name="Spawns" type="Node" parent="." unique_id=430053690]
 
